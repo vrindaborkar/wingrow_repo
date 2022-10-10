@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home, Customer, Login, Register, Admin , FarmersHome , InwardData , OutwardData } from './Routes/index';
 import './styles/Styles.css'
 import Profile from "./Routes/Profile";
+import StallBooking from "./Routes/Farmer/StallBooking";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/inward' element={<InwardData/>}/>
       <Route path='/outward' element={<OutwardData/>}/>
+      <Route path='/stalls' element={<StallBooking/>}/>
     </Routes>
     </div>
     </>

@@ -15,6 +15,9 @@ const FarmersHome = () => {
             <Link className='links_farmersdata' to="/outward">
                 Fill Outward Data
             </Link>
+            <Link className='links_farmersdata' to="/stalls">
+                Book Stall
+            </Link>
         </div>
         <div className='farmers_data'>
             Welcome {currentUser.firstname} !!
