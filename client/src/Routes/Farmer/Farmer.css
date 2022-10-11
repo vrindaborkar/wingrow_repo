@@ -42,6 +42,44 @@
     align-items: center;
 }
 
+.inwardData{
+    flex: 1;
+    border-right: 1px black solid;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.outwardData{
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.farmersdata_container{
+    width: 80%;
+    height: 90%;
+    overflow: auto;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.farmerdata_items{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
 
 .goback_btn{
     position: absolute;
@@ -82,6 +120,19 @@
 }
 
 @media (max-width: 798px) {
+
+    .inwardData{
+        border-right: none;
+        border-bottom: 1px black solid;
+    }
+
+    .farmers_data{
+        flex-direction: column;
+        width: 100%;
+        height: 40%;
+        justify-content: flex-start;
+        align-items: center;
+    }
 
     .farmers_page{
         flex-direction: column;

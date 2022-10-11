@@ -7,12 +7,14 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Farmer.css'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import dayjs from 'dayjs'
+import FarmerService from '../../services/farmer.service'
 
 const options = [
   // Leaves
@@ -181,11 +183,11 @@ const options = [
 const theme = createTheme();
 
 export default function OutwardData() {
-  // const navigate  = useNavigate()
+  const navigate  = useNavigate()
   const [Data, setData] = useState({
     commodity:"",
-    sales_quantity:"",
-    sales_rate:"",
+    sales_quantity:0,
+    sales_rate:0,
     market:""
   })
 
@@ -199,7 +201,30 @@ export default function OutwardData() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(Data)
+    
+    const time = dayjs(Date.now()).toISOString()
+    
+    if (Data.commodity && Data.sales_quantity && Data.sales_rate && Data.market && time) {
+      FarmerService.postOutward(Data.commodity , Data.sales_quantity , Data.sales_rate , Data.market , time).then(
+        () => {
+          alert("Data added successfully")
+          navigate("/farmers");
+        },
+        (error) => {
+          console.log(error)
+          alert("Failed to add data")
+          setData({
+            commodity:"",
+            market:'',
+            sales_rate:0,
+            sales_quantity:0
+          })
+          navigate('/farmers')
+        }
+      );
+    } else {
+      alert("data invalid")
+    }
   }
 
   return (

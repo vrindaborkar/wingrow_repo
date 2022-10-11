@@ -14,4 +14,6 @@ module.exports = function(app) {
   app.put('/stalls' , [authJwt.verifyToken] , controller.putStalls)
   app.post("/inward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.postInward);
   app.post("/outward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.postOutward);
+  app.get("/inward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.getInward);
+  app.get("/outward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.getOutward);
 };

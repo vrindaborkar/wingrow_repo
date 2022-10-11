@@ -81,7 +81,7 @@ const Navbar = () => {
             {CurrentUser?
             <>
               <li className="medialinks">
-              <Link onClick={()=>{setShowMediaIcons(false)}} to="/profile">profile</Link>
+              <Link onClick={()=>{setShowMediaIcons(false)}} to="/profile">{CurrentUser.firstname}</Link>
               </li>
               <li className="medialinks">
               <Link onClick={handleLogout} to="/login">Logout</Link>

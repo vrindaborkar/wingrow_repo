@@ -9,11 +9,30 @@ exports.getStalls = async(req,res,next) => {
     res.send(stallsdata)
 }
 
+exports.getInward = async(req,res,next) => {
+    let token = req.headers["x-access-token"];
+    const { id } = jwt_decode(token)
+
+
+    const inwarddata = await Inward.find({"userId" : id});
+    res.send(inwarddata)
+}
+
+exports.getOutward = async(req,res,next) => {
+    let token = req.headers["x-access-token"];
+    const { id } = jwt_decode(token)
+
+    const outwarddata = await Outward.find({"userId" : id});
+    res.send(outwarddata)
+}
+
+
 
 exports.postOutward = async(req,res,next) => {
     let token = req.headers["x-access-token"];
     const { id } = jwt_decode(token)
     const data = {
+        market:req.body.market,
         commodity:req.body.commodity,
         sales_quantity:req.body.sales_quantity,
         sales_rate:req.body.sales_rate,
@@ -35,7 +54,9 @@ exports.postOutward = async(req,res,next) => {
 exports.postInward = async(req,res,next) => {
     let token = req.headers["x-access-token"];
     const { id } = jwt_decode(token)
+    
     const data = {
+        market:req.body.market,
         commodity:req.body.commodity,
         purchase_quantity:req.body.purchase_quantity,
         purchase_rate:req.body.purchase_rate,
