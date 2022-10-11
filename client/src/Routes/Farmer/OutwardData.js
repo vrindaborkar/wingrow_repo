@@ -251,7 +251,7 @@ export default function OutwardData() {
                 {
                   options.map((e,i)=>{
                     return(
-                      <MenuItem value={e.title}>{e.title}</MenuItem>
+                      <MenuItem key={i} value={e.title}>{e.title}</MenuItem>
                     )
                   })
                 }

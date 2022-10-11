@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './BookMySeats.module.css';
+import shortid from 'shortid';
 
 const Seats = (props) => {
     return (
       <div className={classes.section}>
-          {props.values.map(seat => {
+          {props.values.map((seat,i) => {
               let isEmpty;
               if(seat === " "){
                 isEmpty = true;
@@ -24,7 +25,7 @@ const Seats = (props) => {
                 {
                     seatClass = classes.empty
                 }
-              return <div className={seatClass} onClick={props.addSeat} key={seat}>{seat}</div>;
+              return <div key={shortid.generate()} className={seatClass} onClick={props.addSeat}>{seat}</div>;
           })}
       </div>
     );

@@ -15,7 +15,8 @@ app.use(cors(corsOptions));
 
 // routes
 require("./routes/auth.routes")(app);
-
+require("./routes/user.routes")(app);
+require("./routes/payment.routes")(app);
 
 mongoose.connect(process.env.DB_CONNECTION, 
   { useNewUrlParser: true,
@@ -27,7 +28,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

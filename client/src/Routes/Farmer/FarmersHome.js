@@ -5,7 +5,6 @@ import './Farmer.css'
 
 const FarmersHome = () => {
     const currentUser = AuthService.getCurrentUser();
-    console.log(currentUser)
   return (
     <div className='farmers_page'>
         <div className='farmers_navigate'>

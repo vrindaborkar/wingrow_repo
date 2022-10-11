@@ -5,6 +5,9 @@ import Dropdown from './Dropdown'
 import Seats from './Seats'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import UserService from '../../services/user.service'
+import authHeader from '../../services/auth.headers'
+
 
 const StallBooking = () => {
 const [Id, setId] = useState("")
@@ -15,23 +18,18 @@ const [numberOfSeats, setNumberOfSeats] = useState(0);
 const [stallsdata, setStallsData] = useState([]);
 const [location, setLocation] = useState("");
 
-const fetchStalls = async () => {
-  fetch('http://localhost:4000/stalls',{
-    method:"GET",
-    headers:{
-      Accept:"application/json",
-      "Content-Type":"application/json"
+useEffect(() => {
+  UserService.getStallsData().then(
+    (response) => {
+      setStallsData(response.data);
     },
-    }).then((res)=>res.json())
-    .then((res)=>{
-      setStallsData(res)
-    })
-    .catch(err=>console.log(err))
-}
+    (error) => {
+      console.log(error)
+      alert("An error occured")
+    }
+  );
+}, []);
 
-  useEffect(() => {
-    fetchStalls()
-  },[])
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -57,8 +55,8 @@ useEffect(() => {
 
 const confirmBooking = async() => {
   try {
-    const orderUrl = "http://localhost:4000/orders";
-    const {data} = await axios.post(orderUrl,{amount:100})
+    const orderUrl = "http://localhost:4000/order";
+    const {data} = await axios.post(orderUrl,{amount:100},{headers:authHeader()})
     initPayment(data.data)
   } catch (error) {
     console.log(error)
@@ -98,35 +96,28 @@ const initPayment = (data) =>
       handler:async(response) =>{
           try {
               const verifyUrl = "http://localhost:4000/verify";
-              const {data} = await axios.post(verifyUrl,response)
+              const {data} = await axios.post(verifyUrl,response,{headers:authHeader()})
               const update = availableStalls.filter(function(obj) { return bookedStalls.indexOf(obj) === -1; });
               console.log(data)
 
-              if(location && availableStalls && Stalls)
-                {const res = await fetch("/stalls" , {
-                    method:"POST",
-                    headers:{
-                      "Content-Type":"application/json"
-                    },
-                    body: JSON.stringify({
-                        location,
-                        availableStalls:update,
-                        Stalls
-                    })
+              if(location && update)
+                {
+                  const stallsUrl = "http://localhost:4000/stalls";
+                  axios.put(stallsUrl , {location , availablestalls:update} , {headers:authHeader()})
+                  .then(response => {
+                    const {data} = response;
+                    alert("Stalls booked succesfully")
+                    setBookedStalls([])
+                    setNumberOfSeats(0)
+                    setAvailableStalls(data.availablestalls);
+                  })
+                  .catch(error => {
+                      console.log(error)
+                      alert("Stall booking failed")
+                      setBookedStalls([])
+                      setNumberOfSeats(0)
                   });
-        const data = await res.json()
-        if(data){
-          alert("Stalls booked succesfully")
-          setAvailableStalls(update)
-          setBookedStalls([])
-          setNumberOfSeats(0)
-        }else{
-          alert("Stall booking failed")
-          setBookedStalls([])
-          setNumberOfSeats(0)
-        }
-      }
-
+                }
           } catch (error) {
               console.log(error)
               setBookedStalls([])
@@ -144,7 +135,6 @@ const initPayment = (data) =>
   const handleClick = (e) =>
   {
     setId(e.target.innerText)
-    fetchStalls()
   }
 
 

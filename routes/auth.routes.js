@@ -10,13 +10,6 @@ module.exports = function(app) {
     next();
   });
 
-  app.post(
-    "/auth/signup",
-    [
-      verifySignUp.checkDuplicatePhone
-    ],
-    controller.signup
-  );
-
+  app.post("/auth/signup",[verifySignUp.checkDuplicatePhone],controller.signup );
   app.post("/auth/signin", controller.signin);
 };

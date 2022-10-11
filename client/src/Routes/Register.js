@@ -70,6 +70,7 @@ export default function Register() {
   };
 
   return (
+    <div className='authContainer'>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs"  sx={{boxShadow:"rgba(0, 0, 0, 0.35) 0px 5px 15px",padding:"1rem"}}>
         <CssBaseline />
@@ -182,5 +183,6 @@ export default function Register() {
         </Box>
       </Container>
     </ThemeProvider>
+    </div>
   );
 }
