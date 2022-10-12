@@ -4,12 +4,13 @@ import './Bookings.css'
 import Dropdown from './Dropdown'
 import Seats from './Seats'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import UserService from '../../services/user.service'
 import authHeader from '../../services/auth.headers'
+import AuthService from '../../services/auth.service'
 
 
-const StallBooking = () => {
+const StallBooking = ({setbookingDetails}) => {
 const [Id, setId] = useState("")
 const [Stalls , setStalls] = useState([])
 const [availableStalls , setAvailableStalls] = useState([])
@@ -17,6 +18,8 @@ const [bookedStalls , setBookedStalls] = useState([])
 const [numberOfSeats, setNumberOfSeats] = useState(0);
 const [stallsdata, setStallsData] = useState([]);
 const [location, setLocation] = useState("");
+const user = AuthService.getCurrentUser()
+const navigate = useNavigate()
 
 useEffect(() => {
   UserService.getStallsData().then(
@@ -98,7 +101,7 @@ const initPayment = (data) =>
               const verifyUrl = "http://localhost:4000/verify";
               const {data} = await axios.post(verifyUrl,response,{headers:authHeader()})
               const update = availableStalls.filter(function(obj) { return bookedStalls.indexOf(obj) === -1; });
-              console.log(data)
+              let orderId = data.orderId;
 
               if(location && update)
                 {
@@ -110,6 +113,15 @@ const initPayment = (data) =>
                     setBookedStalls([])
                     setNumberOfSeats(0)
                     setAvailableStalls(data.availablestalls);
+                    setbookingDetails({
+                      farmer:`${user.firstname} ${user.lastname}`,
+                      phone:user.phone,
+                      stallAddress:location,
+                      BookedStalls:bookedStalls,
+                      Stallfare:1000,
+                      paymentDetails:orderId
+                    })
+                    navigate('../ticket')
                   })
                   .catch(error => {
                       console.log(error)

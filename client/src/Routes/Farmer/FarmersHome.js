@@ -24,17 +24,17 @@ const FarmersHome = () => {
   return (
     <div className='farmers_page'>
         <div className='farmers_navigate'>
-            <Link className='links_farmersdata' to="/inward">
+            <Link className='links_farmersdata' to="./inward">
                 Fill Inward Data
             </Link>
-            <Link className='links_farmersdata' to="/outward">
+            <Link className='links_farmersdata' to="./outward">
                 Fill Outward Data
             </Link>
-            <Link className='links_farmersdata' to="/stalls">
+            <Link className='links_farmersdata' to="./stalls">
                 Book Stall
             </Link>
         </div>
-        {InwardData && OutwardData && <div className='farmers_data'>
+        {InwardData && OutwardData ? <div className='farmers_data'>
             <div className='inwardData'>
                 <h3 style={{padding:"1rem 0"}}>Inward Data</h3>
                 <div className='farmersdata_container'>
@@ -72,7 +72,7 @@ const FarmersHome = () => {
                 }
                 </div>
             </div>
-        </div>}
+        </div>:<h2>Data Loading....</h2>}
     </div>
   )
 }

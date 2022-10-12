@@ -49,7 +49,7 @@ const verifypayment = async(req,res)=>
         if(razorpay_signature===expectedSign)
 
         {
-            res.status(200).json({message:"payment verification succesful"})
+            res.status(200).json({message:"payment verification succesful",orderId:razorpay_order_id})
         }
         else
         {
