@@ -11,6 +11,14 @@ import AuthService from '../../services/auth.service'
 
 
 const StallBooking = ({setbookingDetails}) => {
+
+  useEffect(() => {
+    axios.get('http://localhost:4000/trial')
+    .then((response)=>{
+      console.log(response.data)
+    })
+  }, [])
+  
 const [Id, setId] = useState("")
 const [Stalls , setStalls] = useState([])
 const [availableStalls , setAvailableStalls] = useState([])

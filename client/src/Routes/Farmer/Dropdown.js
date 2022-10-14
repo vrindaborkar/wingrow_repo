@@ -4,8 +4,19 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function Dropdown({Data,handleClick}) {
+export default function Dropdown({data , handleClickDrop}) {
   const [val, setVal] = React.useState('');
+  const set = new Set();
+  const arr = [];
+
+  if(data)
+    {
+      for(let item of data){
+      set.add(item.location)
+    }
+  }
+
+  for(let key of set) arr.push(key)
 
   const handleChange = (event) => {
     setVal(event.target.value);
@@ -23,9 +34,9 @@ export default function Dropdown({Data,handleClick}) {
         onChange={handleChange}
       >
         {
-            Data.map((e,i)=>{
+            arr && arr.map((e,i)=>{
                 return(
-                    <MenuItem key={i} value={e.location} onClick={handleClick}>{e.location}</MenuItem>
+                    <MenuItem key={i} value={e} onClick={handleClickDrop}>{e}</MenuItem>
                 )
             })
         }

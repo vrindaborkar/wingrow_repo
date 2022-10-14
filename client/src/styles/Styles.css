@@ -11,6 +11,19 @@ html {
   font-size: 75%;
   min-width: 350px;
 }
+body::-webkit-scrollbar {
+  width: 10px;
+	background-color: #F5F5F5;
+}
+ 
+body::-webkit-scrollbar-track {
+  border: 1px solid black;
+	background-color: #F5F5F5;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #000000;	
+}
 
 a {
   text-decoration: none;

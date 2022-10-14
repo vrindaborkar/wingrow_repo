@@ -14,7 +14,6 @@ function Ticket ({bookingDetails}) {
                 <div>Farmer Market Address : {bookingDetails.stallAddress}</div>
                 <div>Date and Timing of Market :08/05/22</div>
                 <div>Payment Details : {bookingDetails.paymentDetails}</div>
-                <div>Total no. of Stalls : {bookingDetails.BookedStalls.length}</div>
                 <div>Stall fare : {bookingDetails.Stallfare}</div>
             </div>
             <h2 className="thanks">Thank You !</h2>

@@ -51,7 +51,6 @@ const MyDoc = ({bookingDetails}) => (
         <Text>Farmer Market Address : {bookingDetails.stallAddress}</Text>
         <Text>Date and Timing of Market :08/05/22</Text>
         <Text>Payment Details : {bookingDetails.paymentDetails}</Text>
-        <Text>Total no. of Stalls : {bookingDetails.BookedStalls.length}</Text>
         <Text>Stall fare : {bookingDetails.Stallfare}</Text>
       </View>
       <View style={styles.head}>
