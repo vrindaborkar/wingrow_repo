@@ -33,6 +33,9 @@ const FarmersHome = () => {
             <Link className='links_farmersdata' to="./stalls">
                 Book Stall
             </Link>
+            <Link className='links_farmersdata' to="./mybookings">
+                My Bookings
+            </Link>
         </div>
         {InwardData && OutwardData ? <div className='farmers_data'>
             <div className='inwardData'>
@@ -72,7 +75,9 @@ const FarmersHome = () => {
                 }
                 </div>
             </div>
-        </div>:<h2>Data Loading....</h2>}
+        </div>:<div className='spin'>
+        <div className="spinner"></div>
+      </div>}
     </div>
   )
 }

@@ -6,6 +6,8 @@ import Dropdown from './Dropdown';
 import authHeader from '../../services/auth.headers';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../../services/auth.service';
+import ConfirmModal from '../../components/ConfirmModal';
+const userCurr = AuthService.getCurrentUser();
 
 function Test({setbookingDetails}) {
 const navigate = useNavigate()
@@ -73,7 +75,7 @@ const navigate = useNavigate()
               const orderId = data.orderId
 
                   const stallsUrl = "http://localhost:4000/trial";
-                  axios.put(stallsUrl , {data : bookedStalls , user : "7236373" , time: Date.now()} , {headers:authHeader()})
+                  axios.put(stallsUrl , {data : bookedStalls , user : userCurr.id , time: Date.now().toLocaleString()} , {headers:authHeader()})
                   .then(response => {
                     const {data} = response
                     setbookingDetails({
@@ -150,10 +152,12 @@ const navigate = useNavigate()
               :
               <h2>Please select the market</h2>
             }
-            <button style={{alignSelf:"center"}} onClick={confirmBooking}>Book</button>
+            <ConfirmModal confirmBooking={confirmBooking}/>
       </div>
     </div>
-    :<div className="spinner"></div>}
+    :<div className='spin'>
+        <div className="spinner"></div>
+      </div>}
     </>
   );
 }

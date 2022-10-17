@@ -64,17 +64,6 @@ useEffect(() => {
 }, [stallsdata , Id])
 
 
-const confirmBooking = async() => {
-  try {
-    const orderUrl = "http://localhost:4000/order";
-    const {data} = await axios.post(orderUrl,{amount:100},{headers:authHeader()})
-    initPayment(data.data)
-  } catch (error) {
-    console.log(error)
-  }
-};
-
-
 const addSeat = async(ev) => {
   if(numberOfSeats && !ev.target.className.includes('disabled')) {
       const seatsToBook = parseInt(numberOfSeats, 20);
