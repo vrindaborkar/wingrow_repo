@@ -27,6 +27,11 @@ li {
 
 .main-nav {
   width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: white;
   height: 13vh;
   font-size: 1.1rem;
   display: grid;

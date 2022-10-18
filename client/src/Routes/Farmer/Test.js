@@ -1,4 +1,4 @@
-import './Test.css';
+import '../../styles/Test.css'
 import React , {useState , useEffect } from 'react'
 import axios from 'axios'
 import Stall from './Stall';
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import AuthService from '../../services/auth.service';
 import ConfirmModal from '../../components/ConfirmModal';
 import FarmerService from '../../services/farmer.service';
+import dayjs from 'dayjs';
 const userCurr = AuthService.getCurrentUser();
 
 function Test({setbookingDetails}) {
@@ -53,7 +54,7 @@ const navigate = useNavigate()
     }
     try {
       const orderUrl = "http://localhost:4000/order";
-      const {data} = await axios.post(orderUrl,{amount:price},{headers:authHeader()})
+      const {data} = await axios.post(orderUrl,{amount:price*100},{headers:authHeader()})
       initPayment(data.data)
     } catch (error) {
       console.log(error)
@@ -85,7 +86,7 @@ const navigate = useNavigate()
                     idArr.push(e._id)
                     stallsBooked.push(e.stallName)
                   });
-                  axios.put(stallsUrl , {data : idArr , user : userCurr.id , time: Date.now().toLocaleString()} , {headers:authHeader()})
+                  axios.put(stallsUrl , {data : idArr , user : userCurr.id , time: dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ss')} , {headers:authHeader()})
                   .then(response => {
                     const {data} = response
                     if(data){
@@ -96,7 +97,8 @@ const navigate = useNavigate()
                         paymentDetails:orderId,
                         BookedStalls:stallsBooked,
                         stallsBooked:bookedStalls.length,
-                        totalAmount:price
+                        totalAmount:price,
+                        bookedAt:data[0].bookedAt
                     })}
                     alert("Stalls booked succesfully")
                     navigate('../ticket')

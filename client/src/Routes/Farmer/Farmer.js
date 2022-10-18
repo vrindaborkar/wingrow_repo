@@ -15,7 +15,8 @@ const Farmer = () => {
         paymentDetails:'',
         BookedStalls:"",
         stallsBooked:"",
-        totalAmount:""
+        totalAmount:"",
+        bookedAt:""
     })
 
     console.log(bookingDetails)

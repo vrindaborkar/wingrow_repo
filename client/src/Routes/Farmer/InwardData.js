@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link, useNavigate } from 'react-router-dom';
-import './Farmer.css'
+import '../../styles/Farmer.css'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
@@ -201,7 +201,7 @@ export default function InwardData() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const time = dayjs(Date.now()).toISOString()
+    const time = dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ss')
     
     if (Data.commodity && Data.purchase_quantity && Data.purchase_rate && Data.market && time) {
       FarmerService.postInward(Data.commodity , Data.purchase_quantity , Data.purchase_rate , Data.market , time).then(

@@ -48,10 +48,11 @@ const MyDoc = ({bookingDetails}) => (
       <View style={styles.section1}>
         <Text>Farmer Name : {bookingDetails.farmer}</Text>
         <Text>Phone : {bookingDetails.phone}</Text>
-        <Text>Farmer Market Address : {bookingDetails.stallAddress}</Text>
-        <Text>Date and Timing of Market :08/05/22</Text>
+        <Text>Market Address : {bookingDetails.stallAddress}</Text>
+        <Text>Date and Timing of Market :{bookingDetails.bookedAt}</Text>
         <Text>Payment Details : {bookingDetails.paymentDetails}</Text>
-        <Text>Stall fare : {bookingDetails.Stallfare}</Text>
+        <Text>Total Amount : {bookingDetails.totalAmount}</Text>
+        <Text>Stalls Booked : {bookingDetails.BookedStalls.toString()}</Text>
       </View>
       <View style={styles.head}>
       <Text>Thank you !</Text>

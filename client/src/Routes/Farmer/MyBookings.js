@@ -2,7 +2,7 @@ import React , {useState , useEffect} from 'react'
 import AuthService from '../../services/auth.service'
 import FarmerService from '../../services/farmer.service'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import './MyBookings.css'
+import '../../styles/MyBookings.css'
 const user = AuthService.getCurrentUser()
 
 const MyBookings = () => {
