@@ -7,6 +7,7 @@ import authHeader from '../../services/auth.headers';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../../services/auth.service';
 import ConfirmModal from '../../components/ConfirmModal';
+import FarmerService from '../../services/farmer.service';
 const userCurr = AuthService.getCurrentUser();
 
 function Test({setbookingDetails}) {
@@ -21,7 +22,7 @@ const navigate = useNavigate()
 
   useEffect(() => {
     setLoading(true)
-    axios.get('http://localhost:4000/trial')
+    FarmerService.getMyStalls()
     .then((response)=>{
         setLoading(false)
         setdata(response.data);
@@ -44,13 +45,15 @@ const navigate = useNavigate()
   }, [Id , data])
 
   const confirmBooking = async() => {
+    const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
+
     if(bookedStalls.length === 0){
         alert("failed to book seats")
         return;
     }
     try {
       const orderUrl = "http://localhost:4000/order";
-      const {data} = await axios.post(orderUrl,{amount:100},{headers:authHeader()})
+      const {data} = await axios.post(orderUrl,{amount:price},{headers:authHeader()})
       initPayment(data.data)
     } catch (error) {
       console.log(error)
@@ -74,18 +77,27 @@ const navigate = useNavigate()
               const {data} = await axios.post(verifyUrl,response,{headers:authHeader()})
               const orderId = data.orderId
 
-                  const stallsUrl = "http://localhost:4000/trial";
-                  axios.put(stallsUrl , {data : bookedStalls , user : userCurr.id , time: Date.now().toLocaleString()} , {headers:authHeader()})
+                  const stallsUrl = "http://localhost:4000/stalls";
+                  const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
+                  const idArr = []
+                  const stallsBooked = []
+                  bookedStalls.forEach(e => {
+                    idArr.push(e._id)
+                    stallsBooked.push(e.stallName)
+                  });
+                  axios.put(stallsUrl , {data : idArr , user : userCurr.id , time: Date.now().toLocaleString()} , {headers:authHeader()})
                   .then(response => {
                     const {data} = response
-                    setbookingDetails({
-                        farmer:user.firstname + user.lastname,
+                    if(data){
+                      setbookingDetails({
+                        farmer:user.firstname + " " + user.lastname,
                         phone:user.phone,
-                        stallAddress:data ? data[0].address : "address",
+                        stallAddress:data[0].address,
                         paymentDetails:orderId,
-                        BookedStalls:data ? data[0].stallName : "stalls",
-                        StallFare:data ? data[0].stallFare : "fare"
-                    })
+                        BookedStalls:stallsBooked,
+                        stallsBooked:bookedStalls.length,
+                        totalAmount:price
+                    })}
                     alert("Stalls booked succesfully")
                     navigate('../ticket')
                   })
@@ -123,14 +135,17 @@ const navigate = useNavigate()
                 const newAvailable = bookedStalls.filter(seat => seat !== ev.target.id);
                 setBookedStalls(newAvailable);
             } else if(bookedStalls.length < numberOfSeats) {
-                setBookedStalls([...bookedStalls, ev.target.id]);
+              const item = UpdatedData.filter(e=>e._id === ev.target.id)
+                setBookedStalls([...bookedStalls, item[0]]);
             } else if (bookedStalls.length === seatsToBook) {
+              const item = UpdatedData.filter(e=>e._id === ev.target.id)
                 bookedStalls.shift();
-                setBookedStalls([...bookedStalls, ev.target.id]);
+                setBookedStalls([...bookedStalls, item[0]]);
             }
         }
       }
   }
+
 
   return (
     <>
@@ -150,7 +165,9 @@ const navigate = useNavigate()
               <Stall data={UpdatedData.slice(18,34)} handleClick={handleClick} bookedStalls={bookedStalls}/>  
              </div>
               :
-              <h2>Please select the market</h2>
+              <div className='select_market'>
+                 <h2>Please select the market</h2>
+              </div>
             }
             <ConfirmModal confirmBooking={confirmBooking}/>
       </div>

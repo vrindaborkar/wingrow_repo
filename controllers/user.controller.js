@@ -1,13 +1,6 @@
 const Inward = require("../models/Inward");
 const Outward = require("../models/Outward");
-const Stalls = require("../models/Stalls");
 const jwt_decode =  require("jwt-decode");
-
-
-exports.getStalls = async(req,res,next) => {
-    const stallsdata = await Stalls.find();
-    res.send(stallsdata)
-}
 
 exports.getInward = async(req,res,next) => {
     let token = req.headers["x-access-token"];
@@ -73,22 +66,4 @@ exports.postInward = async(req,res,next) => {
     }
 
     res.status(200).json({message:"Data added successfully"})
-}
-
-
-exports.putStalls = async(req,res)=>
-{
-    const {availablestalls , location} = req.body;
-
-    const update = {
-        availablestalls:availablestalls
-    }
-
-    try{
-        const stalldata = await Stalls.findOneAndUpdate({location},update);
-        const resdata = await stalldata.save()
-        res.status(200).send(resdata)
-    } catch (error) {
-        res.status(404).send(error)
-    }
 }

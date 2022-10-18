@@ -32,7 +32,7 @@ const API_URL = 'http://localhost:4000/';
   }
 
   const getMyStalls = () => {
-    return axios.get(API_URL + 'trial', { headers: authHeader() });
+    return axios.get(API_URL + 'stalls', { headers: authHeader() });
   }
 
 

@@ -14,7 +14,8 @@ const Farmer = () => {
         stallAddress:'',
         paymentDetails:'',
         BookedStalls:"",
-        StallFare:""
+        stallsBooked:"",
+        totalAmount:""
     })
 
     console.log(bookingDetails)

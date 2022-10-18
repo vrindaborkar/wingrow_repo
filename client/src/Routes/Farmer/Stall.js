@@ -6,8 +6,8 @@ const Stall = ({data , handleClick , bookedStalls}) => {
         <div className='Stalls_info'>
         {
             data.map((e,i)=>{
-                const { stallName , isBooked , _id } = e;
-                const isSelected = bookedStalls.includes(_id)
+                const { stallName , isBooked , _id , stallPrice } = e;
+                const isSelected = bookedStalls.some(e=>e._id === _id)
                 let stallClass;
                 if(isBooked === true)
                 {
@@ -22,7 +22,7 @@ const Stall = ({data , handleClick , bookedStalls}) => {
                 }
             
                 return(
-                    <div onClick={handleClick} className={stallClass} id={_id} key={i}>{stallName}</div>
+                    <div onClick={handleClick} className={stallClass} id={_id} key={i}>{stallName}<br/>Rs.{stallPrice}</div>
                 )
             })
         }

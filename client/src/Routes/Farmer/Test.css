@@ -115,6 +115,14 @@
     animation: spinner-zp9dbg 1s infinite linear;
     align-self: center;
   }
+
+  .select_market{
+      width: 100%;
+      min-height: 30vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
   
   @keyframes spinner-zp9dbg {
     to {

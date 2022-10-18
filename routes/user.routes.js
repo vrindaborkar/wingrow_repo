@@ -10,8 +10,6 @@ module.exports = function(app) {
     next();
   });
 
-  app.get("/stalls",[authJwt.verifyToken , authJwt.isFarmer], controller.getStalls)
-  app.put('/stalls' , [authJwt.verifyToken] , controller.putStalls)
   app.post("/inward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.postInward);
   app.post("/outward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.postOutward);
   app.get("/inward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.getInward);
