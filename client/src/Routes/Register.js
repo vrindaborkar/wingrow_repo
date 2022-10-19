@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState , useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,11 +16,20 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
+const user = AuthService.getCurrentUser()
 
 
 const theme = createTheme();
 
 export default function Register() {
+
+  useEffect(() => {
+    if(!!user){
+      AuthService.logout();
+      window.location.reload()
+    }
+  }, [])
+
   const navigate = useNavigate()
 
   const [data, setData] = useState({

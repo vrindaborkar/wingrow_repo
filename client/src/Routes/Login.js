@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState , useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,10 +12,20 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
+const user = AuthService.getCurrentUser();
 
 const theme = createTheme();
 
 export default function SignIn() {
+
+  useEffect(() => {
+    if(!!user){
+      AuthService.logout();
+      window.location.reload()
+    }
+  }, [])
+  
+
   const navigate = useNavigate()
   const [data, setData] = useState({
     phone:'',

@@ -1,15 +1,15 @@
 
   .Test{
-    width: 100vw;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    position: relative;
   }
 
-  .main_container{
+  .main_container_stalls{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,7 +132,7 @@
   }
 
   @media (max-width: 900px) {
-    .main_container{
+    .main_container_stalls{
         align-items: flex-start;
     }
   }

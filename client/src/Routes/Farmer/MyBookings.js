@@ -3,6 +3,7 @@ import AuthService from '../../services/auth.service'
 import FarmerService from '../../services/farmer.service'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import '../../styles/MyBookings.css'
+import { Link } from 'react-router-dom';
 const user = AuthService.getCurrentUser()
 
 const MyBookings = () => {
@@ -25,6 +26,7 @@ const MyBookings = () => {
   return (
     <>
     {MyStalls?<div className='bookings_container'>
+    <Link to="/farmers" className='goback_btn'>Go Back</Link>
         <div className='booking_content'>
             <div className='booking_cards'> 
                 <h1 className='booking_header'>Stall Bookings</h1>

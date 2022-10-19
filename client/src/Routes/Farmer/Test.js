@@ -4,7 +4,7 @@ import axios from 'axios'
 import Stall from './Stall';
 import Dropdown from './Dropdown';
 import authHeader from '../../services/auth.headers';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthService from '../../services/auth.service';
 import ConfirmModal from '../../components/ConfirmModal';
 import FarmerService from '../../services/farmer.service';
@@ -152,10 +152,11 @@ const navigate = useNavigate()
   return (
     <>
     {!Loading ? <div className="Test">
+    <Link to="/farmers" className='goback_btn'>Go Back</Link>
         <div className="dropdown">
           <Dropdown data={data} handleClickDrop={handleClickDrop}/>
         </div>
-      <div className='main_container'>
+      <div className='main_container_stalls'>
         <p className='seatsinput'>How Many Stalls Would You Like to Book?</p>
             <input className='seatsinput' value={numberOfSeats} onChange={(ev) => setNumberOfSeats(ev.target.value)}/>
             {
