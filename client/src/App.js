@@ -6,6 +6,7 @@ import Profile from "./Routes/Profile";
 import Main from "./Routes/Main";
 import ProtectedRoute from "./utils/ProtectedRoutes";
 import AuthService from "./services/auth.service";
+import NotFound from "./Routes/NotFound";
 const user = AuthService.getCurrentUser();
 
 const App = () => {
@@ -16,7 +17,7 @@ const App = () => {
           <Route index element={<Home/>}/>
         
           <Route 
-            path="customers" 
+            path="customers/*" 
             element={
             <ProtectedRoute isAllowed={!!user && user.role === "customer"}>
               <Customer/>
@@ -53,8 +54,8 @@ const App = () => {
 
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path="*" element={<p>There's nothing here: 404!</p>} />
       </Route>
+      <Route path="*" element={<NotFound/>} />
     </Routes>
     </>
   );

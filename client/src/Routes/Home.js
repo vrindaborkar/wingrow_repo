@@ -10,6 +10,7 @@ import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import Location from '../components/Location';
 import AOS from 'aos'
 import 'aos/dist/aos.css';
+import Footer from '../components/Footer';
 
 const Home = () => {
 
@@ -176,6 +177,7 @@ const Home = () => {
             </div>
           </div>
     </div>
+    <Footer/>
     </div>
   )
 }

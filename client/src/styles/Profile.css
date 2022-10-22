@@ -1,0 +1,9 @@
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 84vh;
+    flex-direction: column;
+    font-size: 1.5rem;
+}

@@ -1,8 +1,14 @@
-import React from 'react'
+import React , {useState}  from "react";
+import { Routes, Route } from "react-router-dom";
+import CustomersHome from "./CustomersHome";
+import ProductsPage from "./ProductsPage";
 
 const Customer = () => {
   return (
-    <div>Welcome Customer</div>
+    <Routes>
+        <Route path='/' element={<CustomersHome/>}/>
+        <Route path='/productspage' element={<ProductsPage/>}/>
+    </Routes>
   )
 }
 
