@@ -2,6 +2,7 @@ import React from "react";
 import '../../styles/Ticket.css'
 import { PDFDownloadLink} from '@react-pdf/renderer';
 import MyDoc from "../../components/MyDoc";
+import Spinner from "../../components/Spinner";
 
 function Ticket ({bookingDetails}) {
     const {BookedStalls} = bookingDetails;
@@ -32,7 +33,7 @@ function Ticket ({bookingDetails}) {
             <PDFDownloadLink document={<MyDoc bookingDetails={bookingDetails}/>} fileName="stallbookingdetails.pdf">
                 {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
             </PDFDownloadLink>
-        </div> : <h2>Loading...</h2>}
+        </div> : <Spinner/>}
         </> 
      );
 }

@@ -4,6 +4,7 @@ import FarmerService from '../../services/farmer.service'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import '../../styles/MyBookings.css'
 import { Link } from 'react-router-dom';
+import Spinner from '../../components/Spinner';
 const user = AuthService.getCurrentUser()
 
 const MyBookings = () => {
@@ -54,9 +55,7 @@ const MyBookings = () => {
 
             </div>
         </div>
-    </div>:<div className='spin'>
-        <div className="spinner"></div>
-      </div>}
+    </div>:<Spinner/>}
     </>
   )
 }

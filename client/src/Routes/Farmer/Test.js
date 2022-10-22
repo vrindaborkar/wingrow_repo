@@ -9,6 +9,7 @@ import AuthService from '../../services/auth.service';
 import ConfirmModal from '../../components/ConfirmModal';
 import FarmerService from '../../services/farmer.service';
 import dayjs from 'dayjs';
+import Spinner from '../../components/Spinner';
 const userCurr = AuthService.getCurrentUser();
 
 function Test({setbookingDetails}) {
@@ -175,9 +176,7 @@ const navigate = useNavigate()
             <ConfirmModal confirmBooking={confirmBooking}/>
       </div>
     </div>
-    :<div className='spin'>
-        <div className="spinner"></div>
-      </div>}
+    :<Spinner/>}
     </>
   );
 }

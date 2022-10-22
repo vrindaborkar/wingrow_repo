@@ -10,8 +10,10 @@ module.exports = function(app) {
     next();
   });
 
-  app.get("/stalls",[authJwt.verifyToken , authJwt.isFarmer], controller.getStalls)
+  app.get("/stalls",[authJwt.verifyToken], controller.getStalls)
   app.put('/stalls' , [authJwt.verifyToken , authJwt.isFarmer] , controller.putStalls)
-  app.post('/stalls' , [authJwt.verifyToken , authJwt.isFarmer] , controller.postStalls)
+  // app.post('/stalls' , [authJwt.verifyToken , authJwt.isFarmer] , controller.postStalls)
+  app.post('/stalls' , controller.postStalls)
   app.put('/reset' , [authJwt.isAdmin] , controller.resetStalls)
+  app.get("/inwardoutward",[authJwt.verifyToken], controller.getInOutData)
 };

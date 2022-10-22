@@ -2,6 +2,7 @@ import React , {useState , useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import '../../styles/Farmer.css'
 import FarmerService from '../../services/farmer.service'
+import Spinner from '../../components/Spinner'
 
 const FarmersHome = () => {
 
@@ -94,9 +95,7 @@ const FarmersHome = () => {
             </div>
         </div>}
         {!InwardData && !OutwardData &&
-        <div className='spin'>
-            <div className="spinner"></div>
-          </div>
+        <Spinner/>
         }
     </div>
   )

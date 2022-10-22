@@ -1,9 +1,15 @@
+const Inward = require("../models/Inward");
 const Stalls = require("../models/Stalls");
 
 exports.getStalls = async(req,res)=>{
     const data = await Stalls.find()
     res.send(data)
   }
+
+exports.getInOutData = async(req,res)=>{
+  const Indata = await Inward.find();
+  res.send(Indata)
+}
   
 exports.postStalls = async(req,res,next)=>{
       const data = await new Stalls(req.body);

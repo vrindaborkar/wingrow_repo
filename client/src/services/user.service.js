@@ -7,6 +7,10 @@ const API_URL = 'http://localhost:4000/';
     return axios.get(API_URL + 'all');
   }
 
+  const getInOutdata = () => {
+    return axios.get(API_URL + 'inwardoutward' , { headers: authHeader() });
+  }
+
   const getStallsData = () => {
     return axios.get(API_URL + 'stalls', { headers: authHeader() });
   }
@@ -19,7 +23,8 @@ const API_URL = 'http://localhost:4000/';
 const UserService = {
     getPublicContent,
     getStallsData,
-    getAdminData
+    getAdminData,
+    getInOutdata
   };
   
   export default UserService;

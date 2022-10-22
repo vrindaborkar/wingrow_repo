@@ -1,28 +1,42 @@
-import React from 'react';
+import React , {useEffect , useState} from 'react';
 import { Link } from 'react-router-dom';
+import Spinner from '../../components/Spinner';
 import './CustomerHome.css';
 
-const data = ["hadapsar" , "amanora" , "bhosari" , "pimpri" , "chakan" , "ravet"] 
+const CustomersHome = ({places , setId}) => {
+    const [place, setplace] = useState();
 
-const CustomersHome = () => {
+    useEffect(() => {
+      setplace(places)
+    }, [places])
+
+    
   return (
-    <div className='customerhome_component'>
-        <img alt="Lifestyle Exhibition" class="img-responsive" src="./images/5.jpg" width="90%"/>
-       
+    <>
+    {place && place.length !== 0 && <div className='customerhome_component'>
+        <img alt="Lifestyle Exhibition" className="img-responsive" src="./images/5.jpg" width="90%"/>
         <h2 className='places_header'>Select market in pune!</h2>
-
         <div className='places_container'>
             {
-                data.map((e,i)=>{
+                place && place.map((e,i)=>{
                     return(
-                        <Link to={`./productspage`} className='places_card'>
+                        <Link key={i} onClick={()=>setId(e)} to="./productspage" className='places_card'>
                             <span className='places_cards_content'>Stalls in<br/>{e}</span>
                         </Link>
                     )
                 })
             }
         </div>
-    </div>
+    </div>}
+    {place && place.length === 0 && <div className='customerhome_component'>
+        <img alt="Lifestyle Exhibition" className="img-responsive" src="./images/5.jpg" width="90%"/>
+        <h2 className='places_header'>Select market in pune!</h2>
+        <div className='places_container'>
+            <h2>No markets available</h2>
+        </div>
+    </div>}
+    {place === undefined && <Spinner/>}
+    </>
   )
 }
 
