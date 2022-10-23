@@ -64,11 +64,9 @@
     max-height: 150px;
 }
 
-.content_product{
-    font-size: 1.5rem;
-    min-width: 200px;
-    text-align: start;
-    margin-top: 0.5rem;
+.img_products{
+    max-width: 150px;
+    max-height: 150px;
 }
 
 .add_product{
@@ -80,7 +78,21 @@
     border-radius: 10px;
     padding: 0.5rem;
     margin-top: 0.5rem;
-    background-color: rgb(186, 186, 237);
+    background-color: rgb(111, 111, 234);
+}
+
+.disable_add_product{
+    font-size: 1.2rem;
+    min-width: 150px;
+    text-align: center;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: rgb(112, 112, 118);
+    cursor: not-allowed;
+    color: white;
 }
 
 .add_product:hover{
