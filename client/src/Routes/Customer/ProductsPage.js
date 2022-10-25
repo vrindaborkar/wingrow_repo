@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import ProductContext from '../../cartContext/ProductContext'
 import Spinner from '../../components/Spinner'
 import './Productspage.css'
 
-const ProductsPage = ({stallsData , Itemcount , handleClick }) => {
-
+const ProductsPage = () => {
+  const {stallsData , Itemcount , handleClick } = useContext(ProductContext)
   return (
     <div className='products_page'>
       <div className='products_head'>
-        <Link className='head_products' to={`../productspage`}>Items</Link>
-        <Link className='head_products' to="../cartspage">Cart {Itemcount}</Link>
+        <Link className='head_products' to={`../customers`}>Items</Link>
+        <Link className='head_products' to="./cartspage">Cart {Itemcount}</Link>
       </div>
       <div className='products_container'>
         { stallsData && stallsData.length!==0 &&
@@ -26,9 +27,9 @@ const ProductsPage = ({stallsData , Itemcount , handleClick }) => {
           })
         }
         { stallsData && stallsData.length === 0 &&
-          <div className='products_container'>
-            No stallsData available
-          </div>
+          <div className='products_non_container'>
+            <h3>No stallsData available</h3>
+          </div> 
         }
         { !stallsData &&
           <Spinner/>

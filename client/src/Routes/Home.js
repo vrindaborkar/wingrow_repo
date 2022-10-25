@@ -127,6 +127,7 @@ const Home = () => {
 
           <div className="slider_container">
             <h1>Cutting the middleman out</h1>
+            <br/>
             <div className="info_scroll" >
               <img className="product-img" data-aos="fade-right" alt="XYZ" src="https://nitrocdn.com/RqugehZVJHpJabrJmBzbnfVbCdjHnQyq/assets/static/optimized/rev-0d4ba04/wp-content/uploads/2019/10/fresh-farm-produce_compressed-1.jpg" />
               <p className="pinfo" data-aos="fade-left">We at Wingrow Agritech facilitate direct interaction between consumers and farmers.</p>
