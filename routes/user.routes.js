@@ -10,8 +10,10 @@ module.exports = function(app) {
     next();
   });
 
-  app.post("/inward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.postInward);
-  app.post("/outward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.postOutward);
-  app.get("/inward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.getInward);
-  app.get("/outward" , [authJwt.verifyToken , authJwt.isFarmer] , controller.getOutward);
+  app.post("/inward" , [authJwt.verifyToken ] , controller.postInward);
+  app.post("/outward" , [authJwt.verifyToken ] , controller.postOutward);
+  app.get("/inward" , [authJwt.verifyToken ] , controller.getInward);
+  app.get("/outward" , [authJwt.verifyToken ] , controller.getOutward);
+  app.get("/inwardData" , [authJwt.verifyToken ] , controller.getInwardData);
+  app.get("/outwardData" , [authJwt.verifyToken ] , controller.getOutwardData);
 };

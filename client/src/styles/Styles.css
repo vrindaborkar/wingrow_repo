@@ -96,8 +96,21 @@ li {
   align-items: center;
 }
 
+.profile_logo{
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+.profile_wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .medialinks {
-  margin: 0 3rem;
+  margin: 0 2rem;
   padding: 1rem;
   text-align: center;
 }
@@ -126,27 +139,26 @@ li {
 }
 
 .menu-link ul li {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .menu-link ul li a {
   text-transform: capitalize;
-  color: rgba(0, 0, 3, 0.8);
+  color: black;
   transition: 0.2s;
-  padding: 1rem;
+  padding: 0.2xrem;
   border-radius: 10px;
 }
 .menu-link ul li:hover > a {
   transform-origin: left;
-  color: rgba(0, 0, 3, 1);
   text-decoration: underline;
-  transition: 0.5s;
+  transition: 0.2s;
   text-decoration: none;
-  background-color: rgb(226, 210, 210);
+  color: gray;
 }
 
 .social-media ul li {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .social-media .hamburger-menu {

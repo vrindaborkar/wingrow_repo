@@ -1,5 +1,4 @@
 import React , {useState , useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import '../../styles/Farmer.css'
 import FarmerService from '../../services/farmer.service'
 import Spinner from '../../components/Spinner'
@@ -24,20 +23,6 @@ const FarmersHome = () => {
 
   return (
     <div className='farmers_page'>
-        <div className='farmers_navigate'>
-            <Link className='links_farmersdata' to="./inward">
-                Fill Inward Data
-            </Link>
-            <Link className='links_farmersdata' to="./outward">
-                Fill Outward Data
-            </Link>
-            <Link className='links_farmersdata' to="./stalls">
-                Book Stall
-            </Link>
-            <Link className='links_farmersdata' to="./mybookings">
-                My Bookings
-            </Link>
-        </div>
         {InwardData && OutwardData && InwardData.length === 0 && OutwardData.length === 0 && 
         <div className='farmers_data'>
             <div className='inwardData'>

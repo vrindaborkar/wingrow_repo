@@ -31,6 +31,14 @@ const API_URL = 'http://localhost:4000/';
     return axios.get(API_URL + 'outward', { headers: authHeader() });
   }
 
+  const getInwardData = () => {
+    return axios.get(API_URL + 'inwardData', { headers: authHeader() });
+  }
+
+  const getOutwardData = () => {
+    return axios.get(API_URL + 'outwardData', { headers: authHeader() });
+  }
+
   const getMyStalls = () => {
     return axios.get(API_URL + 'stalls', { headers: authHeader() });
   }
@@ -41,7 +49,9 @@ const FarmerService = {
     postOutward,
     getInward,
     getOutward,
-    getMyStalls
+    getMyStalls,
+    getInwardData,
+    getOutwardData 
   };
   
   export default FarmerService;

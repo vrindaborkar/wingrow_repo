@@ -57,18 +57,32 @@ const Navbar = () => {
           <ul>
 
             <li className="medialinks">
-              <Link onClick={()=>{setShowMediaIcons(false)}} to="/">Home</Link>
+              <Link onClick={()=>{setShowMediaIcons(false)}} to="/">
+                <div className="profile_wrapper">
+                <img className="profile_logo" src="https://as1.ftcdn.net/v2/jpg/03/66/63/52/1000_F_366635299_S1MlOWCcUVFPwgtxznb89r56tvyBBBVU.jpg" alt="logo"/>
+                <p>Home</p>
+                </div>
+              </Link>
             </li>
 
             {showCustomerBoard && 
               <li className="medialinks">
-              <Link onClick={()=>{setShowMediaIcons(false)}} to="/customers">Customers</Link>
+              <Link onClick={()=>{setShowMediaIcons(false)}} to="/customers">
+              <div className="profile_wrapper">
+                <img className="profile_logo" src="https://as1.ftcdn.net/v2/jpg/02/31/30/12/1000_F_231301229_RfYXoVN8sPWnrOoirxLXaiTZ7IBMMpqe.jpg" alt="logo"/>
+                <p>Customers</p>
+                </div>
+              </Link>
             </li>
             }
-
             {showFarmersBoard &&
               <li className="medialinks">
-              <Link onClick={()=>{setShowMediaIcons(false)}} to="/farmers">Farmers</Link>
+              <Link onClick={()=>{setShowMediaIcons(false)}} to="/farmers">
+                <div className="profile_wrapper">
+                <img className="profile_logo" src="https://as2.ftcdn.net/v2/jpg/03/53/12/53/1000_F_353125373_DHE5CssJZJwnBtUKuUvDQh46EtKyxqC1.jpg" alt="logo"/>
+                <p>Farmers</p>
+                </div>
+              </Link>
             </li>
             }
 
@@ -81,10 +95,20 @@ const Navbar = () => {
             {CurrentUser?
             <>
               <li className="medialinks">
-              <Link onClick={()=>{setShowMediaIcons(false)}} to="/profile">{CurrentUser.firstname}</Link>
+              <Link onClick={handleLogout} to="/login">
+              <div className="profile_wrapper">
+                <img className="profile_logo" src="https://as1.ftcdn.net/v2/jpg/03/21/76/10/1000_F_321761021_tv91dtTbEHEthIZkMpU1uyoN4ry9Bvsu.jpg" alt="logo"/>
+                <p>Logout</p>
+                </div>
+              </Link>
               </li>
               <li className="medialinks">
-              <Link onClick={handleLogout} to="/login">Logout</Link>
+              <Link onClick={()=>{setShowMediaIcons(false)}} to="/profile">
+                <div className="profile_wrapper">
+                <img className="profile_logo" src="https://as2.ftcdn.net/v2/jpg/01/18/03/33/1000_F_118033377_JKQA3UFE4joJ1k67dNoSmmoG4EsQf9Ho.jpg" alt="logo"/>
+                <span>{CurrentUser.firstname}</span>
+                </div>
+              </Link>
               </li>
             </> : 
             <>

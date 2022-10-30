@@ -3,10 +3,12 @@ import '../../styles/Ticket.css'
 import { PDFDownloadLink} from '@react-pdf/renderer';
 import MyDoc from "../../components/MyDoc";
 import Spinner from "../../components/Spinner";
+import { useNavigate } from "react-router-dom";
 
 function Ticket ({bookingDetails}) {
     const {BookedStalls} = bookingDetails;
     const strBookedStalls = BookedStalls.toString()
+    const navigate = useNavigate()
     return (
         <>
         {bookingDetails ? <div className="invoice-box">
@@ -31,8 +33,12 @@ function Ticket ({bookingDetails}) {
             </div>
             <h2 className="thanks">Thank You !</h2>
             <PDFDownloadLink document={<MyDoc bookingDetails={bookingDetails}/>} fileName="stallbookingdetails.pdf">
-                {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+                {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download reciept !!')}
             </PDFDownloadLink>
+            <div className="bookings_buttons">
+                <button onClick={()=>{navigate('/farmers')}} className="btns_bookings">Continue Booking</button>
+                <button onClick={()=>{navigate('../mybookings')}} className="btns_bookings">Check booked stalls</button>
+            </div>
         </div> : <Spinner/>}
         </> 
      );

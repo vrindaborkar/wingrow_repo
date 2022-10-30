@@ -23,3 +23,44 @@
 .thanks{
     text-align: center;
 }
+
+.bookings_buttons{
+    display: flex;
+    justify-content: center;
+    width: 60vw;
+    margin: auto;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.btns_bookings{
+    width: 40%;
+    height: 50px;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0 1rem;
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: rgb(159, 159, 204);
+}
+
+.btns_bookings:hover{
+    background-color: rgb(182, 184, 205);
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .bookings_buttons{
+        width: 100%;
+        margin: 0;
+        justify-content: space-between;
+    }
+
+    .btns_bookings{
+        width: 50%;
+        margin: 1rem 0.5rem;
+        text-align: center;
+        font-size: 1rem;
+    }
+}

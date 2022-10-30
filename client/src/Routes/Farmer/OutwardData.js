@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/Farmer.css'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -186,8 +186,8 @@ export default function OutwardData() {
   const navigate  = useNavigate()
   const [Data, setData] = useState({
     commodity:"",
-    sales_quantity:0,
-    sales_rate:0,
+    sales_quantity:null,
+    sales_rate:null,
     market:""
   })
 
@@ -229,13 +229,12 @@ export default function OutwardData() {
 
   return (
     <div className='data_container'>
-    <Link to='/farmers' className='goback_btn'>Go Back</Link>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="sm">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 1,
+            marginTop: 4,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

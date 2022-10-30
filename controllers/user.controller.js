@@ -11,6 +11,15 @@ exports.getInward = async(req,res,next) => {
     res.send(inwarddata)
 }
 
+exports.getInwardData = async(req,res,next) => {
+    const inwarddata = await Inward.find();
+    res.send(inwarddata)
+}
+exports.getOutwardData = async(req,res,next) => {
+    const outwarddata = await Outward.find();
+    res.send(outwarddata)
+}
+
 exports.getOutward = async(req,res,next) => {
     let token = req.headers["x-access-token"];
     const { id } = jwt_decode(token)

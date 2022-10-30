@@ -2,9 +2,8 @@ import '../../styles/Test.css'
 import React , {useState , useEffect } from 'react'
 import axios from 'axios'
 import Stall from './Stall';
-import Dropdown from './Dropdown';
 import authHeader from '../../services/auth.headers';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import AuthService from '../../services/auth.service';
 import ConfirmModal from '../../components/ConfirmModal';
 import FarmerService from '../../services/farmer.service';
@@ -19,8 +18,8 @@ const navigate = useNavigate()
   const [numberOfSeats, setNumberOfSeats] = useState(0);
   const [bookedStalls , setBookedStalls] = useState([])
   const [Loading, setLoading] = useState()
-  const [Id, setId] = useState("")
   const user = AuthService.getCurrentUser()
+  const {Id} = useParams()
 
   useEffect(() => {
     setLoading(true)
@@ -42,7 +41,7 @@ const navigate = useNavigate()
   }, []);
 
   useEffect(() => {
-    const res = data && data.filter(e=> e.location === Id)
+    const res = data && data.filter(e=> e.location === `${Id}`)
     setUpdatedData(res)
   }, [Id , data])
 
@@ -124,12 +123,6 @@ const navigate = useNavigate()
       rzp.open();
   } 
 
-
-  const handleClickDrop = (e) =>
-  {
-    setId(e.target.innerText)
-  }
-
   const handleClick = (ev) => {
       if(numberOfSeats && ev.target.className !== 'booked') {
           const seatsToBook = parseInt(numberOfSeats, 20);
@@ -153,10 +146,7 @@ const navigate = useNavigate()
   return (
     <>
     {!Loading ? <div className="Test">
-    <Link to="/farmers" className='goback_btn'>Go Back</Link>
-        <div className="dropdown">
-          <Dropdown data={data} handleClickDrop={handleClickDrop}/>
-        </div>
+      <h2>{Id}</h2>
       <div className='main_container_stalls'>
         <p className='seatsinput'>How Many Stalls Would You Like to Book?</p>
             <input className='seatsinput' value={numberOfSeats} onChange={(ev) => setNumberOfSeats(ev.target.value)}/>
