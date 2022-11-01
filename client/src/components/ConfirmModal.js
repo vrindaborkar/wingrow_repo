@@ -2,14 +2,15 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { width } from '@mui/system';
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 600,
+  height:600,
+  overflow:"auto",
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -31,7 +32,7 @@ export default function ConfirmModal({confirmBooking}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div style={{width: "500px", height: "500px",overflow: "auto",display:"flex",  flexDirection:"column",justifyContent:"space-around",alignItems:"center"}}>
+          <div style={{overflow: "auto",display:"flex",  flexDirection:"column",justifyContent:"space-around",alignItems:"center"}}>
             <h1>Terms of service</h1>
             <br/>
             <h2>WINGROW’S FARMERS MARKET</h2>
@@ -83,7 +84,7 @@ export default function ConfirmModal({confirmBooking}) {
             <p>If the Farmer Market is cancelled for any reason what-so-ever, including cases of voluntary cancellation by the User, the cancellation charges as mentioned in the brochure or the itinerary will apply. In the absence of any such information, the following cancellation charges will apply:</p>
             <br/>
             <p>
-              {/* <table style="width:100%">
+              <table style={{width:"100%"}}>
                 <tr>
                     <th>Time period in which the cancellation is made</th>
                     <th>Charges</th>
@@ -108,8 +109,7 @@ export default function ConfirmModal({confirmBooking}) {
                     <td>Within 7days prior to date of Farmer’s Market, or no-show for any reason what-so-ever</td>
                     <td>100% of  Booking Cost</td>
                 </tr>
-              </table> */}
-              
+              </table>
               </p>
             <br/>
             <h3 class="city">YOU AGREE AND CONFIRM</h3>
