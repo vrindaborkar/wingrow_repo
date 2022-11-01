@@ -80,7 +80,7 @@ const Navbar = () => {
               <Link onClick={()=>{setShowMediaIcons(false)}} to="/farmers">
                 <div className="profile_wrapper">
                 <img className="profile_logo" src="https://as2.ftcdn.net/v2/jpg/03/53/12/53/1000_F_353125373_DHE5CssJZJwnBtUKuUvDQh46EtKyxqC1.jpg" alt="logo"/>
-                <p>Farmers</p>
+                <p>Stall Booking</p>
                 </div>
               </Link>
             </li>

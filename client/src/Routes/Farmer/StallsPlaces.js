@@ -35,7 +35,7 @@ useEffect(() => {
   return (
     <>
     {stalls && <div className='places_market_container'>
-        <h2 className='main_header_places'>Select City from below..</h2>
+        <h2 className='main_header_places'>Select Market From Below..</h2>
         <div className='places_wrapper'>
         {
             places && places.map((e,i)=>{

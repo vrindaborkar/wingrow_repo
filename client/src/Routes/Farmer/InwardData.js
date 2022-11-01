@@ -244,7 +244,7 @@ export default function InwardData() {
           }}
         >
           <Typography component="h1" variant="h4">
-           Farmer Inward Data
+           Farmer Inward Data !!
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{padding:5 }}>
             <Grid container spacing={2}>
