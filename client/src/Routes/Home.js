@@ -1,16 +1,19 @@
 import React ,{useEffect}from 'react'
 import '../styles/Home.css'
-import CountUp from 'react-countup';
-import CardTravelIcon from '@mui/icons-material/CardTravel';
-import ContactsIcon from '@mui/icons-material/Contacts';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import LabelImportantIcon from '@mui/icons-material/LabelImportant';
-import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
-import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
+// import CountUp from 'react-countup';
+// import CardTravelIcon from '@mui/icons-material/CardTravel';
+// import ContactsIcon from '@mui/icons-material/Contacts';
+// import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+// import LabelImportantIcon from '@mui/icons-material/LabelImportant';
+// import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+// import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import Location from '../components/Location';
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 import Footer from '../components/Footer';
+import {BsArrowReturnLeft} from 'react-icons/bs';
+import {BsArrow90DegDown} from 'react-icons/bs';
+import {BsArrowRight} from 'react-icons/bs'
 
 const Home = () => {
 
@@ -20,28 +23,101 @@ const Home = () => {
 
   return (
     <div className='home_container'>
-        <div className='dash'>
-        <figure className='dash_img img1'>
-          <img className='image_dash ' src="./images/6.jpg" alt="img"/>
-        </figure>
-        <figure className='dash_img img2'>
-          <img className='image_dash' src="./images/3.jpg" alt="img"/>
-        </figure>
-        <figure className='dash_img img3'>
-          <img className='image_dash' src="./images/4.jpg" alt="img"/>
-        </figure>
-        <figure className='dash_img img4'>
-          <img className='image_dash' src="./images/5.jpg" alt="img"/>
-        </figure>
-        <figure className='dash_img img5'>
-          <img className='image_dash' src="./images/img.jpg" alt="img"/>
-        </figure>
-        <figure className='dash_img img6'>
-          <img className='image_dash' src="./images/7.jpg" alt="img"/>
-        </figure>
+
+      <div className="firstdata">
+
+      <div id="slideshow">
+              <div class="slide-wrapper">
+                  
+                  <div class="slide">
+                      <img class='slide-number ' src="./images/img0.jpg" alt="img"/>
+
+                  </div>
+                  <div class="slide">
+                     <img class='slide-number ' src="./images/slidestall.jpeg" alt="img"/>
+
+                  </div>
+                  <div class="slide">
+                      <img class='slide-number ' src="./images/slidestall2.jpeg" alt="img"/>
+
+                  </div>
+                  <div class="slide">
+                      <img class='slide-number ' src="./images/img1.webp" alt="img"/>
+
+                  </div>
+              </div>
+          </div>
+          <div className="content">
+            <h1>INDIA'S FIRST EVER STALL BOOKING PLATFORM </h1>
+            <h1>BOOK YOUR STALL NOW</h1>
+            <h1>IN OUR FARMER MARKETS</h1>
+          </div>
+
+        </div>
+        <br></br>
+        <br></br>
+      
+      <div className="flowchart">
+      <img class='flowlogo' src="./images/wingrow-logo.jpg" alt="img"/>
+
+<div class="grid-container">
+  <div class="grid-item">
+          <div className="units">
+      <img class='flowimg1' src="./images/organizer.jpeg" alt="img"/>
+      <br></br>
+      <h6>Organizer</h6>
       </div>
 
-      <div className="grid_info">
+  </div>
+  <div class="grid-itema">
+     <BsArrowRight />
+  </div>
+  <div class="grid-item">
+  <div className="units">
+      <img class='flowimg1' src="./images/prerequisite.jpeg" alt="img"/>
+      <br></br>
+      <h6>Market Prerequisite</h6>
+      </div>
+
+    </div>  
+  <div class="grid-itema">
+    <BsArrow90DegDown/>
+  </div>
+  <div class="grid-item">
+  <div className="units">
+      <img class='flowimg1' src="./images/transportation.jpeg" alt="img"/>
+      <br></br>
+      <h6>Transportation</h6>
+      </div>
+
+  </div>
+  <div class="grid-itema">
+  <BsArrowReturnLeft/>
+</div>  
+  <div class="grid-item">
+  <div className="units">
+      <img class='flowimg1' src="./images/freshvege.jpeg" alt="img"/>
+      <br></br>
+      <h6>Clean, Fresh, Affordable Fruits and Vegetables</h6>
+      </div>
+
+  </div>
+  <div class="grid-itema">
+    <BsArrowRight/>
+  </div>
+  <div class="grid-item">
+  <div className="units">
+      <img class='flowimg1' src="./images/stallsetup.jpeg" alt="img"/>
+      <br></br>
+      <h6>Stall Setup</h6>
+      </div>
+
+    </div>  
+</div>
+
+      </div>
+
+      {/* <div className="grid_info">
           <h1 className="grid_head heading_tertiary">
             Products before Covid 19
           </h1>
@@ -59,19 +135,19 @@ const Home = () => {
               <p style={{textAlign:"center"}}>Consumers Served</p>
           </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="grid_info">
+        {/* <div className="grid_info">
           <h1>Our Response to Covid 19</h1>
-            <div>
+            <div className="fontsize">
                 During the lockdown situation, we started delivering fruits and vegetables at home following all the safety norms.
             </div>
-            <div>
+            <div className="fontsize">
             We also set up fruit and vegetable stalls in collaboration with government to help farmers and citizens.
             </div>
-        </div>
+        </div> */}
 
-        <div className="iconsgrp">
+        {/* <div className="iconsgrp">
           <div className="icons">
             <CardTravelIcon fontSize="large"/>
             <div className='iconscontent'>
@@ -114,12 +190,12 @@ const Home = () => {
               <h3>25000</h3>
             </div>
         </div>
-    </div>
+    </div> */}
 
     <div className="restinfo">
         <div className="title_info">
           <h1>OUR MARKETS</h1>
-          <p>We organize weekly markets at key locations in Pune which allows farmers to sell fresh produce directly to the customers, cutting out middlemen in the process. This allows customers to buy farm fresh goods at affordable rates, while the farmers who grow the produce get a fair price for it.</p>
+          <p className="fontsize">We organize weekly markets at key locations in Pune which allows farmers to sell fresh produce directly to the customers, cutting out middlemen in the process. This allows customers to buy farm fresh goods at affordable rates, while the farmers who grow the produce get a fair price for it.</p>
         </div>
           <div className='location_component'>
               <Location/>
@@ -135,7 +211,7 @@ const Home = () => {
           </div>
 
 
-          <div className="awards_container">
+          {/* <div className="awards_container">
             <h1>Awards and Accolades</h1>
 
           <div className="awards">
@@ -157,10 +233,10 @@ const Home = () => {
               <p className='p_secondary'>The Global Student Entrepreneur Awards (GSEA) for students operate a business while in university.</p>
             </div>
             </div>
-          </div>
+          </div> */}
 
-          <h1>Supported By</h1>
-          <div className="awards">
+          {/* <h1>Supported By</h1> */}
+          {/* <div className="awards">
             <div className="sub_awards">
               <img className="awards_img" src="https://nitrocdn.com/RqugehZVJHpJabrJmBzbnfVbCdjHnQyq/assets/static/optimized/rev-0d4ba04/wp-content/uploads/2020/04/unlimited-india_edit.png" alt="img" />
               <br/>
@@ -176,7 +252,7 @@ const Home = () => {
               <br/>
               <h2>Entrepreneurs' Organization</h2>
             </div>
-          </div>
+          </div> */}
     </div>
     <Footer/>
     </div>

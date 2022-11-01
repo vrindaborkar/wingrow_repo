@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/Footer.css'
+import {BsFacebook} from "react-icons/bs"
+import {RiInstagramFill} from "react-icons/ri"
+import {FaLinkedin} from "react-icons/fa"
 
 const Footer = () => {
 return (
@@ -43,16 +46,19 @@ return (
 		<div className="Column">
 			<p className="Heading">Social Media</p>
 			<Link className="FooterLink" to="https://www.facebook.com/Wingrow-Agritech-Producer-Company-Limited-4">
+			<BsFacebook/>
 				<span style={{ marginLeft: "10px" }}>
 				Facebook
 				</span>
 			</Link>
 			<Link className="FooterLink" to="https://instagram.com/wingrowagritech?utm_medium=copy_link">
+				<RiInstagramFill/>
 				<span style={{ marginLeft: "10px" }}>
 				Instagram
 				</span>
 			</Link>
 			<Link className="FooterLink" to="https://www.linkedin.com/company/31488381">
+				<FaLinkedin/>
 				<span style={{ marginLeft: "10px" }}>
 				Linkedin
 				</span>
@@ -64,7 +70,7 @@ return (
     <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)',textAlign:'center' , padding:"4px" }}>
     &copy; 2022 Copyright:
         <a style={{fontWeight:"bold"}} href='https://www.wingrowagritech.com/'>
-         Wingrow Agritech. Developed by<span > Wingrow Agritech</span>. All rights reserved.
+         Wingrow Agritech.  All rights reserved.
         </a>
       </div>
 	</div>
