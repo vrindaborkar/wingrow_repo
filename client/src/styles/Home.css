@@ -9,6 +9,61 @@
     overflow: scroll;
   }
 
+/* .animate{
+  position: relative;
+  width: 20%;
+  height: 20%;
+ } */
+.homeanm{
+  margin-left: 0;
+  margin-top: 0;
+  height: 20vh;
+  width: 60%;
+}
+
+ .anmimg{
+  width: 70%;
+  height: 75%;
+  /* margin-left: 20%; */
+  position: absolute;
+
+ }
+ .animatedata{
+  position: relative;
+  width: 80%;
+  height: 80%;
+  font-size: x-large;
+  padding-top: 90px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  font-weight: 500;
+ }
+ .winbutton{
+  background-color: rgb(75, 241, 75);
+  border-radius: 5px;
+  margin-top: 90px;
+  /* margin-left: 20px; */
+  width: 30%;
+  height:30px;
+  font-size: large;
+  border: rgb(75, 241, 75);
+  
+ }
+ .imgadd11{
+  margin: 0%;
+ }
+ 
+ .imgadd{
+  margin-top: 320px;
+  width: 600px;
+  height: 300px;
+  align-items: center;
+  margin-left: 15%;
+  border-radius: 5px;
+  background-color: rgb(239, 245, 239);
+  box-shadow: 0.1rem 0.1rem 0.5rem rgb(151 148 148)
+
+ }
 .dash{
     width: 80vw;
     display: grid;
@@ -192,13 +247,14 @@
 }
 
 .restinfo{
-    width: 80vw;
+    /* width: 80vw; */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
-    margin: 1rem 0;
-    padding: 1rem 0;
+    /* margin: 22rem 0; */
+    /* padding: 1rem 0; */
+    /* position: relative; */
 }
 
 .location_component{
@@ -216,13 +272,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 250px;
-    width: 250px;
+    height: 170px;
+    width: 170px;
     margin: 1rem;
     padding: 1rem;
     border-radius: 5px;
     background-color: rgb(239, 245, 239);
     box-shadow: .1rem .1rem .5rem rgb(151, 148, 148);
+    font-size:smaller;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
@@ -435,9 +492,78 @@ with a fixed width and height */
           margin-left: calc(-750px * 3);
       }
   }
+@media (max-width: 750px) {
+  #slideshow {
+    overflow: hidden;
+    left: o;  
+    height: 20rem;
+    width: 40rem;
+    /* margin: 0 auto; */
+    align-items:center;
+    box-shadow: 0.1rem 0.1rem 5px rgb(192, 205, 247);
+    transition: all .3s;
+  
+    
+  }
+  .slide {
+    float: left;
+    height: 20rem;
+    width: 40rem;
+  }
+  
+  
+  .slide-wrapper {
+     
+    width: calc(40rem * 4);
+        animation: slide 10s ease infinite;
+      }
+       
+       
+      .slide:nth-child(1) {
+          background: white;
+      }
+       
+      .slide:nth-child(2) {
+          background: white;
+      }
+       
+      .slide:nth-child(3) {
+          background: white;
+      }
+       
+      .slide:nth-child(4) {
+          background: white;
+      }
+      @keyframes slide {
+         
+        20% {
+            margin-left: 0px;
+        }
+        40% {
+            margin-left: calc(-40rem * 1);
+        }
+        60% {
+            margin-left: calc(-40rem * 2);
+        }
+        80% {
+            margin-left: calc(-40rem * 3);
+        }
+  
+      }
+
+      .content{
+        margin-top: 50px;
+        text-align: center;
+        color: rgb(72, 99, 248);
+      }
+
+      
+      
+
+}
 
 .fontsize{
-  font-size: large;
+  font-size: medium;
   text-align: center;
 }
 
@@ -499,4 +625,66 @@ with a fixed width and height */
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 520px) {
+  .homeanm{
+    margin-left: 0;
+    margin-top: 0;
+    height: 20vh;
+    width: 60%;
+    position: relative;
+  
+    
+  }
+  
+   .anmimg{
+    width: 500px;
+    height: 250px;
+    margin-right: 50px;
+    /* position: absolute; */
+  
+   }
+   .animatedata{
+    /* position: absolute; */
+    width: 500px;
+    height: 300px;
+    /* padding-left: 35%; */
+    font-size: x-large;
+    padding-top: 250px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-weight: 500;
+   }
+   .winbutton{
+    background-color: rgb(75, 241, 75);
+    border-radius: 5px;
+    margin-top: 50px;
+    /* margin-left: 20px; */
+    width: 30%;
+    height:30px;
+    font-size: large;
+    border: rgb(75, 241, 75);
+    align-items: center;
+    
+   }
+   .imgadd11{
+    margin: 0%;
+   }
+   
+   .imgadd{
+    margin-top: 250px;
+    width: 70%;
+    height: 250px;
+    align-items: center;
+    margin-left: 15%;
+    border-radius: 5px;
+    background-color: rgb(239, 245, 239);
+    box-shadow: 0.1rem 0.1rem 0.5rem rgb(151 148 148)
+  
+   }
+   
+  
+
+  
 }
