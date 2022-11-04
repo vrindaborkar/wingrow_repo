@@ -109,6 +109,13 @@ const Admin = () => {
       const [date] = e.time.split("T");
       return date >= dayjs(fromDate).format("YYYY-MM-DD") && date <= dayjs(toDate).format("YYYY-MM-DD")
     })
+
+    const stallsData = stallsBooked && stallsBooked.filter((e)=>{
+      const [date] = e.bookedAt.split("T");
+      return date >= dayjs(fromDate).format("YYYY-MM-DD") && date <= dayjs(toDate).format("YYYY-MM-DD")
+    })
+
+    setstallsBooked(stallsData)
     setfilteredInData(filterIn);
     setfilteredOutData(filterOut)
   }
