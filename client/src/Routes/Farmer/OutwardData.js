@@ -16,6 +16,16 @@ import FormControl from '@mui/material/FormControl';
 import dayjs from 'dayjs'
 import FarmerService from '../../services/farmer.service'
 
+const locations = [
+  {location:"Hadapsar"},
+  {location:"Karve Nagar"},
+  {location:"Kharadi"},
+  {location:"Wanawadi"},
+  {location:"Magarpatta"},
+  {location:"Amanora City"},
+  {location:"Bramhasun City"}
+]
+
 const options = [
   // Leaves
   { title: "Amaranthus" },
@@ -208,7 +218,7 @@ export default function OutwardData() {
       FarmerService.postOutward(Data.commodity , Data.sales_quantity , Data.sales_rate , Data.market , time).then(
         () => {
           alert("Data added successfully")
-          navigate("/farmers");
+          navigate('/farmers/farmershome')
         },
         (error) => {
           console.log(error)
@@ -219,7 +229,6 @@ export default function OutwardData() {
             sales_rate:0,
             sales_quantity:0
           })
-          navigate('/farmers')
         }
       );
     } else {
@@ -247,18 +256,27 @@ export default function OutwardData() {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{padding:5}}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  name="market"
-                  label="Farmers Market"
+            <Grid item xs={12}>
+                <FormControl sx={{ minWidth: 250 }}>
+                <InputLabel id="demo-simple-select-autowidth-label">Market</InputLabel>
+                <Select
+                  labelId="demo-simple-select-autowidth-label"
+                  id="demo-simple-select-autowidth"
                   value={Data.market}
                   onChange={handleData}
-                  type="text"
-                  id="farmers_market"
-                  autoComplete="new-farmers market"
-                />
+                  label="market"
+                  name='market'
+                  required
+                >
+                  {
+                    locations.map((e,i)=>{
+                      return(
+                        <MenuItem key={i} value={e.location}>{e.location}</MenuItem>
+                      )
+                    })
+                  }
+                </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
               <FormControl sx={{ minWidth: 250 }}>

@@ -30,6 +30,9 @@ const FarmerNav = () => {
                   <Link className='links_farmersdata' to="./outward">
                       Fill Outward Data
                   </Link>
+                  <Link className='links_farmersdata' to="./farmershome">
+                      Data
+                  </Link>
     </div>}
     {close &&
       <div className='farmers_close_navigate'>
