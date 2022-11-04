@@ -41,18 +41,13 @@ const Navbar = () => {
   return (
     <>
       <nav className="main-nav">
-
         {/* 1st logo part  */}
-        {/* <div className="logo">
+        <div className="logo">
           <h2>
             <span>W</span>ingrow
             <span>A</span>gritech
           </h2>
-        </div> */}
-      <div className="logo">
-          <img className="logoleft" src="./images/winlogo2.jpeg" alt="img"></img>
-      </div>
-
+        </div>
 
         {/* 2nd menu part  */}
         <div
@@ -85,7 +80,7 @@ const Navbar = () => {
               <Link onClick={()=>{setShowMediaIcons(false)}} to="/farmers">
                 <div className="profile_wrapper">
                 <img className="profile_logo" src="https://as2.ftcdn.net/v2/jpg/03/53/12/53/1000_F_353125373_DHE5CssJZJwnBtUKuUvDQh46EtKyxqC1.jpg" alt="logo"/>
-                <p>Stall Booking</p>
+                <p>Farmers</p>
                 </div>
               </Link>
             </li>
@@ -127,17 +122,7 @@ const Navbar = () => {
             </>
             }
           </ul>
-
         </div>
-        <div className="logo2">
-          {/* <img className="logoright" src="./images/winlogo2.jpeg" alt="img"/> */}
-        </div>
-
-        <div className="logo2">
-          <img className="logoright" src="../images/imgbook.jpeg" alt="img"/>
-        </div>
-
-
 
         <div className="social-media">
           <div className="hamburger-menu">

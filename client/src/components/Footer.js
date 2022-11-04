@@ -8,11 +8,11 @@ import {FaLinkedin} from "react-icons/fa"
 const Footer = () => {
 return (
 	<div className="Box">
-	<div className="Container">
+	`<div className="Container">
 		<div className="row">
 		<div className="Column">
 			<p className="Heading">Wingrow Agritech</p>
-            <Link className="FooterLink" to="#">Wingrow agritech Producer Company Ltd., Sn 637,b/2, Omkarnagar, Pmt colony, Pokale Wasti, Bibwewadi, Pune-411037<br></br>
+            <Link className="FooterLink" to="#">Wingrow agritech Producer Company Ltd., Sn 637,b/2, Omkarnagar, Pmt colony, Pokale Wasti, Bibwewadi, Pune-411037 
             </Link>
 			<Link className="FooterLink" to="mailto:connect@wingrowagritech.com" >connect@wingrowagritech.com</Link>
 			<Link className="FooterLink" to="#">+91 777 600 3700</Link>

@@ -19,10 +19,10 @@
     "react-countup": "^6.3.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-pretty-carousel": "^1.0.19",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "shortid": "^2.2.16",
-    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
