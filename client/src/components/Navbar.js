@@ -43,10 +43,7 @@ const Navbar = () => {
       <nav className="main-nav">
         {/* 1st logo part  */}
         <div className="logo">
-          <h2>
-            <span>W</span>ingrow
-            <span>A</span>gritech
-          </h2>
+          <img alt="logo" className="logo_img_navbar" src="./images/wingrow-logo.jpg"/>
         </div>
 
         {/* 2nd menu part  */}

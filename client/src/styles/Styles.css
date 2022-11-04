@@ -77,6 +77,12 @@ li {
   min-height: 90vh;
 }
 
+.logo_img_navbar{
+  width: 300px;
+  height: 70px;
+  display: inline-block;
+}
+
 .logo {
   display: grid;
   grid-column: 2/3;

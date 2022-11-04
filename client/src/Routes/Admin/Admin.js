@@ -19,12 +19,18 @@ const Admin = () => {
   const [fromDate, setfromDate] = useState(dayjs(Date.now()).format("YYYY-MM-DD"))
   const [toDate, settoDate] = useState(dayjs(Date.now()).format("YYYY-MM-DD"))
   const [market, setMarket] = React.useState('');
+  const [stallsBooked, setstallsBooked] = useState()
 
   const handleChangeMarket = (event) => {
     setMarket(event.target.value);
   };
 
   useEffect(() => {
+    FarmerService.getMyStalls().then(res => {
+      const data = res?.data;
+      const resp = data.filter(e => e.isBooked === true)
+      setstallsBooked(resp)
+    })
     FarmerService.getInwardData().then(res => 
       {
         setInward(res?.data);
@@ -45,6 +51,7 @@ const Admin = () => {
   let purchaseAmount = 0;
   let salesQty = 0;
   let salesAmount = 0;
+  let noOfBookedStalls = stallsBooked?.length;
 
   Inward && Inward.forEach((e)=>{
     marketsData.add(e.market)
@@ -75,6 +82,12 @@ const Admin = () => {
       return date === dayjs(value).format("YYYY-MM-DD")
     })
 
+    const stallsData = stallsBooked && stallsBooked.filter((e)=>{
+      const [date] = e.bookedAt.split("T");
+      return date === dayjs(value).format("YYYY-MM-DD")
+    })
+
+    setstallsBooked(stallsData)
     setfilteredInData(inData)
     setfilteredOutData(outData)//eslint-disable-next-line
   }, [value])
@@ -162,6 +175,7 @@ const Admin = () => {
       <Card header={"Sales Quantity :"} value={salesQty}/>
       <Card header={"Sales Amount :"} value={salesAmount}/>
       <Card header={"Profit of farmers :"} value={salesQty - purchaseQty}/>
+      <Card header={"Stalls Booked :"} value={noOfBookedStalls}/>
     </div>}
     {!filteredInData && !filteredOutData && <Spinner/>}
   </div>
