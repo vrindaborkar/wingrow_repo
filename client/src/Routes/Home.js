@@ -123,7 +123,6 @@ const Home = () => {
           <div className='location_component'>
               <Location/>
           </div>
-          <h2 className='headers_section'>Gallery</h2> 
           {/* <div className='fourth_section'>
             <Slider/>
           </div> */}

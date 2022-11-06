@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4000/auth/";
+const API_URL = "https://wingrow.herokuapp.com/auth/";
 
 const register = (phone , password , firstname , lastname , type) => {
   return axios.post(API_URL + "signup", {
