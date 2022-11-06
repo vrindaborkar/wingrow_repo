@@ -23,10 +23,10 @@ return (
 			<p className="Heading">Services</p>
 			<Link className="FooterLink" to="/">Home</Link>
 			{/* <Link className="FooterLink" to="/customers">Customers</Link> */}
-			<Link className="FooterLink" to="/farmers">Farmers</Link>
+			<Link className="FooterLink" to="farmers">Farmers</Link>
 			{/* <Link className="FooterLink" to="/register">Register</Link> */}
 			{/* <Link className="FooterLink" to="/cart">Cart</Link> */}
-			<Link className="FooterLink" to="/bookings">Stall Bookings</Link>
+			<Link className="FooterLink" to="bookings">Stall Bookings</Link>
 			
 			
 			
@@ -34,13 +34,13 @@ return (
 		<div className="Column">
 			<p className="Heading">Contact Us</p>
 			<Link className="FooterLink" to="mailto:connect@wingrowagritech.com">Contact </Link>
-            			<Link className="FooterLink" to="/customers">Customers</Link>
+            <Link className="FooterLink" to="customers">Customers</Link>
 
 		</div>
 
         <div className="Column">
 			<p className="Heading">Legal</p>
-			<Link className="FooterLink" to="/terms">Terms and Conditions </Link>
+			<Link className="FooterLink" to="terms">Terms and Conditions </Link>
 		</div>
 
 		<div className="Column">

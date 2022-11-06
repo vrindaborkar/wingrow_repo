@@ -6,6 +6,14 @@ import 'aos/dist/aos.css';
 import Footer from '../components/Footer';
 import useWindowDimensions from '../components/useWindowDimensions'
 import Slider from '../components/Slider';
+import { useNavigate } from 'react-router-dom';
+
+
+// Import useNavigate from react router dom
+
+// Const navigate = useNavigate()
+
+// OnClick = {()=>navigate(/farmers/stalls)}
 
 const Home = () => {
   const [mobile, setmobile] = useState(false)
@@ -25,6 +33,7 @@ const Home = () => {
     }
   }, [width])
 
+  const navigate = useNavigate()
 
   return (
     <div className='home_container'>
@@ -37,7 +46,8 @@ const Home = () => {
             <span  data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text'>
               Booking for direct sell
             </span>
-              <img alt='logo' data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_btn' src='./images/imgbook.jpeg'/>
+              <img alt='logo' data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine"  className='first_section_btn' src='./images/imgbook.jpeg' onClick={()=>navigate("/farmers/stalls")}/>
+              
           </h2>
         </div>
       </div>
@@ -49,8 +59,9 @@ const Home = () => {
             <p className='p_style'>We at Wingrow Agritech facilitate direct interaction between consumers and farmers. Consumers get access to produce direct from farms which is much fresher and lasts longer, at reasonable prices.</p>
           </div>
           <div className='second_section'>
-            <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
+            <div data-aos="zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" className='second_section_component'>
               <img src='./images/28.png' alt='img' className='second_section_img'/>
+              
             </div>
 
               <div data-aos="fade-down" className='second_section_component_arrow'>
@@ -59,6 +70,9 @@ const Home = () => {
 
             <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
             <img src='./images/29.png' alt='img' className='second_section_img'/>
+            {/* <span  data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text'>
+            Wingrow's Farmers Markets
+            </span> */}
             </div>
 
             <div data-aos="fade-down" className='second_section_component_arrow'>
@@ -67,6 +81,9 @@ const Home = () => {
 
             <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
             <img src='./images/30.png' alt='img' className='second_section_img'/>
+            {/* <span  data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text' >
+            <h2 className='h2_style'>Consumers</h2> */}
+            {/* </span> */}
             </div>
         </div>
         </div>
