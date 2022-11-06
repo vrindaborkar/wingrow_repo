@@ -53,7 +53,7 @@ const navigate = useNavigate()
         return;
     }
     try {
-      const orderUrl = "https://wingrow.herokuapp.com/order";
+      const orderUrl = "https://wingrowagritech.herokuapp.com/order";
       const {data} = await axios.post(orderUrl,{amount:price*100},{headers:authHeader()})
       initPayment(data.data)
     } catch (error) {
@@ -74,11 +74,11 @@ const navigate = useNavigate()
       
       handler:async(response) =>{
           try {
-              const verifyUrl = "https://wingrow.herokuapp.com/verify";
+              const verifyUrl = "https://wingrowagritech.herokuapp.com/verify";
               const {data} = await axios.post(verifyUrl,response,{headers:authHeader()})
               const orderId = data.orderId
 
-                  const stallsUrl = "https://wingrow.herokuapp.com/stalls";
+                  const stallsUrl = "https://wingrowagritech.herokuapp.com/stalls";
                   const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
                   const idArr = []
                   const stallsBooked = []
@@ -152,20 +152,19 @@ const navigate = useNavigate()
             <input className='seatsinput' value={numberOfSeats} onChange={(ev) => setNumberOfSeats(ev.target.value)}/>
             {
               UpdatedData && Id ? 
-            <div className='stall_wrapper'>
              <div className='StallsContainer'>
               <Stall data={UpdatedData.slice(0,16)} handleClick={handleClick} bookedStalls={bookedStalls}/>
               <Stall data={UpdatedData.slice(16,17)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
               <Stall data={UpdatedData.slice(17,18)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
               <Stall data={UpdatedData.slice(18,34)} handleClick={handleClick} bookedStalls={bookedStalls}/>  
              </div>
-             </div>
               :
               <div className='select_market'>
                  <h2>Please select the market</h2>
               </div>
-            }      </div>
+            }
             <ConfirmModal confirmBooking={confirmBooking}/>
+      </div>
     </div>
     :<Spinner/>}
     </>

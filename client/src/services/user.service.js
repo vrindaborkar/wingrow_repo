@@ -1,7 +1,7 @@
 import axios from 'axios';
 import authHeader from './auth.headers';
 
-const API_URL = 'https://wingrow.herokuapp.com/';
+const API_URL = 'https://wingrowagritech.herokuapp.com/';
 
  const getPublicContent = () => {
     return axios.get(API_URL + 'all');
