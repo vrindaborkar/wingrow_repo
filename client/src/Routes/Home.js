@@ -5,7 +5,6 @@ import AOS from 'aos'
 import 'aos/dist/aos.css';
 import Footer from '../components/Footer';
 import useWindowDimensions from '../components/useWindowDimensions'
-import Slider from '../components/Slider';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -125,9 +124,9 @@ const Home = () => {
               <Location/>
           </div>
           <h2 className='headers_section'>Gallery</h2> 
-          <div className='fourth_section'>
+          {/* <div className='fourth_section'>
             <Slider/>
-          </div>
+          </div> */}
           <Footer/>
         </div>
       </div>  
