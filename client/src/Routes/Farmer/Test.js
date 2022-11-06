@@ -53,7 +53,7 @@ const navigate = useNavigate()
         return;
     }
     try {
-      const orderUrl = "/order";
+      const orderUrl = "https://wingrow.herokuapp.com/order";
       const {data} = await axios.post(orderUrl,{amount:price*100},{headers:authHeader()})
       initPayment(data.data)
     } catch (error) {
