@@ -152,18 +152,22 @@ const navigate = useNavigate()
             <input className='seatsinput' value={numberOfSeats} onChange={(ev) => setNumberOfSeats(ev.target.value)}/>
             {
               UpdatedData && Id ? 
-             <div className='StallsContainer'>
-              <Stall data={UpdatedData.slice(0,16)} handleClick={handleClick} bookedStalls={bookedStalls}/>
-              <Stall data={UpdatedData.slice(16,17)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
-              <Stall data={UpdatedData.slice(17,18)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
-              <Stall data={UpdatedData.slice(18,34)} handleClick={handleClick} bookedStalls={bookedStalls}/>  
-             </div>
+              <div className='stall_wrapper'>
+                <div className='StallsContainer'>
+                <Stall data={UpdatedData.slice(0,16)} handleClick={handleClick} bookedStalls={bookedStalls}/>
+                <Stall data={UpdatedData.slice(16,17)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
+                <Stall data={UpdatedData.slice(17,18)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
+                <Stall data={UpdatedData.slice(18,34)} handleClick={handleClick} bookedStalls={bookedStalls}/>  
+                </div>
+              </div>
               :
               <div className='select_market'>
                  <h2>Please select the market</h2>
               </div>
             }
-            <ConfirmModal confirmBooking={confirmBooking}/>
+            <div className='modal_btn'>
+                <ConfirmModal confirmBooking={confirmBooking}/>
+            </div>
       </div>
     </div>
     :<Spinner/>}

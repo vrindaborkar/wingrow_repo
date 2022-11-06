@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import '../styles/Styles.css'
+import '../styles/Test.css'
 
 const style = {
   position: 'absolute',
@@ -24,8 +24,8 @@ export default function ConfirmModal({confirmBooking}) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div className='modal_btn'>
-      <Button className='bookStall_btn' onClick={handleOpen}>Book Stall</Button>
+    <div className='bookStall_btn'>
+      <Button onClick={handleOpen}>Book Stall</Button>
       <Modal
         open={open}
         onClose={handleClose}

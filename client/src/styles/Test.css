@@ -109,6 +109,26 @@
       justify-content: center;
       align-items: center;
   }
+
+  .modal_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+  }
+
+  .bookStall_btn{
+    width: 100px;
+    height: 30px;
+    background-color: rgb(182, 182, 227);
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .bookStall_btn:hover{
+    background-color: rgb(206, 206, 233);
+  }
   
   @keyframes spinner-zp9dbg {
     to {
