@@ -59,7 +59,7 @@ const Home = () => {
           </div>
           <div className='second_section'>
             <div data-aos="zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" className='second_section_component'>
-              <img src='./images/28.png' alt='img' className='second_section_img'/>
+              <img src='./images/FPO.png' alt='img' className='second_section_img'/>
               
             </div>
 
@@ -68,7 +68,7 @@ const Home = () => {
               </div>
 
             <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
-            <img src='./images/29.png' alt='img' className='second_section_img'/>
+            <img src='./images/WIN.png' alt='img' className='second_section_img'/>
             {/* <span  data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text'>
             Wingrow's Farmers Markets
             </span> */}
@@ -79,7 +79,7 @@ const Home = () => {
             </div>
 
             <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
-            <img src='./images/30.png' alt='img' className='second_section_img'/>
+            <img src='./images/CONS.png' alt='img' className='second_section_img'/>
             {/* <span  data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text' >
             <h2 className='h2_style'>Consumers</h2> */}
             {/* </span> */}
@@ -118,7 +118,7 @@ const Home = () => {
       <div className='third_section'>
           <div className="title_info">
             <h1>OUR MARKETS</h1>
-            <p style={{fontSize:"1.2rem" , textAlign:"start"}}>We organize weekly markets at key locations in Pune which allows farmers to sell fresh produce directly to the customers, cutting out middlemen in the process. This allows customers to buy farm fresh goods at affordable rates, while the farmers who grow the produce get a fair price for it.</p>
+            <p style={{fontSize:"1.7rem" , textAlign:"start"}}>We organize weekly markets at key locations in Pune which allows farmers to sell fresh produce directly to the customers, cutting out middlemen in the process. This allows customers to buy farm fresh goods at affordable rates, while the farmers who grow the produce get a fair price for it.</p>
           </div>
           <div className='location_component'>
               <Location/>
