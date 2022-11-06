@@ -14,6 +14,6 @@ module.exports = function(app) {
   app.put('/stalls' , [authJwt.verifyToken , authJwt.isFarmer] , controller.putStalls)
   // app.post('/stalls' , [authJwt.verifyToken , authJwt.isFarmer] , controller.postStalls)
   app.post('/stalls' , controller.postStalls)
-  app.put('/reset' , [authJwt.isAdmin] , controller.resetStalls)
+  app.put('/reset' ,  controller.resetStalls)
   app.get("/inwardoutward",[authJwt.verifyToken], controller.getInOutData)
 };

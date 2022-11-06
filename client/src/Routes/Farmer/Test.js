@@ -53,7 +53,7 @@ const navigate = useNavigate()
         return;
     }
     try {
-      const orderUrl = "http://localhost:4000/order";
+      const orderUrl = "/order";
       const {data} = await axios.post(orderUrl,{amount:price*100},{headers:authHeader()})
       initPayment(data.data)
     } catch (error) {
@@ -74,11 +74,11 @@ const navigate = useNavigate()
       
       handler:async(response) =>{
           try {
-              const verifyUrl = "http://localhost:4000/verify";
+              const verifyUrl = "/verify";
               const {data} = await axios.post(verifyUrl,response,{headers:authHeader()})
               const orderId = data.orderId
 
-                  const stallsUrl = "http://localhost:4000/stalls";
+                  const stallsUrl = "/stalls";
                   const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
                   const idArr = []
                   const stallsBooked = []
@@ -152,11 +152,13 @@ const navigate = useNavigate()
             <input className='seatsinput' value={numberOfSeats} onChange={(ev) => setNumberOfSeats(ev.target.value)}/>
             {
               UpdatedData && Id ? 
+            <div className='stall_wrapper'>
              <div className='StallsContainer'>
               <Stall data={UpdatedData.slice(0,16)} handleClick={handleClick} bookedStalls={bookedStalls}/>
               <Stall data={UpdatedData.slice(16,17)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
               <Stall data={UpdatedData.slice(17,18)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
               <Stall data={UpdatedData.slice(18,34)} handleClick={handleClick} bookedStalls={bookedStalls}/>  
+             </div>
              </div>
               :
               <div className='select_market'>

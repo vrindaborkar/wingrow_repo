@@ -25,10 +25,10 @@ const FarmerNav = () => {
                       My Bookings
                   </Link>
                   <Link className='links_farmersdata' to="./inward">
-                      Fill Inward Data
+                      Inward Data
                   </Link>
                   <Link className='links_farmersdata' to="./outward">
-                      Fill Outward Data
+                      Outward Data
                   </Link>
                   <Link className='links_farmersdata' to="./farmershome">
                       Data
