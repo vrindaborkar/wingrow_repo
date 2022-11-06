@@ -2,14 +2,15 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import '../styles/Styles.css'
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 600,
-  height:600,
+  width: "70%",
+  height:"80%",
   overflow:"auto",
   bgcolor: 'background.paper',
   border: '2px solid #000',
@@ -23,8 +24,8 @@ export default function ConfirmModal({confirmBooking}) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
-      <Button onClick={handleOpen}>Book Seats</Button>
+    <div className='modal_btn'>
+      <Button className='bookStall_btn' onClick={handleOpen}>Book Stall</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -32,7 +33,7 @@ export default function ConfirmModal({confirmBooking}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div style={{overflow: "auto",display:"flex",  flexDirection:"column",justifyContent:"space-around",alignItems:"center"}}>
+          <div className='terms_and_conditions'>
             <h1>Terms of service</h1>
             <br/>
             <h2>WINGROW’S FARMERS MARKET</h2>

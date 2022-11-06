@@ -74,11 +74,11 @@ const navigate = useNavigate()
       
       handler:async(response) =>{
           try {
-              const verifyUrl = "/verify";
+              const verifyUrl = "https://wingrow.herokuapp.com/verify";
               const {data} = await axios.post(verifyUrl,response,{headers:authHeader()})
               const orderId = data.orderId
 
-                  const stallsUrl = "/stalls";
+                  const stallsUrl = "https://wingrow.herokuapp.com/stalls";
                   const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
                   const idArr = []
                   const stallsBooked = []
@@ -164,9 +164,8 @@ const navigate = useNavigate()
               <div className='select_market'>
                  <h2>Please select the market</h2>
               </div>
-            }
+            }      </div>
             <ConfirmModal confirmBooking={confirmBooking}/>
-      </div>
     </div>
     :<Spinner/>}
     </>

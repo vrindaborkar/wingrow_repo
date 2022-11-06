@@ -23,7 +23,7 @@
   .StallsContainer{
     height: 320px;
     min-width: 300px;
-    max-width: 1080px;
+    max-width: 1440px;
     overflow-x: scroll;
     overflow-y: hidden;
     border: 1px black solid;

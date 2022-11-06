@@ -164,6 +164,30 @@ li {
 }
 
 
+/* T&C */
+
+.terms_and_conditions{
+  display: flex;
+  overflow: auto;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.modal_btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(182, 182, 227);
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.modal_btn:hover{
+  background-color: rgb(206, 206, 233);
+}
+
 /* responsive css style  */
 @media (max-width: 1080px) {
   html {
