@@ -57,6 +57,10 @@
   border-radius: 10px;
 }
 
+.first_section_btn:hover{
+  cursor: pointer;
+}
+
 .second_section_wrapper{
   display: flex;
   flex-direction: column;

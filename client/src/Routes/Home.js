@@ -46,7 +46,7 @@ const Home = () => {
             <span  data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text'>
               Booking for direct sell
             </span>
-              <img alt='logo' data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine"  className='first_section_btn' src='./images/imgbook.jpeg' onClick={()=>navigate("/farmers/stalls")}/>
+              <img alt='logo' data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine"  className='first_section_btn' src='./images/imgbook.jpeg' onClick={()=>navigate("/farmers/")}/>
               
           </h2>
         </div>

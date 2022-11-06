@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv/config')
 var bodyParser = require('body-parser');
+const path = require('path');
 
 var corsOptions = {
   origin: "http://localhost:3000"
@@ -12,6 +13,7 @@ var corsOptions = {
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors(corsOptions));
+app.use(express.static('client/build'))
 
 // routes
 require("./routes/auth.routes")(app);
@@ -27,6 +29,13 @@ mongoose.connect(process.env.DB_CONNECTION,
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client/build/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
