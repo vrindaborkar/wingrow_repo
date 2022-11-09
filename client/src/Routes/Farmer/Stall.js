@@ -1,15 +1,16 @@
 import React from 'react'
 
-const Stall = ({data , handleClick , bookedStalls}) => {
-
+const Stall = ({data , handleClick , bookedStalls , alreadyBooked , date}) => {
   return (
         <div className='Stalls_info'>
-        {
+        {alreadyBooked && 
             data.map((e,i)=>{
-                const { stallName , isBooked , _id , stallPrice } = e;
+                const isBookedarr = alreadyBooked.filter(ele=> ele.stallNo === e.stallNo && ele.bookedAt === date)
+                const isBooked = isBookedarr.length === 0 ? false : true;
+                const { stallName , _id , stallPrice } = e;
                 const isSelected = bookedStalls.some(e=>e._id === _id)
                 let stallClass;
-                if(isBooked === true)
+                if(isBooked)
                 {
                     stallClass = "booked";
                 }else

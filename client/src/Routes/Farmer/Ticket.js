@@ -6,8 +6,8 @@ import Spinner from "../../components/Spinner";
 import { useNavigate } from "react-router-dom";
 
 function Ticket ({bookingDetails}) {
-    const {BookedStalls} = bookingDetails;
-    const strBookedStalls = BookedStalls.toString()
+    // const {BookedStalls} = bookingDetails;
+    // const strBookedStalls = BookedStalls.toString()
     const navigate = useNavigate()
     return (
         <>
@@ -19,7 +19,7 @@ function Ticket ({bookingDetails}) {
                 <br/>
                 <div>Phone : {bookingDetails.phone}</div>
                 <br/>
-                <div>Address : {bookingDetails.stallAddress}</div>
+                {/* <div>Address : {bookingDetails.stallAddress}</div>
                 <br/>
                 <div>Date and Time :{bookingDetails.bookedAt}</div>
                 <br/>
@@ -29,7 +29,7 @@ function Ticket ({bookingDetails}) {
                 <br/>
                 <div>Total no. of Stalls booked: {bookingDetails.stallsBooked}</div>
                 <br/>
-                <div>Stalls Booked : {strBookedStalls}</div>
+                <div>Stalls Booked : {strBookedStalls}</div> */}
             </div>
             <h2 className="thanks">Thank You !</h2>
             {/* <PDFDownloadLink document={<MyDoc bookingDetails={bookingDetails}/>} fileName="stallbookingdetails.pdf">

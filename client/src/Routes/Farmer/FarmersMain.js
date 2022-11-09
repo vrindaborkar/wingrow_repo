@@ -4,10 +4,10 @@ import FarmerNav from './FarmerNav'
 
 const FarmersMain = () => {
   return (
-    <>
-        <FarmerNav/>
+    <div style={{postion:"relative"}}>
         <Outlet/>
-    </>
+        <FarmerNav/>
+    </div>
   )
 }
 

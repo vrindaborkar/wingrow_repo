@@ -26,7 +26,6 @@ useEffect(() => {
   }, [])
 
   const handleClick = (ev) => {
-    console.log(ev.target.id)
     const Id = ev.target.id
     navigate(`./stalls/${Id}`)
   }

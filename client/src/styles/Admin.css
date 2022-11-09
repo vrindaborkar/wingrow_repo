@@ -1,0 +1,252 @@
+.admin_main_component{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin_secondary_header{
+    display: flex;
+    height: 10vh;
+    width: 99vw;
+    margin: 0 1vw;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box_filter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height:80%;
+    overflow:auto;
+    background-color: white;
+    border: 2px solid #000;
+    box-shadow: 24px;
+    padding: 2rem;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.overalldata_header{
+    flex: 1;
+    text-align: center;
+}
+
+.filter_btn_admin{
+    border: none;
+    width: 50px;
+    position: sticky;
+    background-color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-right: 20px;
+}
+
+.filter_btn_admin:hover{
+    background-color: rgb(192, 184, 184);
+    cursor: pointer;
+}
+
+.header_items{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.header_items_center{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.header_items_filter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+}
+
+.date_picker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date_picker_label{
+    width: 100%;
+    text-align: center;
+     margin-bottom: 2rem;
+}
+
+.cards_container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    margin: 1rem;
+    padding: .5rem;
+}
+
+.card_layout{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 1rem auto;
+    width: 300px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.filter_btn{
+    padding: 0.5rem;
+    width: 80px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(181, 181, 223);
+}
+
+.filter_btn:hover{
+    background-color: rgb(185, 182, 182);
+    cursor: pointer;
+}
+
+.farmers_data_entries{
+    width: 100%;
+    height: 100%;
+    min-height: 80vh;
+    min-width: 100vw;
+}
+
+.cancellation_feed{
+    width: 100%;
+    height: 100%;
+    min-height: 80vh;
+    min-width: 100vw;
+}
+
+.farmers_entries{
+    width: 90%;
+    height: 80vh;
+    margin: 1rem auto;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.cancellation_feed_container{
+    width: 90%;
+    height: 80vh;
+    margin: 1rem auto;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.farmers_entries_nav{
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    background-color: yellow;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.farmers_entries_body{
+    overflow: auto;
+    flex: 1;
+    height: 70vh;
+}
+
+.farmers_entries_section{
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    border-bottom: 1px black solid;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.farmers_entries_nav_srno{
+    width: 10vw;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.farmers_entries_nav_farmername{
+    width: 40vw;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.farmers_entries_nav_farmerstype{
+    width: 40vw;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.cancellation_header{
+    text-align: center;
+    height: 8vh;
+    padding: 1rem;
+    background-color: yellow;
+}
+
+.cancellation_body{
+    width: 100%;
+    height: 72vh;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.cancellation_card{
+    font-size: 1.2rem;
+    width: 300px;
+    height: 300px;
+    padding: 1.5rem;
+    margin: 1rem;
+    background-color: rgb(178, 223, 208);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.refund_btn_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.refund_btn{
+    width: 150px;
+    border: none;
+    padding: 0.2rem;
+    border-radius: 10px;
+}
+
+.refund_btn:hover{
+    cursor: pointer;
+    background-color: rgb(201, 186, 186);
+}
+
+@media (max-width: 798px) {
+    .cancellation_card{
+        margin: 1rem auto;
+    }
+}

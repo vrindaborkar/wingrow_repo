@@ -247,11 +247,13 @@ export default function OutwardData() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            padding:"30px",
-            overflowX:"hidden"
+            justifyContent: 'center',
+            padding:2,
+            height:'87vh',
+            width:'100%'
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h4">
            Farmer Outward Data!!
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{padding:5}}>

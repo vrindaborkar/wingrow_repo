@@ -3,7 +3,7 @@ import React , {useState , useEffect } from 'react'
 import axios from 'axios'
 import Stall from './Stall';
 import authHeader from '../../services/auth.headers';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import AuthService from '../../services/auth.service';
 import ConfirmModal from '../../components/ConfirmModal';
 import FarmerService from '../../services/farmer.service';
@@ -18,8 +18,9 @@ const navigate = useNavigate()
   const [numberOfSeats, setNumberOfSeats] = useState(0);
   const [bookedStalls , setBookedStalls] = useState([])
   const [Loading, setLoading] = useState()
-  const user = AuthService.getCurrentUser()
   const {Id} = useParams()
+  const [alreadyBooked, setAlreadyBooked] = useState()
+
 
   useEffect(() => {
     setLoading(true)
@@ -27,6 +28,11 @@ const navigate = useNavigate()
     .then((response)=>{
         setLoading(false)
         setdata(response.data);
+    })
+
+    FarmerService.getBookedStalls()
+    .then((response)=>{
+        setAlreadyBooked(response.data)
     })
   }, [])
 
@@ -45,7 +51,8 @@ const navigate = useNavigate()
     setUpdatedData(res)
   }, [Id , data])
 
-  const confirmBooking = async() => {
+  const confirmBooking = async(e) => {
+
     const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
 
     if(bookedStalls.length === 0){
@@ -77,29 +84,37 @@ const navigate = useNavigate()
               const verifyUrl = "https://wingrowagritech.herokuapp.com/verify";
               const {data} = await axios.post(verifyUrl,response,{headers:authHeader()})
               const orderId = data.orderId
+              
 
-                  const stallsUrl = "https://wingrowagritech.herokuapp.com/stalls";
-                  const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
-                  const idArr = []
-                  const stallsBooked = []
-                  bookedStalls.forEach(e => {
-                    idArr.push(e._id)
-                    stallsBooked.push(e.stallName)
-                  });
-                  axios.put(stallsUrl , {data : idArr , user : userCurr.id , time: dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ss')} , {headers:authHeader()})
+              const responseData = {
+                location:Id,
+                bookedStalls:bookedStalls,
+                bookedBy:userCurr.id,
+                bookedAt:dayjs(Date.now()).format("YYYY-MM-DD"),
+                isBooked:true
+            }
+
+            const stallsBooked = []
+              bookedStalls.forEach(e => {
+                stallsBooked.push(e.stallName)
+              });
+    
+            const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
+            const Url = "https://wingrowagritech.herokuapp.com/bookedstalls";
+                  
+                  axios.post(Url , responseData , {headers:authHeader()})
                   .then(response => {
                     const {data} = response
                     if(data){
                       setbookingDetails({
-                        farmer:user.firstname + " " + user.lastname,
-                        phone:user.phone,
-                        stallAddress:data[0].address,
+                        farmer:userCurr.firstname + " " + userCurr.lastname,
+                        phone:userCurr.phone,
                         paymentDetails:orderId,
                         BookedStalls:stallsBooked,
                         stallsBooked:bookedStalls.length,
-                        totalAmount:price,
-                        bookedAt:data[0].bookedAt
-                    })}
+                        totalAmount:price
+                    })
+                }
                     alert("Stalls booked succesfully")
                     navigate('../ticket')
                   })
@@ -148,16 +163,17 @@ const navigate = useNavigate()
     {!Loading ? <div className="Test">
       <h2>{Id}</h2>
       <div className='main_container_stalls'>
+        <Link to="../advancebookings" className='advancebookinglink'>Advance booking !</Link>
         <p className='seatsinput'>How Many Stalls Would You Like to Book?</p>
             <input className='seatsinput' value={numberOfSeats} onChange={(ev) => setNumberOfSeats(ev.target.value)}/>
             {
               UpdatedData && Id ? 
               <div className='stall_wrapper'>
                 <div className='StallsContainer'>
-                <Stall data={UpdatedData.slice(0,16)} handleClick={handleClick} bookedStalls={bookedStalls}/>
-                <Stall data={UpdatedData.slice(16,17)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
-                <Stall data={UpdatedData.slice(17,18)} handleClick={handleClick} bookedStalls={bookedStalls}/> 
-                <Stall data={UpdatedData.slice(18,34)} handleClick={handleClick} bookedStalls={bookedStalls}/>  
+                <Stall data={UpdatedData.slice(0,16)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/>
+                <Stall data={UpdatedData.slice(16,17)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/> 
+                <Stall data={UpdatedData.slice(17,18)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/> 
+                <Stall data={UpdatedData.slice(18,34)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/>  
                 </div>
               </div>
               :

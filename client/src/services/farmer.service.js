@@ -43,6 +43,14 @@ const API_URL = 'https://wingrowagritech.herokuapp.com/';
     return axios.get(API_URL + 'stalls', { headers: authHeader() });
   }
 
+  const getBookedStalls = () => {
+    return axios.get(API_URL + 'bookedstalls', { headers: authHeader() });
+  }
+
+  const getcancelledStalls = () => {
+    return axios.get(API_URL + 'cancelledstalls', { headers: authHeader() });
+  }
+
 
 const FarmerService = {
     postInward,
@@ -51,7 +59,9 @@ const FarmerService = {
     getOutward,
     getMyStalls,
     getInwardData,
-    getOutwardData 
+    getOutwardData,
+    getBookedStalls,
+    getcancelledStalls
   };
   
   export default FarmerService;

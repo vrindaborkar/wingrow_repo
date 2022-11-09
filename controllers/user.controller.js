@@ -1,6 +1,7 @@
 const Inward = require("../models/Inward");
 const Outward = require("../models/Outward");
 const jwt_decode =  require("jwt-decode");
+const User = require("../models/User");
 
 exports.getInward = async(req,res,next) => {
     let token = req.headers["x-access-token"];
@@ -10,6 +11,13 @@ exports.getInward = async(req,res,next) => {
     const inwarddata = await Inward.find({"userId" : id});
     res.send(inwarddata)
 }
+
+exports.getUser = async(req, res) => {
+    const data = await User.find();
+    const filter = data.filter(e=>e.role === "farmer");
+    res.status(200).json(filter)
+  }
+
 
 exports.getInwardData = async(req,res,next) => {
     const inwarddata = await Inward.find();
@@ -76,3 +84,5 @@ exports.postInward = async(req,res,next) => {
 
     res.status(200).json({message:"Data added successfully"})
 }
+
+

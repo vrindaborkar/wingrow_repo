@@ -37,7 +37,8 @@ export default function Register() {
     password:'',
     firstname:'',
     lastname:'',
-    type:''
+    type:'',
+    farmertype:""
   });
 
   const handleChange = (e) => {
@@ -50,26 +51,24 @@ export default function Register() {
     })
   }
 
-  console.log(data)
-
 
   const handleSubmit = (event) => {
     event.preventDefault()
     if (data.password && data.phone && data.type && data.firstname && data.lastname ) {
-      AuthService.register(data.phone, data.password , data.firstname , data.lastname , data.type).then(
+      AuthService.register(data.phone, data.password , data.firstname , data.lastname , data.type , data.farmertype).then(
         () => {
           alert("Registration successful")
           navigate("/login");
         },
         (error) => {
-          console.log(error)
           alert("Registration failed")
           setData({
             phone:'',
             password:'',
             firstname:'',
             lastname:'',
-            type:''
+            type:'',
+            farmertype:""
           })
         }
       );
@@ -153,6 +152,32 @@ export default function Register() {
                 </Select>
               </FormControl>
               </Grid>
+
+              {data.type === "farmer" && <Grid item xs={12}>
+              <FormControl sx={{ width:"100%" }}>
+                <InputLabel id="demo-simple-select-helper-label">Farmer Type</InputLabel>
+                <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  value={data.farmertype}
+                  label="farmertype"
+                  name='farmertype'
+                  onChange={handleChange}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={"farmers"}>farmers</MenuItem>
+                  <MenuItem value={"Organic farmers"}>Organic farmers</MenuItem>
+                  <MenuItem value={"FPO/FPC"}>FPO/FPC</MenuItem>
+                  <MenuItem value={"Retailer"}>Retailer</MenuItem>
+                  <MenuItem value={"Wholesaler"}>Wholesaler</MenuItem>
+                  <MenuItem value={"Start-up"}>Start-up</MenuItem>
+                  <MenuItem value={"Vocal for local producers"}>Vocal for local producers</MenuItem>
+                </Select>
+              </FormControl>
+              </Grid>}
+
               <Grid item xs={12}>
                 <TextField
                   required

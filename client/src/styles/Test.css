@@ -78,6 +78,19 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     letter-spacing: 1px;
   }
+
+  .advancebookinglink{
+    position: fixed;
+    right: 20px;
+    top: 18vh;
+    font-size: 1.2rem;
+  }
+
+  .advancebookinglinkback{
+    position: fixed;
+    left: 20px;
+    top: 13vh;
+  }
   
   .selected{
     background-color: yellow;

@@ -8,6 +8,7 @@ const User = mongoose.model(
     role:String,
     phone:String,
     password: String,
+    farmertype:String
   })
 );
 

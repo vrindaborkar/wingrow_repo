@@ -2,13 +2,14 @@ import axios from "axios";
 
 const API_URL = "https://wingrowagritech.herokuapp.com/auth/";
 
-const register = (phone , password , firstname , lastname , type) => {
+const register = (phone , password , firstname , lastname , type , farmertype) => {
   return axios.post(API_URL + "signup", {
     phone,
     password,
     firstname,
     lastname,
-    type
+    type,
+    farmertype
   });
 };
 
@@ -39,7 +40,7 @@ const AuthService = {
   register,
   login,
   logout,
-  getCurrentUser,
+  getCurrentUser
 };
 
 export default AuthService;

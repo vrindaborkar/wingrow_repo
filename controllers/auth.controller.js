@@ -4,14 +4,20 @@ var jwt = require("jsonwebtoken");
 const config =require('../config/auth.config')
 
 exports.signup = async(req , res , next)=>{
-      const {  phone , password , firstname , lastname , type} = req.body;
-  
+      const {  phone , password , firstname , lastname , type , farmertype} = req.body;
+      let typeStr;
+      if(type === "farmer"){
+        typeStr = farmertype
+      }else{
+        typeStr = "none"
+      }
         const user = new User({
           firstname,
           lastname,
           phone,
           password:bcrypt.hashSync(password, 8),
-          role:type
+          role:type,
+          farmertype:typeStr
         })
   
         const data = await user.save()
@@ -60,7 +66,8 @@ exports.signin = (req, res) => {
           lastname:user.lastname,
           phone: user.phone,
           role: user.role,
-          accessToken: token
+          accessToken: token,
+          farmertype:user.farmertype
         });
       });
   };

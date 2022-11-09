@@ -54,7 +54,6 @@ export default function SignIn() {
           window.location.reload()
         },
         (error) => {
-          console.log(error)
           alert("login failed")
           setData({
             phone:'',

@@ -18,17 +18,17 @@ const FarmerNav = () => {
     <>
     {!close && <div className='farmers_navigate'>
             <img className='close_btn' onClick={()=>setClose(!close)} src="https://cdn-icons-png.flaticon.com/512/2989/2989988.png" alt='logo'/>
-            <Link className='links_farmersdata' to="./">
+                  <Link className='links_farmersdata' to="./">
                       Book Stall
                   </Link>
                   <Link className='links_farmersdata' to="./mybookings">
                       My Bookings
                   </Link>
                   <Link className='links_farmersdata' to="./inward">
-                      Inward Data
+                      Fill Inward
                   </Link>
                   <Link className='links_farmersdata' to="./outward">
-                      Outward Data
+                      Fill Outward
                   </Link>
                   <Link className='links_farmersdata' to="./farmershome">
                       Data

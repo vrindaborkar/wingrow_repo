@@ -8,17 +8,11 @@ import useWindowDimensions from '../components/useWindowDimensions'
 import { useNavigate } from 'react-router-dom';
 
 
-// Import useNavigate from react router dom
-
-// Const navigate = useNavigate()
-
-// OnClick = {()=>navigate(/farmers/stalls)}
-
 const Home = () => {
   const [mobile, setmobile] = useState(false)
   useEffect(() => {
     AOS.init({
-      once:true
+      duration: 600,
     });
   }, [])
 
@@ -33,21 +27,23 @@ const Home = () => {
   }, [width])
 
   const navigate = useNavigate()
-
   return (
     <div className='home_container'>
+
       <div className='first_section'>
         <div className='first_section_component'>
-          <h2 className='first_section_header'>
-            <span  data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text'>
-              Revolutionizing the stall
-            </span>
-            <span  data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text'>
-              Booking for direct sell
-            </span>
-              <img alt='logo' data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-in-sine"  className='first_section_btn' src='./images/imgbook.jpeg' onClick={()=>navigate("/farmers/")}/>
-              
-          </h2>
+          <h1 data-aos="fade-right" class="first_section_header">
+                <span>REVOLUTIONIZING THE STALL </span>
+                <span>BOOKING FOR DIRECT SELL</span>
+          </h1>
+          <div data-aos="fade-up" class="first_section_btn">
+                <button onClick={()=>{navigate('/farmers/')}} class="bookstall_btn">
+                    Book Stall
+                </button>
+            </div>
+        </div>
+        <div class="first_section_image">
+            <img class="image_header" alt="hero" src="./images/centerimage.jpg"/>
         </div>
       </div>
 
@@ -116,16 +112,13 @@ const Home = () => {
         </div>
       }
       <div className='third_section'>
-          <div className="title_info">
-            <h1>OUR MARKETS</h1>
-            <p style={{fontSize:"1.7rem" , textAlign:"start"}}>We organize weekly markets at key locations in Pune which allows farmers to sell fresh produce directly to the customers, cutting out middlemen in the process. This allows customers to buy farm fresh goods at affordable rates, while the farmers who grow the produce get a fair price for it.</p>
-          </div>
+            <div class="third_section_details">
+                          <h1 class="third_section_header">Our Markets</h1>
+                          <p class="third_section_p">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them.</p>
+                      </div>
           <div className='location_component'>
               <Location/>
           </div>
-          {/* <div className='fourth_section'>
-            <Slider/>
-          </div> */}
           <Footer/>
         </div>
       </div>  

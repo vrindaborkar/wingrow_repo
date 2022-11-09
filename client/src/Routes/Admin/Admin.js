@@ -1,14 +1,13 @@
 import React,{useState , useEffect} from 'react'
-import Datepicker from '../../components/Datepicker'
 import FarmerService from '../../services/farmer.service'
 import dayjs from 'dayjs';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import './Admin.css'
+import '../../styles/Admin.css'
 import Card from '../../components/Card'
 import Spinner from '../../components/Spinner'
+import FilterModal from '../../components/FilterModal';
+import UserService from '../../services/user.service';
+import axios from 'axios';
+import authHeader from '../../services/auth.headers';
 
 const Admin = () => {
   const [Inward, setInward] = useState()
@@ -19,7 +18,12 @@ const Admin = () => {
   const [fromDate, setfromDate] = useState(dayjs(Date.now()).format("YYYY-MM-DD"))
   const [toDate, settoDate] = useState(dayjs(Date.now()).format("YYYY-MM-DD"))
   const [market, setMarket] = React.useState('');
-  const [stallsBooked, setstallsBooked] = useState()
+  const [CancelledStalls, setCancelledStalls] = useState()
+  const [stallsBooked, setstallsBooked] = useState();
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [Farmers, setFarmers] = useState()
 
   const handleChangeMarket = (event) => {
     setMarket(event.target.value);
@@ -41,7 +45,16 @@ const Admin = () => {
         setOutward(res?.data);
         setfilteredOutData(res?.data)
       })
+
+    FarmerService.getcancelledStalls().then(res=>{
+      setCancelledStalls(res?.data)
+    })
+
+      UserService.getFarmers().then(res=>{
+        setFarmers(res?.data)
+      })
   }, [])
+
 
   const totalFarmers = new Set();
   const farmers = new Set();
@@ -71,7 +84,13 @@ const Admin = () => {
   });
 
 
-  useEffect(() => {
+  const handleSearchmarkets = () => {
+    const marketresponse = Inward && Inward.filter(e => e.market === market);
+    setfilteredInData(marketresponse)
+    handleClose()
+  }
+
+  const handleSearchDate = () => {
     const inData = Inward && Inward.filter((e)=>{
       const [date] = e.time.split("T");
       return date === dayjs(value).format("YYYY-MM-DD")
@@ -89,14 +108,9 @@ const Admin = () => {
 
     setstallsBooked(stallsData)
     setfilteredInData(inData)
-    setfilteredOutData(outData)//eslint-disable-next-line
-  }, [value])
-
-
-  useEffect(() => {
-    const marketresponse = Inward && Inward.filter(e => e.market === market);
-    setfilteredInData(marketresponse) //eslint-disable-next-line
-  }, [market])
+    setfilteredOutData(outData)
+    handleClose()
+  }
   
 
   const handleSearch = () => {
@@ -118,60 +132,89 @@ const Admin = () => {
     setstallsBooked(stallsData)
     setfilteredInData(filterIn);
     setfilteredOutData(filterOut)
+    handleClose()
   }
-
   
   for(let item of marketsData){
     farmersMarket.push(item)
   }
 
+  const handleRefundDelete = (e) => {
+    const id = e.target.id;
+    const response = window.confirm("Confirm Refunded?")
+    if(response === true){
+      axios.delete("https://wingrowagritech.herokuapp.com/cancelledstalls" , { headers: authHeader()  , data:{id: id}}).then(res=>{
+        const data = res?.data;
+        const filter = CancelledStalls.filter(e=>e._id !== data._id);
+        setCancelledStalls(filter)
+      })
+    }
+  }
+
   return (
     <div className='admin_main_component'>
-      <div className='admin_secondary_header'>
-        <div className='header_items'>
-          <span>Filter by date :</span>
-          <div className='date_picker'>
-            <Datepicker setValue={setValue} value={value}/>
-          </div>
+
+      {/* Farmers Entry Data */}
+
+      <div className='farmers_data_entries'>
+        <div className='farmers_entries'>
+            <div className='farmers_entries_nav'>
+              <span className='farmers_entries_nav_srno'>
+                Sr. No
+              </span>
+              <span className='farmers_entries_nav_farmername'>
+                Farmers Name
+              </span>
+              <span  className='farmers_entries_nav_farmerstype'>
+                Farmers Type
+              </span>
+            </div>
+
+            <div className='farmers_entries_body'>
+                {
+                  Farmers && Farmers.map((e,i)=>{
+                    return(
+                      <div key={i} className='farmers_entries_section'>
+                          <span className='farmers_entries_nav_srno'>
+                            {i+1}
+                          </span>
+                          <span className='farmers_entries_nav_farmername'>
+                            {e.firstname} {e.lastname}
+                          </span>
+                          <span  className='farmers_entries_nav_farmerstype'>
+                            {e.farmertype}
+                          </span>
+                      </div>
+                    )
+                  })
+                }
+            </div>
         </div>
-
-        <div className='header_items_center'>
-          <div className='header_items_filter'>
-            <span className='date_picker_label'>Filter between dates from :</span>
-            <div className='date_picker'>
-              <Datepicker setValue={setfromDate} value={fromDate}/>
-            </div>
-          </div>
-          <div className='header_items_filter'>
-            <span className='date_picker_label'>Filter between dates to :</span>
-            <div className='date_picker'>
-              <Datepicker setValue={settoDate} value={toDate}/>
-            </div>
-          </div>
-          <button className='filter_btn' onClick={handleSearch}>Search</button>
       </div>
 
-      <div className='header_items'>
-        <span>Filter market wise :</span>
-        <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
-          <InputLabel id="demo-select-small">Market</InputLabel>
-          <Select
-            labelId="demo-select-small"
-            id="demo-select-small"
-            value={market}
-            label="Market"
-            onChange={handleChangeMarket}
-          >
-            {
-              farmersMarket.length!==0 && farmersMarket.map((e , i)=>{
-                return(
-                  <MenuItem key={i} value={e}>{e}</MenuItem>
-                )
-              })
-            }
-          </Select>
-        </FormControl>
-      </div>
+      {/* Farmers Entry Data */}
+
+      {/* Farmers Statistics */}
+      <div className='admin_secondary_header'>
+        <h2 className='overalldata_header'>Farmers Statistics</h2>
+        <FilterModal 
+        handleChangeMarket={handleChangeMarket}
+        fromDate={fromDate}
+        setfromDate={setfromDate}
+        toDate={toDate}
+        settoDate={settoDate}
+        value={value}
+        setValue={setValue}
+        handleSearch={handleSearch}
+        market={market}
+        farmersMarket={farmersMarket}
+        open={open}
+        setOpen={setOpen}
+        handleClose={handleClose}
+        handleOpen={handleOpen}
+        handleSearchmarkets={handleSearchmarkets}
+        handleSearchDate={handleSearchDate}
+        />
     </div>
 
     {filteredInData && filteredOutData && <div className='cards_container'>
@@ -184,6 +227,47 @@ const Admin = () => {
       <Card header={"Profit of farmers :"} value={salesQty - purchaseQty}/>
       <Card header={"Stalls Booked :"} value={noOfBookedStalls}/>
     </div>}
+     {/* Farmers Statistics */}
+
+
+     {/* Cancellation Feed */}
+
+     <div className='cancellation_feed'>
+      <div className='cancellation_feed_container'>
+          <h2 className='cancellation_header'>Cancellation Data</h2>
+          <div className='cancellation_body'>
+              {
+                 CancelledStalls && CancelledStalls.length !== 0 && CancelledStalls.map((e,i)=>{
+                  const [user] = Farmers.filter( ele => ele._id === e.bookedBy)
+                  const {firstname , lastname , phone} = user;
+                  return(
+                      <div key={i} className='cancellation_card'>
+                          <h2 style={{textAlign:"center",padding:"0.5rem",textTransform:"capitalize"}}>{firstname+" "+lastname}</h2>
+                          <div><b>Phone No : </b>{phone}</div>
+                          <div><b>Stall Address : </b>{e.address}</div>
+                          <div><b>Cancellation Date : </b>{e.cancelledAt}</div>
+                          <div><b>Booked Date : </b>{e.bookedAt}</div>
+                          <div><b>Stall Name :</b>{e.stallName}</div>
+                          <div><b>Refund Status :</b>Not Refunded</div>
+                          <div className='refund_btn_wrapper'>
+                            <button className='refund_btn' id={e._id} onClick={handleRefundDelete}>Mark as Refunded</button>
+                          </div>
+                      </div>
+                  )
+                })
+              }
+              {
+                CancelledStalls && CancelledStalls.length === 0 && <h2 style={{margin:"auto"}}>No Cancelled Data!</h2>
+              }
+              {
+                !CancelledStalls && <Spinner/>
+              }
+          </div>
+      </div>
+     </div>
+
+     {/* Cancellation Feed */}
+
     {!filteredInData && !filteredOutData && <Spinner/>}
   </div>
   )

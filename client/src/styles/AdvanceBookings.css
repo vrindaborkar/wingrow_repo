@@ -1,0 +1,24 @@
+.advance_main_container{
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 6rem;
+}
+
+
+.advance_component{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.advance_date{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-right: 20px;
+}

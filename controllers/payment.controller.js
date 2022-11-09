@@ -22,7 +22,6 @@ const ordersApi = async(req,res)=>
             res.status(200).json({data:order})
         })
 
-        console.log(options)
     } catch (error) {
         console.log(error)
         res.status(500).json({message:"internal error occured"})

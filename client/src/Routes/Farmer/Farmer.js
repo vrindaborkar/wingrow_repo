@@ -1,5 +1,6 @@
 import React , {useState}  from "react";
 import { Routes, Route } from "react-router-dom";
+import AdvanceBookings from "./AdvanceBookings";
 import FarmersHome from "./FarmersHome";
 import FarmersMain from "./FarmersMain";
 import InwardData from "./InwardData";
@@ -13,12 +14,10 @@ const Farmer = () => {
     const [bookingDetails, setbookingDetails] = useState({
         farmer:"",
         phone:"",
-        stallAddress:'',
         paymentDetails:'',
-        BookedStalls:"",
-        stallsBooked:"",
-        totalAmount:"",
-        bookedAt:""
+        BookedStalls:null,
+        stallsBooked:null,
+        totalAmount:null
     })
 
   return (
@@ -28,6 +27,7 @@ const Farmer = () => {
           <Route path='stalls/:Id' element={<Test setbookingDetails={setbookingDetails}/>}/>
           <Route path='/farmershome' element={<FarmersHome/>}/>
           <Route path='/inward' element={<InwardData/>}/>
+          <Route path='/advancebookings' element={<AdvanceBookings setbookingDetails={setbookingDetails}/>}/>
           <Route path='/outward' element={<OutwardData/>}/>
           <Route path='/ticket' element={<Ticket bookingDetails={bookingDetails}/>}/>
           <Route path='/mybookings' element={<MyBookings/>}/>

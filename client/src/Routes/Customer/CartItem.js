@@ -39,7 +39,6 @@ const {cartsData , Counter , setcartsData , setItemcount , setCounter , Itemcoun
       return;
     }
     if(Counter[id] === 1 && Itemcount === 1){
-      console.log("hii")
       const data = cartsData.filter(e => e._id !== `${id}`)
       setItemcount(0)
       setcartsData(data)

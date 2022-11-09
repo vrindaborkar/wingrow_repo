@@ -43,7 +43,7 @@ const Navbar = () => {
       <nav className="main-nav">
         {/* 1st logo part  */}
         <div className="logo">
-          <img alt="logo" className="logo_img_navbar" src="./images/wingrow-logo.jpg"/>
+          <img alt="logo" className="logo_img_navbar" src="./images/logo.jpg"/>
         </div>
 
         {/* 2nd menu part  */}
