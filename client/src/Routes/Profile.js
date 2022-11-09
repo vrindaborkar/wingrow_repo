@@ -4,35 +4,47 @@ import AuthService from "../services/auth.service";
 import '../styles/Profile.css'
 import axios from 'axios'
 import UserService from "../services/user.service";
+import Spinner from '../components/Spinner'
 
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
   const [user , setuser] = useState();
+  const [Loading, setLoading] = useState(false)
   const [newPic, setNewPic] = useState(
     {
         photo: '',
     }
 );
-const path = user && user[0]?.pic
+const path = user?.pic
+var data = undefined;
+var contentType = undefined;
+var base64String = undefined;
+
+if(path){
+  data = path.data;
+  contentType = path.contentType;
+  base64String = data && btoa(String.fromCharCode(...new Uint8Array(data.data)));
+}
 
 useEffect(() => {
   UserService.getFarmers().then(res=>{
     const user = res?.data;
     const userFilter = user.filter(e => e._id === currentUser.id)
-    setuser(userFilter)
+    setuser(userFilter[0])
   })//eslint-disable-next-line
 }, [])
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData();
     formData.append('photo', newPic.photo);
 
     axios.put('https://wingrowagritech.herokuapp.com/auth/user', formData , {headers:authHeader()})
          .then(res => {
             setuser(res?.data)
-            window.location.reload()
+            setLoading(false)
          })
          .catch(err => {
             console.log(err);
@@ -44,8 +56,8 @@ const handlePhoto = (e) => {
 }
   return (
     <div>
-      {user && <div className="profile">
-        <img className="profile_img" src={path ? `data:image/jpeg;base64,${path.data}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="profile"/>
+      {!Loading && user && path ? <div className="profile">
+        <img className="profile_img" src={data ? `data:${contentType};base64,${base64String}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="profile"/>
         <div>
           <div>
           Mobile No : {currentUser.phone}
@@ -65,7 +77,7 @@ const handlePhoto = (e) => {
                 type="submit"
             />
         </form>
-        </div>}
+        </div>:<Spinner/>}
     </div>
   );
 };
