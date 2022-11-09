@@ -32,6 +32,11 @@
 
 }
 
+.first_image_section{
+  width: 100px;
+  height: 60px;
+}
+
 .first_section_text{
   letter-spacing: 2px;
   padding: 0.2rem;

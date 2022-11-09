@@ -26,14 +26,14 @@ return (
 			<Link className="FooterLink" to="farmers">Farmers</Link>
 			{/* <Link className="FooterLink" to="/register">Register</Link> */}
 			{/* <Link className="FooterLink" to="/cart">Cart</Link> */}
-			<Link className="FooterLink" to="bookings">Stall Bookings</Link>
+			<Link className="FooterLink" to="/farmers/">Stall Bookings</Link>
 			
 			
 			
 		</div>
 		<div className="Column">
 			<p className="Heading">Contact Us</p>
-			<Link className="FooterLink" to="mailto:connect@wingrowagritech.com">Contact </Link>
+			<a className="FooterLink" href="mailto:connect@wingrowagritech.com">Contact </a>
             <Link className="FooterLink" to="customers">Customers</Link>
 
 		</div>
@@ -45,24 +45,24 @@ return (
 
 		<div className="Column">
 			<p className="Heading">Social Media</p>
-			<Link className="FooterLink" to="https://www.facebook.com/Wingrow-Agritech-Producer-Company-Limited-4">
+			<a className="FooterLink" href="https://www.facebook.com/Wingrow-Agritech-Producer-Company-Limited-4">
 			<BsFacebook/>
 				<span style={{ marginLeft: "10px" }}>
 				Facebook
 				</span>
-			</Link>
-			<Link className="FooterLink" to="https://instagram.com/wingrowagritech?utm_medium=copy_link">
+			</a>
+			<a className="FooterLink" href="https://instagram.com/wingrowagritech?utm_medium=copy_link">
 				<RiInstagramFill/>
 				<span style={{ marginLeft: "10px" }}>
 				Instagram
 				</span>
-			</Link>
-			<Link className="FooterLink" to="https://www.linkedin.com/company/31488381">
+			</a>
+			<a className="FooterLink" href="https://www.linkedin.com/company/31488381">
 				<FaLinkedin/>
 				<span style={{ marginLeft: "10px" }}>
 				Linkedin
 				</span>
-			</Link>
+			</a>
 		</div>
 		</div>
 	</div>

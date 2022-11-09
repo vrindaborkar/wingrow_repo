@@ -7,6 +7,7 @@ import Main from "./Routes/Main";
 import ProtectedRoute from "./utils/ProtectedRoutes";
 import AuthService from "./services/auth.service";
 import NotFound from "./Routes/NotFound";
+import Terms from "./Routes/Terms";
 const user = AuthService.getCurrentUser();
 
 const App = () => {
@@ -54,6 +55,7 @@ const App = () => {
 
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
+          <Route path='/terms' element={<Terms/>}/>
       </Route>
       <Route path="*" element={<NotFound/>} />
     </Routes>

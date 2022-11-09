@@ -8,7 +8,11 @@ const User = mongoose.model(
     role:String,
     phone:String,
     password: String,
-    farmertype:String
+    farmertype:String,
+    pic:{
+      data: Buffer,
+    contentType: String
+    }
   })
 );
 

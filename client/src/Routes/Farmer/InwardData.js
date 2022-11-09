@@ -194,8 +194,8 @@ export default function InwardData() {
   const navigate  = useNavigate()
   const [Data, setData] = useState({
     commodity:"",
-    purchase_quantity:null,
-    purchase_rate:null,
+    purchase_quantity:undefined,
+    purchase_rate:undefined,
     market:""
   })
 
@@ -217,7 +217,7 @@ export default function InwardData() {
       FarmerService.postInward(Data.commodity , Data.purchase_quantity , Data.purchase_rate , Data.market , time).then(
         () => {
           alert("Data added successfully")
-          navigate('/farmers/farmershome');
+          navigate('../farmershome');
         },
         (error) => {
           console.log(error)

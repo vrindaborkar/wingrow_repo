@@ -48,13 +48,25 @@ export default function SignIn() {
 
     if (data.password && data.phone) {
       AuthService.login(data.phone, data.password).then(
-        () => {
-          alert("login successful")
-          navigate("/profile");
-          window.location.reload()
+        (res) => {
+          if(res.role === "farmer"){
+            navigate("/farmers");
+            window.location.reload()
+          }
+          if(res.role === "admin"){
+            navigate("/admin");
+            window.location.reload()
+          }
+          if(res.role === "customer")
+          {
+            navigate("/customers");
+            window.location.reload()
+          }
+          alert("login successful!")
         },
         (error) => {
           alert("login failed")
+          console.log(error)
           setData({
             phone:'',
             password:''

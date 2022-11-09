@@ -232,7 +232,7 @@ const Admin = () => {
 
      {/* Cancellation Feed */}
 
-     <div className='cancellation_feed'>
+     {CancelledStalls && <div className='cancellation_feed'>
       <div className='cancellation_feed_container'>
           <h2 className='cancellation_header'>Cancellation Data</h2>
           <div className='cancellation_body'>
@@ -264,11 +264,11 @@ const Admin = () => {
               }
           </div>
       </div>
-     </div>
+     </div>}
 
      {/* Cancellation Feed */}
 
-    {!filteredInData && !filteredOutData && <Spinner/>}
+    {!filteredInData && !stallsBooked && !filteredOutData && !Farmers && !CancelledStalls && <Spinner/>}
   </div>
   )
 }

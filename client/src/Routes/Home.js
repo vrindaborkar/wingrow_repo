@@ -32,18 +32,19 @@ const Home = () => {
 
       <div className='first_section'>
         <div className='first_section_component'>
-          <h1 data-aos="fade-right" class="first_section_header">
+          <img src="./images/imgbook.jpeg" alt='stall_logo' className='first_image_section'/> 
+          <h1 data-aos="fade-right" className="first_section_header">
                 <span>REVOLUTIONIZING THE STALL </span>
                 <span>BOOKING FOR DIRECT SELL</span>
           </h1>
-          <div data-aos="fade-up" class="first_section_btn">
-                <button onClick={()=>{navigate('/farmers/')}} class="bookstall_btn">
+          <div data-aos="fade-up" className="first_section_btn">
+                <button onClick={()=>{navigate('/farmers/')}} className="bookstall_btn">
                     Book Stall
                 </button>
             </div>
         </div>
-        <div class="first_section_image">
-            <img class="image_header" alt="hero" src="./images/centerimage.jpg"/>
+        <div className="first_section_image">
+            <img className="image_header" alt="hero" src="./images/centerimage.jpg"/>
         </div>
       </div>
 
@@ -112,9 +113,9 @@ const Home = () => {
         </div>
       }
       <div className='third_section'>
-            <div class="third_section_details">
-                          <h1 class="third_section_header">Our Markets</h1>
-                          <p class="third_section_p">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them.</p>
+            <div className="third_section_details">
+                          <h1 className="third_section_header">Our Markets</h1>
+                          <p className="third_section_p">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them.</p>
                       </div>
           <div className='location_component'>
               <Location/>

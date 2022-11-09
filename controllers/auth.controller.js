@@ -2,6 +2,7 @@ var bcrypt = require("bcryptjs");
 const User = require('../models/User')
 var jwt = require("jsonwebtoken");
 const config =require('../config/auth.config')
+const jwt_decode =  require("jwt-decode");
 
 exports.signup = async(req , res , next)=>{
       const {  phone , password , firstname , lastname , type , farmertype} = req.body;
@@ -17,7 +18,8 @@ exports.signup = async(req , res , next)=>{
           phone,
           password:bcrypt.hashSync(password, 8),
           role:type,
-          farmertype:typeStr
+          farmertype:typeStr,
+          pic:undefined
         })
   
         const data = await user.save()
@@ -67,8 +69,38 @@ exports.signin = (req, res) => {
           phone: user.phone,
           role: user.role,
           accessToken: token,
-          farmertype:user.farmertype
+          farmertype:user.farmertype,
+          pic:user.pic
         });
       });
   };
   
+
+  exports.postPic = async(req,res) => {
+    try {
+      let token = req.headers["x-access-token"];
+      const { id } = jwt_decode(token)
+
+      if (!req.file) {
+        res.json({
+          success: false,
+          message: "You must provide at least 1 file"
+        });
+      } else {
+        let imageUploadObject = {
+            data: req.file.buffer,
+            contentType: req.file.mimetype
+        };
+        const data = await User.findByIdAndUpdate({_id : id} , {pic : imageUploadObject})
+        if(data){
+          res.status(200).json(data)
+        }
+        else{
+          res.status(400).json("something went wrong")
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    res.status(500).send("Server Error");
+    }
+  }
