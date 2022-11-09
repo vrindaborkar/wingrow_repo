@@ -10,12 +10,17 @@ const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
   const [user , setuser] = useState();
   const [Loading, setLoading] = useState(false)
+  const [path, setpath] = useState()
   const [newPic, setNewPic] = useState(
     {
         photo: '',
     }
 );
-const path = user?.pic
+
+useEffect(() => {
+  setpath(user?.pic)
+}, [user])
+
 var data = undefined;
 var contentType = undefined;
 var base64String = undefined;
@@ -43,12 +48,18 @@ useEffect(() => {
 
     axios.put('https://wingrowagritech.herokuapp.com/auth/user', formData , {headers:authHeader()})
          .then(res => {
-            setuser(res?.data)
+          const resp = res?.data;
+            setuser(resp)
+            console.log(resp.pic)
+            setpath(resp.pic)
             setLoading(false)
          })
          .catch(err => {
             console.log(err);
          });
+      setTimeout(() => {
+        window.location.reload()
+      }, 500);
 }
 
 const handlePhoto = (e) => {
@@ -56,7 +67,7 @@ const handlePhoto = (e) => {
 }
   return (
     <div>
-      {!Loading && user && path ? <div className="profile">
+      {!Loading && user ? <div className="profile">
         <img className="profile_img" src={data ? `data:${contentType};base64,${base64String}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="profile"/>
         <div>
           <div>
