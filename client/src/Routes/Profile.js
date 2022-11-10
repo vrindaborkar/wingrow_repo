@@ -1,7 +1,5 @@
 import React , {useState , useEffect , useRef} from "react";
-import authHeader from "../services/auth.headers";
 import '../styles/Profile.css'
-import axios from 'axios'
 import UserService from "../services/user.service";
 import Spinner from '../components/Spinner'
 import AuthService from "../services/auth.service";
@@ -9,7 +7,6 @@ import AuthService from "../services/auth.service";
 const Profile = () => {
   const [user , setuser] = useState();
   const [Loading, setLoading] = useState(false)
-  const [path, setpath] = useState()
   const [toggleImage, settoggleImage] = useState(false)
   const [toggleAddress, settoggleAddress] = useState(false)
   let addressText = useRef("")
@@ -19,20 +16,6 @@ const Profile = () => {
     }
 );
 
-let data = undefined;
-let contentType = undefined;
-let base64String = undefined;
-
-useEffect(() => {
-  setpath(user?.pic)
-}, [user])
-
-
-if(path){
-  data = path.data;
-  contentType = path.contentType;
-  base64String = data && btoa(String.fromCharCode(...new Uint8Array(data.data)));
-}
 
 useEffect(() => {
   UserService.getAllUsers().then(res=>{
@@ -56,23 +39,20 @@ const handleSubmitAddress = (e) => {
   settoggleAddress(!toggleAddress)
 }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const formData = new FormData();
-    formData.append('photo', newPic.photo);
-
-    axios.put('https://wingrowagritech.herokuapp.com/auth/user', formData , {headers:authHeader()})
-         .then(res => {
-          const resp = res?.data;
-            setuser(resp);
-            window.location.reload();
-            setLoading(false);
-         })
-         .catch(err => {
-            console.log(err);
-         });
-    settoggleImage(!toggleImage)
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append('photo', newPic.photo);
+  setLoading(true)
+  
+  if(formData){
+    AuthService.addimage(formData).then(res=>{
+      setuser(res);
+      window.location.reload();
+      setLoading(false)
+    })
+  }
+  settoggleImage(!toggleImage)
 }
 
 const handlePhoto = (e) => {
@@ -94,7 +74,7 @@ const handleImagetoggle = () => {
       <div className="profile">
         <div className="profile_container">
         <div className="profile_image_wrapper">
-            <img className="profile_img" src={path ? `data:${contentType};base64,${base64String}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="profile"/>
+            <img className="profile_img" src={user.pic ? user.pic : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="profile"/>
         </div>
         <div className="profile_details">
           <div>

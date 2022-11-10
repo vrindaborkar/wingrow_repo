@@ -3,6 +3,14 @@ const User = require('../models/User')
 var jwt = require("jsonwebtoken");
 const config =require('../config/auth.config')
 const jwt_decode =  require("jwt-decode");
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({ 
+  cloud_name: 'dpxzakezm', 
+  api_key: '587784988219159', 
+  api_secret: 'T571dxi6AZtczKJP0KYFVmLSQuc',
+  secure: true
+});
 
 exports.signup = async(req , res , next)=>{
       const {  phone , password , firstname , lastname , type , farmertype} = req.body;
@@ -79,31 +87,22 @@ exports.signin = (req, res) => {
   
 
   exports.postPic = async(req,res) => {
-    try {
-      let token = req.headers["x-access-token"];
-      const { id } = jwt_decode(token)
+    let token = req.headers["x-access-token"];
+    const { id } = jwt_decode(token)
+    const file = req.files.photo
+    const data = await cloudinary.uploader.upload(file.tempFilePath);
 
-      if (!req.file) {
-        res.json({
-          success: false,
-          message: "You must provide at least 1 file"
-        });
-      } else {
-        let imageUploadObject = {
-            data: req.file.buffer,
-            contentType: req.file.mimetype
-        };
-        const data = await User.findByIdAndUpdate({_id : id} , {pic : imageUploadObject})
-        if(data){
-          res.status(200).json(data)
-        }
-        else{
-          res.status(400).json("something went wrong")
-        }
+    if(data){
+      const response = await User.findByIdAndUpdate({_id : id} , {pic : data.secure_url})
+
+      if(!response){
+        res.status(400).json("something went wrong")
       }
-    } catch (error) {
-      console.error(error);
-    res.status(500).send("Server Error");
+
+      res.status(200).send(response)
+    }
+    else{
+      res.status(400).json("something went wrong")
     }
   }
 

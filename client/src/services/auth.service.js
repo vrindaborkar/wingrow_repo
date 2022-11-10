@@ -39,7 +39,7 @@ const addAddress = (address) => {
 
 const addimage = (formData) => {
   return axios
-    .put(API_URL + "user", {formData} , {headers:authHeader()})
+    .put(API_URL + "image", formData , {headers:authHeader()})
     .then((response) => {
       return response.data;
     });
