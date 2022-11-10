@@ -90,9 +90,13 @@ const handleImagetoggle = () => {
 
   return (
     <div>
-      {!Loading && user ? <div className="profile">
-        <img className="profile_img" src={path ? `data:${contentType};base64,${base64String}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="profile"/>
-        <div>
+      {!Loading && user ? 
+      <div className="profile">
+        <div className="profile_container">
+        <div className="profile_image_wrapper">
+            <img className="profile_img" src={path ? `data:${contentType};base64,${base64String}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="profile"/>
+        </div>
+        <div className="profile_details">
           <div>
           Mobile No : {user.phone}
           </div>
@@ -103,7 +107,7 @@ const handleImagetoggle = () => {
             Address : {user.address}
           </div>}
         </div>
-        <div>
+        <div className="profile_btn_grp">
         {
         toggleImage ? 
         <form className="form_uploaddata" onSubmit={handleSubmit} encType='multipart/form-data'>
@@ -111,14 +115,17 @@ const handleImagetoggle = () => {
                 type="file" 
                 accept=".png, .jpg, .jpeg"
                 name="photo"
+                style={{marginLeft:"auto"}}
                 onChange={handlePhoto}
             />
                     <input 
                 type="submit"
+                className="profile_btn_toggle"
             />
+            <button className="profile_btn_toggle" onClick={()=>settoggleImage(!toggleImage)}>cancel</button>
         </form>
         :
-        <button onClick={handleImagetoggle}>Upload Profile</button>
+        <button className="profile_btn_toggle" onClick={handleImagetoggle}>Upload Profile</button>
         }
        {
        toggleAddress?
@@ -131,11 +138,14 @@ const handleImagetoggle = () => {
             />
                     <input 
                 type="submit"
+                className="profile_btn_toggle"
             />
+            <button className="profile_btn_toggle" onClick={()=>settoggleAddress(!toggleAddress)}>cancel</button>
         </form>
         :
-            <button onClick={handleAddresstoggle}>{user.address?"Update Address":"Add Address"}</button>
+            <button className="profile_btn_toggle" onClick={handleAddresstoggle}>{user.address?"Update Address":"Add Address"}</button>
         }
+        </div>
         </div>
         </div>:<Spinner/>}
     </div>
