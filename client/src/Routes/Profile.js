@@ -1,13 +1,11 @@
 import React , {useState , useEffect} from "react";
 import authHeader from "../services/auth.headers";
-import AuthService from "../services/auth.service";
 import '../styles/Profile.css'
 import axios from 'axios'
 import UserService from "../services/user.service";
 import Spinner from '../components/Spinner'
 
 const Profile = () => {
-  const currentUser = AuthService.getCurrentUser();
   const [user , setuser] = useState();
   const [Loading, setLoading] = useState(false)
   const [path, setpath] = useState()
@@ -17,13 +15,14 @@ const Profile = () => {
     }
 );
 
+let data = undefined;
+let contentType = undefined;
+let base64String = undefined;
+
 useEffect(() => {
   setpath(user?.pic)
 }, [user])
 
-var data = undefined;
-var contentType = undefined;
-var base64String = undefined;
 
 if(path){
   data = path.data;
@@ -32,11 +31,10 @@ if(path){
 }
 
 useEffect(() => {
-  UserService.getFarmers().then(res=>{
-    const user = res?.data;
-    const userFilter = user.filter(e => e._id === currentUser.id)
-    setuser(userFilter[0])
-  })//eslint-disable-next-line
+  UserService.getAllUsers().then(res=>{
+    const response = res?.data
+    setuser(response[0])
+  })
 }, [])
 
 
@@ -49,17 +47,13 @@ useEffect(() => {
     axios.put('https://wingrowagritech.herokuapp.com/auth/user', formData , {headers:authHeader()})
          .then(res => {
           const resp = res?.data;
-            setuser(resp)
-            console.log(resp.pic)
-            setpath(resp.pic)
-            setLoading(false)
+            setuser(resp);
+            window.location.reload();
+            setLoading(false);
          })
          .catch(err => {
             console.log(err);
          });
-      setTimeout(() => {
-        window.location.reload()
-      }, 500);
 }
 
 const handlePhoto = (e) => {
@@ -68,13 +62,13 @@ const handlePhoto = (e) => {
   return (
     <div>
       {!Loading && user ? <div className="profile">
-        <img className="profile_img" src={data ? `data:${contentType};base64,${base64String}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="profile"/>
+        <img className="profile_img" src={path ? `data:${contentType};base64,${base64String}` : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="profile"/>
         <div>
           <div>
-          Mobile No : {currentUser.phone}
+          Mobile No : {user.phone}
           </div>
           <div>
-          Name : {currentUser.firstname} {currentUser.lastname}
+          Name : {user.firstname} {user.lastname}
           </div>
         </div>
         <form className="form_uploaddata" onSubmit={handleSubmit} encType='multipart/form-data'>

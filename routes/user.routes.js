@@ -16,5 +16,6 @@ module.exports = function(app) {
   app.get("/outward" , [authJwt.verifyToken ] , controller.getOutward);
   app.get("/inwardData" , [authJwt.verifyToken ] , controller.getInwardData);
   app.get("/outwardData" , [authJwt.verifyToken ] , controller.getOutwardData);
-  app.get("/farmer" , controller.getUser)
+  app.get("/farmer" , controller.getUser);
+  app.get("/allusers" , controller.getAllUsers);
 };

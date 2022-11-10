@@ -22,6 +22,10 @@ const API_URL = 'https://wingrowagritech.herokuapp.com/';
   const getFarmers = () => {
     return axios.get(API_URL + 'farmer', { headers: authHeader() });
   }
+
+  const getAllUsers = () => {
+    return axios.get(API_URL + 'allusers', { headers: authHeader() });
+  }
   
 
 
@@ -30,7 +34,8 @@ const UserService = {
     getStallsData,
     getAdminData,
     getInOutdata,
-    getFarmers
+    getFarmers,
+    getAllUsers
   };
   
   export default UserService;

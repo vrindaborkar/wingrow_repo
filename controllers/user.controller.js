@@ -18,6 +18,15 @@ exports.getUser = async(req, res) => {
     res.status(200).json(filter)
   }
 
+  exports.getAllUsers = async(req, res) => {
+    let token = req.headers["x-access-token"];
+    const { id } = jwt_decode(token)
+
+
+    const userdata = await User.find({"_id" : id});
+    res.send(userdata)
+  }
+
 
 exports.getInwardData = async(req,res,next) => {
     const inwarddata = await Inward.find();
