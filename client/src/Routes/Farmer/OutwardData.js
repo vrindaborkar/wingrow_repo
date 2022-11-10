@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
 import '../../styles/Farmer.css'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -180,7 +179,6 @@ const options = [
 const theme = createTheme();
 
 export default function OutwardData() {
-  const navigate  = useNavigate()
   const [Data, setData] = useState({
     sales_quantity:undefined,
     sales_rate:undefined,
@@ -205,8 +203,8 @@ export default function OutwardData() {
     if (commodity && Data.sales_quantity && Data.sales_rate && Data.market && time) {
       FarmerService.postOutward(commodity , Data.sales_quantity , Data.sales_rate , Data.market , time).then(
         () => {
-          alert("Data added successfully")
-          navigate('../farmershome')
+          alert("Outward data has been added successfully")
+          window.location.reload();
         },
         (error) => {
           console.log(error)

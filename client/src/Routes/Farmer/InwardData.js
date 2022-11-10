@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {useNavigate } from 'react-router-dom';
 import '../../styles/Farmer.css'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -179,7 +178,6 @@ const options = [
 
 const theme = createTheme();
 export default function InwardData() {
-  const navigate  = useNavigate()
   const [Data, setData] = useState({
     purchase_quantity:undefined,
     purchase_rate:undefined,
@@ -196,7 +194,6 @@ export default function InwardData() {
   }))
   }
   
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const time = dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ss')
@@ -204,8 +201,8 @@ export default function InwardData() {
     if (commodity && Data.purchase_quantity && Data.purchase_rate && Data.market && time) {
       FarmerService.postInward(commodity , Data.purchase_quantity , Data.purchase_rate , Data.market , time).then(
         () => {
-          alert("Data added successfully")
-          navigate('../farmershome');
+          alert("Inward data has been added successfully")
+          window.location.reload();
         },
         (error) => {
           console.log(error)
