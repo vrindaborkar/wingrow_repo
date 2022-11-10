@@ -1,6 +1,7 @@
 import axios from "axios";
+import authHeader from "./auth.headers";
 
-const API_URL = "https://wingrowagritech.herokuapp.com/auth/";
+const API_URL = "https://wingrowagritech.herokuapp.com/";
 
 const register = (phone , password , firstname , lastname , type , farmertype) => {
   return axios.post(API_URL + "signup", {
@@ -28,6 +29,22 @@ const login = (phone, password) => {
     });
 };
 
+const addAddress = (address) => {
+  return axios
+    .post(API_URL + "address", {address} , {headers:authHeader()})
+    .then((response) => {
+      return response.data;
+    });
+};
+
+const addimage = (formData) => {
+  return axios
+    .put(API_URL + "user", {formData} , {headers:authHeader()})
+    .then((response) => {
+      return response.data;
+    });
+};
+
 const logout = () => {
   localStorage.removeItem("user");
 };
@@ -40,7 +57,9 @@ const AuthService = {
   register,
   login,
   logout,
-  getCurrentUser
+  getCurrentUser,
+  addAddress,
+  addimage
 };
 
 export default AuthService;

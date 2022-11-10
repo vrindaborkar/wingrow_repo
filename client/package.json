@@ -19,6 +19,8 @@
     "react-countup": "^6.3.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-multi-carousel": "^2.8.2",
+    "react-multi-carousel-18": "^2.8.1",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "shortid": "^2.2.16",

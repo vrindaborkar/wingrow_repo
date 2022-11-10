@@ -12,7 +12,8 @@ const User = mongoose.model(
     pic:{
       data: Buffer,
     contentType: String
-    }
+    },
+    address:String
   })
 );
 

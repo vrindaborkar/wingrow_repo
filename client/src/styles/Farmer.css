@@ -287,14 +287,14 @@
 
 @media (max-width: 1080px) {
     .farmers_navigate{
-        margin-top: 8vh;
+        margin-top: 6vh;
         padding-top: 2rem;
     }
 }
 
 @media (max-width: 900px) {
     .farmers_navigate{
-        margin-top: 10vh;
+        margin-top: 6vh;
     }
 
     .places_market_component0{

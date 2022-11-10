@@ -19,7 +19,8 @@ exports.signup = async(req , res , next)=>{
           password:bcrypt.hashSync(password, 8),
           role:type,
           farmertype:typeStr,
-          pic:undefined
+          pic:undefined,
+          address:undefined
         })
   
         const data = await user.save()
@@ -70,7 +71,8 @@ exports.signin = (req, res) => {
           role: user.role,
           accessToken: token,
           farmertype:user.farmertype,
-          pic:user.pic
+          pic:user.pic,
+          address:user.address
         });
       });
   };
@@ -92,6 +94,34 @@ exports.signin = (req, res) => {
             contentType: req.file.mimetype
         };
         const data = await User.findByIdAndUpdate({_id : id} , {pic : imageUploadObject})
+        if(data){
+          res.status(200).json(data)
+        }
+        else{
+          res.status(400).json("something went wrong")
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    res.status(500).send("Server Error");
+    }
+  }
+
+
+  exports.addAddress = async(req,res) => {
+    const {address} = req.body
+    try {
+      let token = req.headers["x-access-token"];
+      const { id } = jwt_decode(token)
+
+      if (!address) {
+        res.json({
+          success: false,
+          message: "Please provide valid address"
+        });
+      } else {
+
+        const data = await User.findByIdAndUpdate({_id : id} , {address : address})
         if(data){
           res.status(200).json(data)
         }

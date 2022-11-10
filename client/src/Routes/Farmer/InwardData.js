@@ -1,4 +1,4 @@
-import React,{useState } from 'react';
+import React,{useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -15,6 +15,7 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import dayjs from 'dayjs'
 import FarmerService from '../../services/farmer.service'
+import Autocomplete from '@mui/material/Autocomplete';
 
 const locations = [
   {location:"Hadapsar"},
@@ -28,176 +29,164 @@ const locations = [
 
 const options = [
   // Leaves
-  { title: "Amaranthus" },
-  { title: "Beet Root"},
-  { title: "Chukka- sorrel Leaves" },
-  { title: "Colocasia Leaves" },
-  { title: "Coriander"},
-  { title: "Curry Leaves" },
-  { title: "Dill" },
-  { title: "Fenugreek Leaves"},
-  { title: "Green Amaranth" },
-  { title: "Spinach" },
-  { title: "Spring Onion"},
-  { title: "Sufflower" },
+  { label: "Amaranthus" },
+  { label: "Beet Root"},
+  { label: "Chukka- sorrel Leaves" },
+  { label: "Colocasia Leaves" },
+  { label: "Curry Leaves" },
+  { label: "Dill" },
+  { label: "Fenugreek Leaves"},
+  { label: "Green Amaranth" },
+  { label: "Spinach" },
+  { label: "Spring Onion"},
+  { label: "Sufflower" },
 // Wild-Antic
-  { title: "Apple Gourd"},
-  { title: "Ashgourd" },
-  { title: "Chilli" },
-  { title: " Colocasia Roots" },
-  { title: "Cucumber Madras" },
-  { title: "Kohlrabi" },
-  { title: "Onion White-Pandhara Kanda" },
-  { title: "Pointed Gourd" },
-  { title: "Pumpkin" },
-  { title: "Raw Jackfruit" },
-  { title: "Raw Papaya" },
-  { title: "Sambhar Kanda" },
-  { title: "Snake Gourd"  },
-  { title: "Spiny Gourd" },
-  { title: "Sweet Potato" },
-  { title: "Water Chestnuts" },
-  { title: "Yam" },
+  { label: "Chilli" },
+  { label: " Colocasia Roots" },
+  { label: "Cucumber Madras" },
+  { label: "Kohlrabi" },
+  { label: "Onion White-Pandhara Kanda" },
+  { label: "Pointed Gourd" },
+  { label: "Pumpkin" },
+  { label: "Raw Jackfruit" },
+  { label: "Raw Papaya" },
+  { label: "Sambhar Kanda" },
+  { label: "Snake Gourd"  },
+  { label: "Spiny Gourd" },
+  { label: "Sweet Potato" },
+  { label: "Yam" },
 // Exotic
-  { title: "Asparagus" },
-  { title: "Avocado" },
-  { title: "Baby Corn" },
-  { title: "Baby Potato" },
-  { title: "Basil" },
-  { title: "Broccoli" },
-  { title: "Celery" },
-  { title: "Cherry Tomato" },
-  { title: "chinese Cabbage" },
-  { title: "Coccinia" },
-  { title: "Green Zucchini" },
-  { title: "Iceberg Lettuce" },
-  { title: "Parsley" },
-  { title: "Red Cabbage" },
-  { title: "Red Capsicum" },
-  { title: "Romaine Lettuce" },
-  { title: "Yellow Capsicum" },
-  { title: "Yellow Zucchini" },
-  { title: "Mushroom" },
-  { title: "Sweet Corn" },
-  { title: "Sweet Corn Grains" },
+  { label: "Asparagus" },
+  { label: "Avocado" },
+  { label: "Baby Corn" },
+  { label: "Baby Potato" },
+  { label: "Basil" },
+  { label: "Broccoli" },
+  { label: "Celery" },
+  { label: "Cherry Tomato" },
+  { label: "chinese Cabbage" },
+  { label: "Coccinia" },
+  { label: "Green Zucchini" },
+  { label: "Iceberg Lettuce" },
+  { label: "Parsley" },
+  { label: "Red Cabbage" },
+  { label: "Red Capsicum" },
+  { label: "Romaine Lettuce" },
+  { label: "Yellow Capsicum" },
+  { label: "Yellow Zucchini" },
+  { label: "Mushroom" },
+  { label: "Sweet Corn" },
+  { label: "Sweet Corn Grains" },
 // Special stall
-  { title: "Cabbage" },
-  { title: "Cauliflower" },
-  { title: "Onion" },
-  { title: "Potato (Agra)" },
-  { title: "Potato (Indore)" },
-  { title: "Potato (Talegav)" },
+  { label: "Cabbage" },
+  { label: "Potato (Agra)" },
+  { label: "Potato (Indore)" },
+  { label: "Potato (Talegav)" },
   // Fruit Vegetables
-  { title: "Apple Gourd" },
-  { title: "Beans Double" },
-  { title: "Bitter Gourd" },
-  { title: "Brinjal Big" },
-  { title: "Brinjal Green" },
-  { title: "Brinjal Long Green" },
-  { title: "Brinjal Purple" },
-  { title: "Carrot" },
-  { title: "Cauliflower" },
-  { title: "Chavali Beans" },
-  { title: "Chickpeas - Chana sprouts" },
-  { title: "chilli - Bhavgagari Mirchi" },
-  { title: "Chilli Green" },
-  { title: "chilli Simple" },
-  { title: "Cluster Beans" },
-  { title: "Coccinia" },
-  { title: "Coconut" },
-  { title: "Colocasia Roots" },
-  { title: "Coriander" },
-  { title: "Cucumber" },
-  { title: "Cucumder Madras" },
-  { title: "Cucumber Madras- Sambar Kakadi" },
-  { title: "Cucumber Polyhouse- English Kakadi" },
-  { title: "Curry Leaves" },
-  { title: "Drum Sticks" },
-  { title: "Elaichi Banana" },
-  { title: "Field Beans" },
-  { title: "Fresh Peeled Green Peas" },
-  { title: "Garlic" },
-  { title: "Ginger" },
-  { title: "Green Capsicum" },
-  { title: "Green Mango" },
-  { title: "Green Peas" },
-  { title: "Groundnut Pods" },
-  { title: "Tamarind" },
-  { title: "Lady Finger" },
-  { title: "Lemon" },
-  { title: "Lemon Grass" },
-  { title: "Mint" },
-  { title: "Onion" },
-  { title: "Onion Sambhar" },
-  { title: "Lima Beans" },
-  { title: "Peeled Garlic" },
-  { title: "Potato" },
-  { title: "Radish" },
-  { title: "Ridgegourd" },
-  { title: "Sponge Gourd" },
-  { title: "Spring Onion" },
-  { title: "Tomato" },
-  { title: "Wal" },
-  { title: "Wal Broad" },
-  { title: "Wal surati" },
-  { title: "Water Chestnuts" },
+  { label: "Beans Double" },
+  { label: "Bitter Gourd" },
+  { label: "Brinjal Big" },
+  { label: "Brinjal Green" },
+  { label: "Brinjal Long Green" },
+  { label: "Brinjal Purple" },
+  { label: "Carrot" },
+  { label: "Cauliflower" },
+  { label: "Chavali Beans" },
+  { label: "Chickpeas - Chana sprouts" },
+  { label: "chilli - Bhavgagari Mirchi" },
+  { label: "Chilli Green" },
+  { label: "chilli Simple" },
+  { label: "Cluster Beans" },
+  { label: "Coconut" },
+  { label: "Colocasia Roots" },
+  { label: "Coriander" },
+  { label: "Cucumber" },
+  { label: "Cucumder Madras" },
+  { label: "Cucumber Madras- Sambar Kakadi" },
+  { label: "Cucumber Polyhouse- English Kakadi" },
+  { label: "Drum Sticks" },
+  { label: "Field Beans" },
+  { label: "Fresh Peeled Green Peas" },
+  { label: "Garlic" },
+  { label: "Ginger" },
+  { label: "Green Capsicum" },
+  { label: "Green Mango" },
+  { label: "Green Peas" },
+  { label: "Groundnut Pods" },
+  { label: "Tamarind" },
+  { label: "Lady Finger" },
+  { label: "Lemon Grass" },
+  { label: "Mint" },
+  { label: "Onion" },
+  { label: "Onion Sambhar" },
+  { label: "Lima Beans" },
+  { label: "Peeled Garlic" },
+  { label: "Potato" },
+  { label: "Radish" },
+  { label: "Ridgegourd" },
+  { label: "Sponge Gourd" },
+  { label: "Tomato" },
+  { label: "Wal" },
+  { label: "Wal Broad" },
+  { label: "Wal surati" },
+  { label: "Water Chestnuts" },
   // Fruit Export
-  { title: "Apple Fuji" },
-  { title: "Apple Green" },
-  { title: "Apple Kinnaur" },
-  { title: "Apple Red Delicious" },
-  { title: "Apple Shimla Big" },
-  { title: "Kiwi" },
-  { title: "Litchi" },
-  { title: "Strawberry" },
+  { label: "Apple Fuji" },
+  { label: "Apple Green" },
+  { label: "Apple Kinnaur" },
+  { label: "Apple Red Delicious" },
+  { label: "Apple Shimla Big" },
+  { label: "Kiwi" },
+  { label: "Litchi" },
+  { label: "Strawberry" },
   // Fruit Summer
-  { title: "Grapes Black" },
-  { title: "Grapes Green" },
-  { title: "Jambhul" },
-  { title: "Mango Badami (For Juice)" },
-  { title: "Mango Devgad Hapus" },
-  { title: "Mango Keshar" },
-  { title: "Mango Lalbag" },
-  { title: "Mango Payri" },
-  { title: "Mango Ratnagiri Hapus" },
-  { title: "Mango Totapuri" },
-  { title: "Muskmelon" },
-  { title: "Watermelon Kiran" },
-  { title: "Watermelon Regular" },
+  { label: "Grapes Black" },
+  { label: "Grapes Green" },
+  { label: "Jambhul" },
+  { label: "Mango Badami (For Juice)" },
+  { label: "Mango Devgad Hapus" },
+  { label: "Mango Keshar" },
+  { label: "Mango Lalbag" },
+  { label: "Mango Payri" },
+  { label: "Mango Ratnagiri Hapus" },
+  { label: "Mango Totapuri" },
+  { label: "Muskmelon" },
+  { label: "Watermelon Kiran" },
+  { label: "Watermelon Regular" },
   // Fruit
-  { title: "Amla" },
-  { title: "Apple Gourd" },
-  { title: "Ashgourd" },
-  { title: "Banana" },
-  { title: "Beet Root" },
-  { title: "Custard-apple" },
-  { title: "Elaichi Banana" },
-  { title: "Figs" },
-  { title: "Guava" },
-  { title: "Jackfruit Peeled" },
-  { title: "Jujube - Ber" },
-  { title: "Lemon" },
-  { title: "Orange Small" },
-  { title: "Orange Kinnow" },
-  { title: "Papaya" },
-  { title: "Pear Imported" },
-  { title: "Pomogranate" },
-  { title: "Raw Banana" },
-  { title: "Sapodilla" },
-  { title: "Sugarcane" },
-  { title: "Sweet Lime" },
-  { title: "Tender" },
+  { label: "Amla" },
+  { label: "Apple Gourd" },
+  { label: "Ashgourd" },
+  { label: "Banana" },
+  { label: "Custard-apple" },
+  { label: "Elaichi Banana" },
+  { label: "Figs" },
+  { label: "Guava" },
+  { label: "Jackfruit Peeled" },
+  { label: "Jujube - Ber" },
+  { label: "Orange Small" },
+  { label: "Orange Kinnow" },
+  { label: "Papaya" },
+  { label: "Pear Imported" },
+  { label: "Pomogranate" },
+  { label: "Raw Banana" },
+  { label: "Sapodilla" },
+  { label: "Sugarcane" },
+  { label: "Sweet Lime" },
+  { label: "Tender" },
 ];
+
 
 const theme = createTheme();
 export default function InwardData() {
   const navigate  = useNavigate()
   const [Data, setData] = useState({
-    commodity:"",
     purchase_quantity:undefined,
     purchase_rate:undefined,
     market:""
   })
+  const [commodity, setcommodity] = useState("")
+
 
   const handleData = (e)=>{
     const {name , value} = e.target
@@ -210,11 +199,10 @@ export default function InwardData() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const time = dayjs(Date.now()).format('YYYY-MM-DDTHH:mm:ss')
     
-    if (Data.commodity && Data.purchase_quantity && Data.purchase_rate && Data.market && time) {
-      FarmerService.postInward(Data.commodity , Data.purchase_quantity , Data.purchase_rate , Data.market , time).then(
+    if (commodity && Data.purchase_quantity && Data.purchase_rate && Data.market && time) {
+      FarmerService.postInward(commodity , Data.purchase_quantity , Data.purchase_rate , Data.market , time).then(
         () => {
           alert("Data added successfully")
           navigate('../farmershome');
@@ -223,11 +211,11 @@ export default function InwardData() {
           console.log(error)
           alert("Failed to add data")
           setData({
-            commodity:"",
             market:'',
             purchase_rate:0,
             purchase_quantity:0
           })
+          setcommodity("")
         }
       );
     } else {
@@ -280,26 +268,15 @@ export default function InwardData() {
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <FormControl sx={{ minWidth: 250 }}>
-                <InputLabel id="demo-simple-select-autowidth-label">Commodity</InputLabel>
-                <Select
-                  labelId="demo-simple-select-autowidth-label"
-                  id="demo-simple-select-autowidth"
-                  value={Data.commodity}
-                  onChange={handleData}
-                  label="commodity"
-                  name='commodity'
-                  required
-                >
-                  {
-                    options.map((e,i)=>{
-                      return(
-                        <MenuItem key={i} value={e.title}>{e.title}</MenuItem>
-                      )
-                    })
-                  }
-                </Select>
-                </FormControl>
+                    <Autocomplete
+                      isOptionEqualToValue={(option, value) => option.value === value.value}
+                      disablePortal
+                      id="combo-box-demo"
+                      onChange={(event , value) => setcommodity(value?.label)}
+                      options={options}
+                      sx={{ width: 250 }}
+                      renderInput={(params) => <TextField name="commodity" {...params} label="commodities" />}
+                    />
               </Grid>
               <Grid item xs={12}>
                 <TextField

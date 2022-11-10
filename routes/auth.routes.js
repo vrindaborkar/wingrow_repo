@@ -17,4 +17,5 @@ module.exports = function(app) {
   app.post("/auth/signup",[verifySignUp.checkDuplicatePhone],controller.signup );
   app.post("/auth/signin", controller.signin);
   app.put("/auth/user" , upload.single('photo') , controller.postPic)
+  app.post("/auth/address", controller.addAddress);
 };
