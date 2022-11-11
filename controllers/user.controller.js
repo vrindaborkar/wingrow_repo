@@ -27,6 +27,12 @@ exports.getUser = async(req, res) => {
     res.send(userdata)
   }
 
+  exports.getUsers = async(req , res) => {
+    const data = await User.find();
+    const filter = data.filter(e=>e.role === "customer");
+    res.status(200).json(filter)
+  }
+
 
 exports.getInwardData = async(req,res,next) => {
     const inwarddata = await Inward.find();

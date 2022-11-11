@@ -38,17 +38,21 @@
 .overalldata_header{
     flex: 1;
     text-align: center;
+    letter-spacing: 1.5px;
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 .filter_btn_admin{
     border: none;
-    width: 50px;
+    width: 80px;
+    height: 20px;
     position: sticky;
     background-color: white;
     font-size: 1.2rem;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-right: 20px;
+    margin-left: 50px;
 }
 
 .filter_btn_admin:hover{
@@ -108,7 +112,7 @@
 
 .card_layout{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin: 1rem auto;
+    margin: 1rem;
     width: 300px;
     height: 150px;
     display: flex;
@@ -245,8 +249,39 @@
     background-color: rgb(201, 186, 186);
 }
 
+.admin_links{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 20vh;
+    width: 90vw;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 2rem;
+    margin: 1rem;
+}
+
+.admin_links_details{
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.admin_links_details:hover{
+    color: black;
+}
+
+
 @media (max-width: 798px) {
     .cancellation_card{
         margin: 1rem auto;
+    }
+
+    .card_layout{
+        margin: 1rem auto;
+    }
+
+    .admin_links{
+        flex-direction: column;
+        padding: 2rem;
+        margin: 1rem;
     }
 }

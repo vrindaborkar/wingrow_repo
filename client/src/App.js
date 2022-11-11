@@ -36,7 +36,7 @@ const App = () => {
           </Route>
 
           <Route 
-            path="admin" 
+            path="admin/*" 
             element={
             <ProtectedRoute isAllowed={!!user && user.role === "admin"}>
               <Admin/>

@@ -18,4 +18,5 @@ module.exports = function(app) {
   app.get("/outwardData" , [authJwt.verifyToken ] , controller.getOutwardData);
   app.get("/farmer" , controller.getUser);
   app.get("/allusers" , controller.getAllUsers);
+  app.get("/users" , controller.getUsers);
 };
