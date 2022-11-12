@@ -1,20 +1,15 @@
 import React , {useState , useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
+import Spinner from '../components/Spinner'
 const user = AuthService.getCurrentUser();
-
-const theme = createTheme();
 
 export default function SignIn() {
 
@@ -27,6 +22,7 @@ export default function SignIn() {
   
 
   const navigate = useNavigate()
+  const [Loading, setLoading] = useState(false);
   const [data, setData] = useState({
     phone:'',
     password:''
@@ -45,6 +41,7 @@ export default function SignIn() {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setLoading(true)
 
     if (data.password && data.phone) {
       AuthService.login(data.phone, data.password).then(
@@ -62,6 +59,7 @@ export default function SignIn() {
             navigate("/customers");
             window.location.reload()
           }
+          setLoading(false)
           alert("login successful!")
         },
         (error) => {
@@ -71,6 +69,7 @@ export default function SignIn() {
             phone:'',
             password:''
           })
+          setLoading(false)
           navigate('/login')
         }
       );
@@ -81,23 +80,14 @@ export default function SignIn() {
 
   return (
     <div className='authContainer'>
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" sx={{boxShadow:"rgba(0, 0, 0, 0.35) 0px 5px 15px",padding:"1rem"}}>
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
+          {!Loading?<div className='authbox'>
+            <img className='login_image' src="./images/slidestall2.jpeg" alt="logo"/>
+            <form onSubmit={handleLogin} className='login_details'>
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign In
+              </Typography>
             <TextField
               margin="normal"
               required
@@ -146,10 +136,8 @@ export default function SignIn() {
                 </Link>
               </Grid>
             </Grid>
-          </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
-    </div>
+              </form>
+            </div>:<Spinner/>}
+         </div>
   );
 }

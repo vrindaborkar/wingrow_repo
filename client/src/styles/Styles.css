@@ -69,8 +69,36 @@ li {
   justify-content: center;
   align-items: center;
   margin: auto;
-  min-height: 90vh;
+  min-height: 80vh;
+  width: 100%;
 }
+
+.authbox{
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.login_image{
+  margin: 0 2rem;
+}
+
+.login_details{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  padding: 4rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 
 .logo_img_navbar{
   width: 180px;
@@ -198,13 +226,74 @@ li {
   padding: 2rem;
 }
 
+.authContainer_register{
+  width: 90vw;
+  min-height:80vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin: auto;
+}
 
+.register_details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 50%;
+  padding: 2rem;
+}
 
 @media (min-width: 1080px) {
   .menu-link ul li {
     width: 11vw;
   }
 }
+
+@media (max-width: 1200px) {
+  .authContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    min-height: 80vh;
+    width: 100%;
+  }
+
+  .register_details{
+    width: 100%;
+  }
+  
+  .authbox{
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: none;
+  }
+  
+  .login_image{
+    margin: 0 2rem;
+    width: 30vw;
+  }
+  
+.login_details{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  height: 100%;
+  padding: 4rem;
+  box-shadow: none;
+}
+}
+
 /* responsive css style  */
 @media (max-width: 1080px) {
   html {
@@ -226,6 +315,7 @@ li {
 
 /* responsive css style  */
 @media (max-width: 998px) {
+
   .profile_wrapper{
     width: 80vw;
   }
@@ -346,6 +436,32 @@ li {
     display: block;
     font-size: 2.5rem;
   }
+  .authbox{
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: none;
+  }
+  
+  .login_image{
+    margin: 0 2rem;
+    width: 60vw;
+  }
+  
+.login_details{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  height: 100%;
+  padding: 4rem;
+  box-shadow: none;
+}
 }
 
 @media (max-width: 520px) {
@@ -378,5 +494,32 @@ li {
     display: block;
     font-size: 2.5rem;
   }
+  .authbox{
+    width: 90vw;
+    height: 80vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: none;
+  }
+  
+  .login_image{
+    margin: 0 2rem;
+    width: 80vw;
+  }
+  
+.login_details{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-shadow: none;
+  margin-top: 2rem;
+}
 }
 

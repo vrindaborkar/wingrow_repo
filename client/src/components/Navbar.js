@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { TiDeleteOutline } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
+import logo from './wingrow-logo.jpg'
 
 const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
@@ -43,7 +44,7 @@ const Navbar = () => {
       <nav className="main-nav">
         {/* 1st logo part  */}
         <div className="logo">
-          <img alt="logo" className="logo_img_navbar" src="./images/wingrow-logo.jpg"/>
+          <img alt="logo" className="logo_img_navbar" src={logo}/>
         </div>
 
         {/* 2nd menu part  */}
@@ -85,7 +86,12 @@ const Navbar = () => {
 
             {showAdminBoard &&
               <li className="medialinks">
-              <Link onClick={()=>{setShowMediaIcons(false)}} to="/admin">Admin</Link>
+              <Link onClick={()=>{setShowMediaIcons(false)}} to="/admin">
+                <div className="profile_wrapper">
+                  <img className="profile_logo" src="https://cdn-icons-png.flaticon.com/512/1769/1769328.png" alt="logo"/>
+                  <p>Admin</p>
+                  </div>
+              </Link>
             </li>
             }
 
@@ -110,11 +116,21 @@ const Navbar = () => {
             </> : 
             <>
               <li className="medialinks">
-                <Link onClick={()=>{setShowMediaIcons(false)}} to="/login">Login</Link>
+                <Link onClick={()=>{setShowMediaIcons(false)}} to="/login">
+                  <div className="profile_wrapper">
+                    <img className="profile_logo" src="https://cdn-icons-png.flaticon.com/512/2609/2609282.png" alt="logo"/>
+                    <span>Login</span>
+                  </div>
+                </Link>
               </li>
 
               <li className="medialinks">
-                <Link onClick={()=>{setShowMediaIcons(false)}} to="/register">Register</Link>
+                <Link onClick={()=>{setShowMediaIcons(false)}} to="/register">
+                  <div className="profile_wrapper">
+                      <img className="profile_logo" src="https://cdn-icons-png.flaticon.com/512/2910/2910756.png" alt="logo"/>
+                      <span>Register</span>
+                    </div>
+                </Link>
               </li>
             </>
             }

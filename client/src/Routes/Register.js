@@ -1,15 +1,11 @@
 import React , {useState , useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -17,9 +13,6 @@ import Select from '@mui/material/Select';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
 const user = AuthService.getCurrentUser()
-
-
-const theme = createTheme();
 
 export default function Register() {
 
@@ -78,24 +71,13 @@ export default function Register() {
   };
 
   return (
-    <div className='authContainer'>
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs"  sx={{boxShadow:"rgba(0, 0, 0, 0.35) 0px 5px 15px",padding:"1rem"}}>
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
+    <div className='authContainer_register'>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <form className='register_details' component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -147,7 +129,7 @@ export default function Register() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={"farmer"}>Farmer</MenuItem>
+                  <MenuItem value={"farmer"}>Producer</MenuItem>
                   <MenuItem value={"customer"}>Customer</MenuItem>
                 </Select>
               </FormControl>
@@ -155,7 +137,7 @@ export default function Register() {
 
               {data.type === "farmer" && <Grid item xs={12}>
               <FormControl sx={{ width:"100%" }}>
-                <InputLabel id="demo-simple-select-helper-label">Farmer Type</InputLabel>
+                <InputLabel id="demo-simple-select-helper-label">Producer Type</InputLabel>
                 <Select
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
@@ -213,10 +195,7 @@ export default function Register() {
                 </Link>
               </Grid>
             </Grid>
-          </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
+        </form>
     </div>
   );
 }

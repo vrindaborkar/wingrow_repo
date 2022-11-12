@@ -27,28 +27,25 @@ const AdminHome = ({
   return (
     <>
     <div className='admin_main_component'>
-      <div className='admin_secondary_header'>
-        <FilterModal 
-        handleChangeMarket={handleChangeMarket}
-        fromDate={fromDate}
-        setfromDate={setfromDate}
-        toDate={toDate}
-        settoDate={settoDate}
-        value={value}
-        setValue={setValue}
-        handleSearch={handleSearch}
-        market={market}
-        farmersMarket={farmersMarket}
-        open={open}
-        setOpen={setOpen}
-        handleClose={handleClose}
-        handleOpen={handleOpen}
-        handleSearchmarkets={handleSearchmarkets}
-        handleSearchDate={handleSearchDate}
-        />
-    </div>
-
         <div>
+          <FilterModal 
+          handleChangeMarket={handleChangeMarket}
+          fromDate={fromDate}
+          setfromDate={setfromDate}
+          toDate={toDate}
+          settoDate={settoDate}
+          value={value}
+          setValue={setValue}
+          handleSearch={handleSearch}
+          market={market}
+          farmersMarket={farmersMarket}
+          open={open}
+          setOpen={setOpen}
+          handleClose={handleClose}
+          handleOpen={handleOpen}
+          handleSearchmarkets={handleSearchmarkets}
+          handleSearchDate={handleSearchDate}
+          />
         <h2 className='overalldata_header'>Farmers Statistics</h2>
           {filteredInData && filteredOutData && <div className='cards_container'>
               <Card header={"Total farmers market :"} value={totalFarmers.size}/>

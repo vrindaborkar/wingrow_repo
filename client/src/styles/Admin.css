@@ -45,14 +45,15 @@
 
 .filter_btn_admin{
     border: none;
-    width: 80px;
+    width: 60px;
     height: 20px;
     position: sticky;
     background-color: white;
     font-size: 1.2rem;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-left: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .filter_btn_admin:hover{
@@ -119,6 +120,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: linear-gradient(to top right, #99ff99 18%, #99ff99 70%);
 }
 
 .filter_btn{
@@ -276,7 +278,13 @@
     }
 
     .card_layout{
+        width: 150px;
+        height: 100px;
         margin: 1rem auto;
+    }
+
+    .cards_container{
+        margin: 0;
     }
 
     .admin_links{
