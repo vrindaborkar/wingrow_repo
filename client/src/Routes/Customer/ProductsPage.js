@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import ProductContext from '../../cartContext/ProductContext'
 import Spinner from '../../components/Spinner'
 import './Productspage.css'
+import { itemsData } from './Itemsdata'
 
 const ProductsPage = () => {
   const {stallsData , Itemcount , handleClick } = useContext(ProductContext)
@@ -15,9 +16,11 @@ const ProductsPage = () => {
       <div className='products_container'>
         { stallsData && stallsData.length!==0 &&
           stallsData.map((e,i)=>{
+            const {img} = itemsData.find(ele => ele.label === e.commodity)
+            // 'https://tse2.mm.bing.net/th?id=OIP.iwB5ZHEBW7HiLsUfb4BYzwHaHa&pid=Api&P=0'
             return(
               <div key={i} className='products'>
-                <img className='img_products' alt='gift' src='https://tse2.mm.bing.net/th?id=OIP.iwB5ZHEBW7HiLsUfb4BYzwHaHa&pid=Api&P=0'/>
+                <img className='img_products' alt='gift' src={img}/>
                 <span className='content_product'>Market : {e.market}</span>
                 <span className='content_product'>Commodity : {e.commodity}</span>
                 <span className='content_product'>Price : {e.purchase_rate} / kg</span>

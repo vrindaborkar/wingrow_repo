@@ -1,4 +1,5 @@
 import React from 'react'
+import Spinner from '../../components/Spinner'
 
 const CustomersList = ({Customer}) => {
   return (
@@ -19,7 +20,7 @@ const CustomersList = ({Customer}) => {
 
                     <div className='farmers_entries_body'>
                         {
-                        Customer && Customer.map((e,i)=>{
+                        Customer && Customer.length!==0 && Customer.map((e,i)=>{
                             return(
                             <div key={i} className='farmers_entries_section'>
                                 <span className='farmers_entries_nav_srno'>
@@ -36,10 +37,10 @@ const CustomersList = ({Customer}) => {
                         })
                         }
                         {
-                            !Customer && <div className='farmers_entries_section'>No data available</div>
+                            !Customer && <Spinner/>
                         }
                         {
-                            Customer && Customer.length!==0 && <div className='farmers_entries_section'>No data available</div>
+                            Customer && Customer.length === 0 && <div className='farmers_entries_section'>No data available</div>
                         }
                     </div>
                 </div>

@@ -3,11 +3,12 @@
     min-height: 90vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 1rem;
     position: relative;
     width: 100%;
+    margin-top: 20px;
   }
 
   .main_container_stalls{
@@ -80,16 +81,19 @@
   }
 
   .advancebookinglink{
-    position: fixed;
+    display: inline-block;
+    align-self: flex-end;
+    position: sticky;
     right: 20px;
-    top: 18vh;
+    left: 0;
     font-size: 1.2rem;
   }
 
   .advancebookinglinkback{
-    position: fixed;
-    left: 20px;
-    top: 13vh;
+    display: inline-flex;
+    align-self: flex-start;
+    position: sticky;
+    margin-bottom: 20px;
   }
   
   .selected{

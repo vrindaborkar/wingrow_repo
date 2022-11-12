@@ -62,7 +62,6 @@ const Admin = () => {
         })
     }, [])
   
-  
     const totalFarmers = new Set();
     const farmers = new Set();
     const marketsData = new Set();
@@ -194,7 +193,7 @@ const Admin = () => {
             />
 
           <Route path='/listoffarmers' element={<FarmersListData Farmers={Farmers}/>}/>
-          <Route path='/listofCustomers' element={<CustomersList Customers={Customer}/>}/>
+          <Route path='/listofCustomers' element={<CustomersList Customer={Customer}/>}/>
           <Route path='/cancelledstalls' element={<CancellationFeed Farmers={Farmers} CancelledStalls={CancelledStalls} handleRefundDelete={handleRefundDelete}/>}/>
         </Route>
     </Routes>

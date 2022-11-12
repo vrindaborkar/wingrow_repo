@@ -161,9 +161,9 @@ const navigate = useNavigate()
   return (
     <>
     {!Loading ? <div className="Test">
+    <Link to="../advancebookings" className='advancebookinglink'>Advance booking !</Link>
       <h2>{Id}</h2>
       <div className='main_container_stalls'>
-        <Link to="../advancebookings" className='advancebookinglink'>Advance booking !</Link>
         <p className='seatsinput'>How Many Stalls Would You Like to Book?</p>
             <input className='seatsinput' value={numberOfSeats} onChange={(ev) => setNumberOfSeats(ev.target.value)}/>
             {

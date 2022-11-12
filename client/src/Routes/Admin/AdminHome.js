@@ -49,7 +49,6 @@ const AdminHome = ({
         <h2 className='overalldata_header'>Farmers Statistics</h2>
           {filteredInData && filteredOutData && <div className='cards_container'>
               <Card header={"Total farmers market :"} value={totalFarmers.size}/>
-              <Card header={"Total farmers :"} value={farmers.size}/>
               <Card header={"Purchase Quantity :"} value={purchaseQty}/>
               <Card header={"Purchase Amount :"} value={purchaseAmount}/>
               <Card header={"Sales Quantity :"} value={salesQty}/>
