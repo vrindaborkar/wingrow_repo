@@ -1,18 +1,24 @@
-import React from "react";
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from "react-router-dom";
-import { Home, Customer, Login, Register, Admin, Farmer } from './Routes/index';
 import './styles/Styles.css'
-import Profile from "./Routes/Profile";
-import Main from "./Routes/Main";
 import ProtectedRoute from "./utils/ProtectedRoutes";
 import AuthService from "./services/auth.service";
-import NotFound from "./Routes/NotFound";
-import Terms from "./Routes/Terms";
+const Main = lazy(()=> import('./Routes/Main'))
+const Profile = lazy(()=> import('./Routes/Profile'))
+const NotFound = lazy(()=> import('./Routes/NotFound'))
+const Terms = lazy(()=> import('./Routes/Terms'))
+const Home = lazy(()=> import('./Routes/Home'))
+const Customer = lazy(()=> import('./Routes/Customer/Customer'))
+const Register = lazy(()=> import('./Routes/Register'))
+const Login = lazy(()=> import('./Routes/Login'))
+const Farmer = lazy(()=> import('./Routes/Farmer/Farmer'))
+const Admin = lazy(()=> import('./Routes/Admin/Admin'))
 const user = AuthService.getCurrentUser();
 
 const App = () => {
   return (
     <>
+    <Suspense fallback={<div>Loading...</div>}>
     <Routes>
       <Route path='/' element={<Main/>}>
           <Route index element={<Home/>}/>
@@ -59,6 +65,7 @@ const App = () => {
       </Route>
       <Route path="*" element={<NotFound/>} />
     </Routes>
+    </Suspense>
     </>
   );
 };

@@ -32,7 +32,7 @@ const Home = () => {
 
       <div className='first_section'>
         <div className='first_section_component'>
-          <img src="./images/imgbook.jpeg" alt='stall_logo' className='first_image_section'/> 
+          <img src="./images/imgbook.webp" alt='stall_logo' className='first_image_section'/> 
           <h1 data-aos="fade-right" className="first_section_header">
                 <span>REVOLUTIONIZING THE STALL </span>
                 <span>BOOKING FOR DIRECT SELL</span>
@@ -44,7 +44,7 @@ const Home = () => {
             </div>
         </div>
         <div className="first_section_image">
-            <img className="image_header" alt="hero" src="./images/centerimage.jpg"/>
+            <img className="image_header" alt="hero" src="./images/centerimage.webp"/>
         </div>
       </div>
 
@@ -56,7 +56,7 @@ const Home = () => {
           </div>
           <div className='second_section'>
             <div data-aos="zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" className='second_section_component'>
-              <img src='./images/FPO.png' alt='img' className='second_section_img'/>
+              <img src='./images/FPO.webp' alt='img' className='second_section_img'/>
               
             </div>
 
@@ -65,10 +65,7 @@ const Home = () => {
               </div>
 
             <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
-            <img src='./images/WIN.png' alt='img' className='second_section_img'/>
-            {/* <span  data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text'>
-            Wingrow's Farmers Markets
-            </span> */}
+            <img src='./images/WIN.webp' alt='img' className='second_section_img'/>
             </div>
 
             <div data-aos="fade-down" className='second_section_component_arrow'>
@@ -76,10 +73,7 @@ const Home = () => {
             </div>
 
             <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
-            <img src='./images/CONS.png' alt='img' className='second_section_img'/>
-            {/* <span  data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine"  className='first_section_text' >
-            <h2 className='h2_style'>Consumers</h2> */}
-            {/* </span> */}
+            <img src='./images/CONS.webp' alt='img' className='second_section_img'/>
             </div>
         </div>
         </div>
@@ -91,7 +85,7 @@ const Home = () => {
           </div>
         <div className='second_section'>
             <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
-              <img src='./images/28.png' alt='img' className='second_section_img'/>
+              <img src='./images/FPO.webp' alt='img' className='second_section_img'/>
             </div>
 
               <div data-aos="fade-down" className='second_section_component_arrow'>
@@ -99,7 +93,7 @@ const Home = () => {
               </div>
 
             <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
-            <img src='./images/29.png' alt='img' className='second_section_img'/>
+            <img src='./images/WIN.webp' alt='img' className='second_section_img'/>
             </div>
 
             <div data-aos="fade-down" className='second_section_component_arrow'>
@@ -107,7 +101,7 @@ const Home = () => {
             </div>
 
             <div data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" className='second_section_component'>
-            <img src='./images/30.png' alt='img' className='second_section_img'/>
+            <img src='./images/CONS.webp' alt='img' className='second_section_img'/>
             </div>
         </div>
         </div>

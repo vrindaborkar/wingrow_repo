@@ -81,7 +81,7 @@ export default function SignIn() {
   return (
     <div className='authContainer'>
           {!Loading?<div className='authbox'>
-            <img className='login_image' src="./images/slidestall2.jpeg" alt="logo"/>
+            <img className='login_image' src="./images/slidestall2.webp" alt="logo"/>
             <form onSubmit={handleLogin} className='login_details'>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               </Avatar>

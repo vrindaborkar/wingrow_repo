@@ -4,7 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { TiDeleteOutline } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
-import logo from './wingrow-logo.jpg'
+import logo from './wingrow-logo.webp'
 
 const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);

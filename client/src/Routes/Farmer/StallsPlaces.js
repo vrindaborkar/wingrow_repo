@@ -40,7 +40,7 @@ useEffect(() => {
             places && places.map((e,i)=>{
                 return(
                     <div onClick={handleClick} key={e} id={e} className={`places_market_component${i%4}`}>
-                        <img id={e} alt='logo' className='image_1' src="../images/4.jpg"/>
+                        <img id={e} alt='logo' className='image_1' src="../images/4.webp"/>
                         <div id={e}>
                             <span id={e} className='places_headers'>Markets in <br/>{e}</span>
                         </div>

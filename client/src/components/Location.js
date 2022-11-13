@@ -53,7 +53,7 @@ function Location() {
                 <div key={i} class="location_container">
                         <div class="location_component_main">
                             
-                            <img alt="team" class="location_image_main" src="./images/slidestall2.jpeg"/>
+                            <img alt="team" class="location_image_main" src="./images/slidestall2.webp"/>
                             
                             <div class="places_main_wrapper">
                                 <a href={e.address}>
