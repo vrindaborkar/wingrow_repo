@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import './styles/Styles.css'
 import ProtectedRoute from "./utils/ProtectedRoutes";
 import AuthService from "./services/auth.service";
+import Spinner from './components/Spinner';
 const Main = lazy(()=> import('./Routes/Main'))
 const Profile = lazy(()=> import('./Routes/Profile'))
 const NotFound = lazy(()=> import('./Routes/NotFound'))
@@ -18,7 +19,7 @@ const user = AuthService.getCurrentUser();
 const App = () => {
   return (
     <>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Spinner/>}>
     <Routes>
       <Route path='/' element={<Main/>}>
           <Route index element={<Home/>}/>
