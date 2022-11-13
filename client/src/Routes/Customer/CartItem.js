@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import ProductContext from '../../cartContext/ProductContext'
+import { itemsData } from './Itemsdata'
 
 const CartItem = () => {
 const {cartsData , Counter , setcartsData , setItemcount , setCounter , Itemcount} = useContext(ProductContext)
@@ -57,20 +58,21 @@ const {cartsData , Counter , setcartsData , setItemcount , setCounter , Itemcoun
     <>
     {cartsData && cartsData.length !== 0 && cartsData.map((e)=>{
         const Counterid = Counter[e._id]
+        const {img} = itemsData.find(ele => ele.label === e.commodity)
         return(
           <div key={e._id} className='products'>
-            <img className='img_products' alt='gift' src='https://tse2.mm.bing.net/th?id=OIP.iwB5ZHEBW7HiLsUfb4BYzwHaHa&pid=Api&P=0'/>
+            <img className='img_products' alt='gift' src={img}/>
             <span className='content_product'>Market : {e.market}</span>
             <span className='content_product'>Commodity : {e.commodity}</span>
             <span className='content_product'>Price : {e.purchase_rate} / kg</span>
-            <span className='content_product'>
-              <span>
-                <button id={e._id} onClick={handleDeCounter}>----</button>
-                <span>  {Counterid}  </span>
-                <button id={e._id} onClick={handleInCounter}>++</button>
-              </span>
-              <button id={e._id} onClick={handleRemove}>Remove Item</button>
-            </span>
+            <div className='filter_remove_item_wrapper'>
+              <div className='filter_remove_item'>
+                <button className='decrement' id={e._id} onClick={handleDeCounter}>-</button>
+                <span className='counter_id'>{Counterid}</span>
+                <button className='increment' id={e._id} onClick={handleInCounter}>+</button>
+              </div>
+              <button className='btn_remove_item' id={e._id} onClick={handleRemove}>Remove Item</button>
+            </div>
           </div>
         )
       })}

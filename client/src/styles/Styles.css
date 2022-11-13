@@ -246,6 +246,31 @@ li {
   padding: 2rem;
 }
 
+.ReactTags__tag {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  width: 120px;
+  margin: 0.5rem;
+}
+
+.ReactTags__tagInputField{
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.ReactTags__selected{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  
+}
+
+
 @media (min-width: 1080px) {
   .menu-link ul li {
     width: 11vw;
@@ -265,7 +290,7 @@ li {
   .register_details{
     width: 100%;
   }
-  
+
   .authbox{
     width: 80vw;
     height: 80vh;

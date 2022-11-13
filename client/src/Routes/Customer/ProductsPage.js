@@ -4,13 +4,14 @@ import ProductContext from '../../cartContext/ProductContext'
 import Spinner from '../../components/Spinner'
 import './Productspage.css'
 import { itemsData } from './Itemsdata'
+import ToggleAddBtn from './ToggleAddBtn'
 
 const ProductsPage = () => {
   const {stallsData , Itemcount , handleClick } = useContext(ProductContext)
   return (
     <div className='products_page'>
       <div className='products_head'>
-        <Link className='head_products' to={`../customers`}>Items</Link>
+        <Link className='head_products' to={`/customers`}>Items</Link>
         <Link className='head_products' to="./cartspage">Cart {Itemcount}</Link>
       </div>
       <div className='products_container'>
@@ -24,7 +25,7 @@ const ProductsPage = () => {
                 <span className='content_product'>Market : {e.market}</span>
                 <span className='content_product'>Commodity : {e.commodity}</span>
                 <span className='content_product'>Price : {e.purchase_rate} / kg</span>
-                <button id={e._id} onClick={handleClick} className='add_product'>Add to cart</button>
+                <ToggleAddBtn id={e._id} handleClick={handleClick}/>
               </div>
             )
           })

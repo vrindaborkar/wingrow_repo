@@ -34,7 +34,7 @@ const handlecheckout = () => {
         </div>
         }
       </div>
-      {cartsData && cartsData.length !==0? <button onClick={handlecheckout}>...Proceed to checkout...</button>:<></>}
+      {cartsData && cartsData.length !==0? <button className='confirm_buying' onClick={handlecheckout}>Proceed to checkout</button>:<></>}
     </div>
   )
 }

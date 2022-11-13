@@ -2,8 +2,6 @@ import React , {useState , useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
@@ -12,7 +10,17 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
+import { WithContext as ReactTags } from 'react-tag-input';
+import Spinner from '../components/Spinner';
 const user = AuthService.getCurrentUser()
+
+
+const KeyCodes = {
+  comma: 188,
+  enter: 13
+};
+
+const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 export default function Register() {
 
@@ -24,15 +32,36 @@ export default function Register() {
   }, [])
 
   const navigate = useNavigate()
-
+  const [Loading, setLoading] = useState(false)
   const [data, setData] = useState({
     phone:'',
     password:'',
     firstname:'',
     lastname:'',
     type:'',
-    farmertype:""
+    farmertype:"",
+    address:""
   });
+
+  const [tags, setTags] = React.useState([]);
+
+  const handleDelete = i => {
+    setTags(tags.filter((tag, index) => index !== i));
+  };
+
+  const handleAddition = tag => {
+    setTags([...tags, tag]);
+  };
+
+  const handleDrag = (tag, currPos, newPos) => {
+    const newTags = tags.slice();
+
+    newTags.splice(currPos, 1);
+    newTags.splice(newPos, 0, tag);
+
+    // re-render
+    setTags(newTags);
+  };
 
   const handleChange = (e) => {
     const {name , value} = e.target;
@@ -47,12 +76,14 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (data.password && data.phone && data.type && data.firstname && data.lastname ) {
-      AuthService.register(data.phone, data.password , data.firstname , data.lastname , data.type , data.farmertype).then(
+    setLoading(true)
+    if (data.password && data.phone && data.type && data.firstname && data.lastname && data.address && tags.length!==0) {
+      AuthService.register(data.phone, data.password , data.firstname , data.lastname , data.type , data.farmertype , data.address , tags).then(
         () => {
-          alert("Registration successful")
-          navigate("/login");
-        },
+            navigate('/login')
+            setLoading(false)
+            alert("login successful!")
+          },
         (error) => {
           alert("Registration failed")
           setData({
@@ -61,17 +92,23 @@ export default function Register() {
             firstname:'',
             lastname:'',
             type:'',
-            farmertype:""
+            farmertype:"",
+            address:""
           })
+          setTags([])
+          setLoading(false)
         }
       );
     } else {
       alert("data invalid")
+      setLoading(false)
     }
   };
 
   return (
-    <div className='authContainer_register'>
+    <>
+    {!Loading?
+      <div className='authContainer_register'>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -81,6 +118,7 @@ export default function Register() {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
+                InputLabelProps={{ style: { fontSize: 14, fontFamily: "monospace" } }}
                   autoComplete="given-name"
                   name="firstname"
                   value={data.firstname}
@@ -94,6 +132,7 @@ export default function Register() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                InputLabelProps={{ style: { fontSize: 14, fontFamily: "monospace" } }}
                   required
                   fullWidth
                   id="lastName"
@@ -106,6 +145,7 @@ export default function Register() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                InputLabelProps={{ style: { fontSize: 14, fontFamily: "monospace" } }}
                   required
                   fullWidth
                   id="phone"
@@ -116,9 +156,10 @@ export default function Register() {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-              <FormControl sx={{ width:"100%" }}>
-                <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
+              <FormControl sx={{ width:"100%" , fontSize:14}}>
+                <InputLabel InputLabelProps={{ style: { fontSize: 14, fontFamily: "monospace" } }} id="demo-simple-select-helper-label">Type</InputLabel>
                 <Select
+                  sx={{fontSize: '1.2rem'}}
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
                   value={data.type}
@@ -126,19 +167,21 @@ export default function Register() {
                   name='type'
                   onChange={handleChange}
                 >
-                  <MenuItem value="">
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={"farmer"}>Producer</MenuItem>
-                  <MenuItem value={"customer"}>Customer</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}}  value={"farmer"}>Producer</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"customer"}>Customer</MenuItem>
                 </Select>
               </FormControl>
               </Grid>
 
               {data.type === "farmer" && <Grid item xs={12}>
               <FormControl sx={{ width:"100%" }}>
-                <InputLabel id="demo-simple-select-helper-label">Producer Type</InputLabel>
+                <InputLabel
+                 id="demo-simple-select-helper-label">Producer Type</InputLabel>
                 <Select
+                  sx={{fontSize: '1.3rem'}}
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
                   value={data.farmertype}
@@ -149,19 +192,20 @@ export default function Register() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={"farmers"}>farmers</MenuItem>
-                  <MenuItem value={"Organic farmers"}>Organic farmers</MenuItem>
-                  <MenuItem value={"FPO/FPC"}>FPO/FPC</MenuItem>
-                  <MenuItem value={"Retailer"}>Retailer</MenuItem>
-                  <MenuItem value={"Wholesaler"}>Wholesaler</MenuItem>
-                  <MenuItem value={"Start-up"}>Start-up</MenuItem>
-                  <MenuItem value={"Vocal for local producers"}>Vocal for local producers</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"farmers"}>farmers</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Organic farmers"}>Organic farmers</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"FPO/FPC"}>FPO/FPC</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Retailer"}>Retailer</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Wholesaler"}>Wholesaler</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Start-up"}>Start-up</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Vocal for local producers"}>Vocal for local producers</MenuItem>
                 </Select>
               </FormControl>
               </Grid>}
 
               <Grid item xs={12}>
                 <TextField
+                InputLabelProps={{ style: { fontSize: 14, fontFamily: "monospace" } }}
                   required
                   fullWidth
                   name="password"
@@ -174,11 +218,32 @@ export default function Register() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                <TextField
+                InputLabelProps={{ style: { fontSize: 14, fontFamily: "monospace" } }}
+                  fullWidth
+                  name="address"
+                  label="address"
+                  type="address"
+                  id="address"
+                  value={data.address}
+                  onChange={handleChange}
+                  autoComplete="new-address"
                 />
               </Grid>
+              {data.type === "farmer" && <Grid item xs={12}>
+              <ReactTags
+              InputProps={{style: {fontSize: 15}}}
+              InputLabelProps={{style: {fontSize: 15}}}
+                tags={tags}
+                delimiters={delimiters}
+                handleDelete={handleDelete}
+                handleAddition={handleAddition}
+                handleDrag={handleDrag}
+                inputFieldPosition="bottom"
+                autocomplete
+                placeholder="Add Selling Products Names and press enter"
+              />
+              </Grid>}
             </Grid>
             <Button
               type="submit"
@@ -196,6 +261,7 @@ export default function Register() {
               </Grid>
             </Grid>
         </form>
-    </div>
+    </div>:<Spinner/>}
+    </>
   );
 }

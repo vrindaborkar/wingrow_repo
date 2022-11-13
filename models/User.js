@@ -9,11 +9,12 @@ const User = mongoose.model(
     phone:String,
     password: String,
     farmertype:String,
-    pic:{
-      data: Buffer,
-    contentType: String
-    },
-    address:String
+    pic:String,
+    address:String,
+    tags:[{
+      id:String,
+      text:String
+    }]
   })
 );
 

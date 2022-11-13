@@ -13,7 +13,7 @@ cloudinary.config({
 });
 
 exports.signup = async(req , res , next)=>{
-      const {  phone , password , firstname , lastname , type , farmertype} = req.body;
+      const {  phone , password , firstname , lastname , type , farmertype , address , tags} = req.body;
       let typeStr;
       if(type === "farmer"){
         typeStr = farmertype
@@ -28,7 +28,8 @@ exports.signup = async(req , res , next)=>{
           role:type,
           farmertype:typeStr,
           pic:undefined,
-          address:undefined
+          address,
+          tags
         })
   
         const data = await user.save()

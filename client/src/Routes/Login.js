@@ -89,6 +89,7 @@ export default function SignIn() {
                 Sign In
               </Typography>
             <TextField
+            InputLabelProps={{ style: { fontSize: 16, fontFamily: "monospace" } }}
               margin="normal"
               required
               fullWidth
@@ -101,6 +102,7 @@ export default function SignIn() {
               onChange={handleChange}
             />
             <TextField
+            InputLabelProps={{ style: { fontSize: 16, fontFamily: "monospace" } }}
               margin="normal"
               required
               fullWidth

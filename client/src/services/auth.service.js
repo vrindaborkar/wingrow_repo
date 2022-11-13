@@ -1,16 +1,18 @@
 import axios from "axios";
 import authHeader from "./auth.headers";
 
-const API_URL = "https://wingrowagritech.herokuapp.com/auth/";
+const API_URL = "http://localhost:4000/auth/";
 
-const register = (phone , password , firstname , lastname , type , farmertype) => {
+const register = (phone , password , firstname , lastname , type , farmertype , address , tags) => {
   return axios.post(API_URL + "signup", {
     phone,
     password,
     firstname,
     lastname,
     type,
-    farmertype
+    farmertype,
+    address,
+    tags
   });
 };
 
