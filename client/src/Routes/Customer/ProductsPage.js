@@ -11,8 +11,8 @@ const ProductsPage = () => {
   return (
     <div className='products_page'>
       <div className='products_head'>
-        <Link className='head_products' to={`/customers`}>Items</Link>
-        <Link className='head_products' to="./cartspage">Cart {Itemcount}</Link>
+        <Link className='head_products' to={`/customers/customerhome`}>Items</Link>
+        <Link className='head_products' to="../cartspage">Cart {Itemcount}</Link>
       </div>
       <div className='products_container'>
         { stallsData && stallsData.length!==0 &&

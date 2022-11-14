@@ -10,7 +10,7 @@ const CustomersHome = () => {
   return (
     <>
     {places && places.length !== 0 && <div className='customerhome_component'>
-        <img alt="Lifestyle Exhibition" className="img-responsive" src="../images/5.jpg" width="80%"/>
+        <img alt="Lifestyle Exhibition" className="img-responsive" src="../images/slidestall2.webp" width="80%"/>
         <h2 className='places_header'>Select market in pune!</h2>
         <Dropdownplaces/>
         <ProductsPage/>
