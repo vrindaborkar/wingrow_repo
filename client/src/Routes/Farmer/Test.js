@@ -158,6 +158,7 @@ const navigate = useNavigate()
   }
 
   const lengthofUpdatedData = UpdatedData?.length;
+  console.log(lengthofUpdatedData)
 
   return (
     <>

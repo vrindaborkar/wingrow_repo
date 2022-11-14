@@ -39,7 +39,7 @@
   }
 
   .Stalls_info{
-   width: 2000px;
+   min-width: 2800px;
    height: 100%;
    display: flex;
    flex-direction: row;
