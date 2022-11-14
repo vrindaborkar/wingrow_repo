@@ -157,6 +157,7 @@ const navigate = useNavigate()
       }
   }
 
+  const lengthofUpdatedData = UpdatedData?.length;
 
   return (
     <>
@@ -169,12 +170,18 @@ const navigate = useNavigate()
             {
               UpdatedData && Id ? 
               <div className='stall_wrapper'>
-                <div className='StallsContainer'>
+                {lengthofUpdatedData === 34 && <div className='StallsContainer'>
                 <Stall data={UpdatedData.slice(0,16)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/>
                 <Stall data={UpdatedData.slice(16,17)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/> 
                 <Stall data={UpdatedData.slice(17,18)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/> 
                 <Stall data={UpdatedData.slice(18,34)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/>  
-                </div>
+                </div>}
+                {lengthofUpdatedData === 50 && <div className='StallsContainer'>
+                <Stall data={UpdatedData.slice(0,24)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/>
+                <Stall data={UpdatedData.slice(24,25)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/> 
+                <Stall data={UpdatedData.slice(25,26)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/> 
+                <Stall data={UpdatedData.slice(26,50)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(Date.now()).format("YYYY-MM-DD")}/>  
+                </div>}
               </div>
               :
               <div className='select_market'>

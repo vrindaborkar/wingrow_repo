@@ -44,6 +44,7 @@ export default function Register() {
   });
 
   const [tags, setTags] = React.useState([]);
+  const [error, seterror] = useState("")
 
   const handleDelete = i => {
     setTags(tags.filter((tag, index) => index !== i));
@@ -75,9 +76,34 @@ export default function Register() {
 
 
   const handleSubmit = (event) => {
+    seterror("")
     event.preventDefault()
-    setLoading(true)
-    if (data.password && data.phone && data.type && data.firstname && data.lastname && data.address && tags.length!==0) {
+    const {phone , firstname , lastname , farmertype , type , password} = data;
+
+    if( !(phone.match('[0-9]{10}')) )
+      {
+        seterror('Please provide valid phone number')
+      }
+    else if(firstname.length === 0 && lastname.length === 0)
+      {
+        seterror('Please provide valid first and last name')
+      }
+    else if(type.length === 0)
+      {
+        seterror('Please select type')
+      }
+    else if(password.length < 6){
+      seterror("password must be greater than 6 characters")
+    }
+    else if(type === "farmer" && farmertype.length === 0){
+      seterror("select producer type")
+    }
+    else if(type === "farmer" && tags.length === 0){
+      seterror("select atleast one commodity and press enter")
+    }
+    else{
+      seterror("no error")
+      setLoading(true)
       AuthService.register(data.phone, data.password , data.firstname , data.lastname , data.type , data.farmertype , data.address , tags).then(
         () => {
             navigate('/login')
@@ -98,10 +124,7 @@ export default function Register() {
           setTags([])
           setLoading(false)
         }
-      );
-    } else {
-      alert("data invalid")
-      setLoading(false)
+      )
     }
   };
 
@@ -222,7 +245,7 @@ export default function Register() {
                 InputLabelProps={{ style: { fontSize: 14, fontFamily: "monospace" } }}
                   fullWidth
                   name="address"
-                  label="address"
+                  label="address (optional)"
                   type="address"
                   id="address"
                   value={data.address}
@@ -245,6 +268,7 @@ export default function Register() {
               />
               </Grid>}
             </Grid>
+            {error !== "no error" && <h3 style={{alignSelf:"center" , color:"red" , marginTop:"10px"}}>{error}</h3>}
             <Button
               type="submit"
               fullWidth
