@@ -33,10 +33,9 @@ const Admin = () => {
     };
   
     useEffect(() => {
-      FarmerService.getMyStalls().then(res => {
+      FarmerService.getBookedStalls().then(res => {
         const data = res?.data;
-        const resp = data.filter(e => e.isBooked === true)
-        setstallsBooked(resp)
+        setstallsBooked(data)
       })
       FarmerService.getInwardData().then(res => 
         {
@@ -108,8 +107,7 @@ const Admin = () => {
       })
   
       const stallsData = stallsBooked && stallsBooked.filter((e)=>{
-        const [date] = e.bookedAt.split("T");
-        return date === dayjs(value).format("YYYY-MM-DD")
+        return e.bookedAt === dayjs(value).format("YYYY-MM-DD")
       })
   
       setstallsBooked(stallsData)
