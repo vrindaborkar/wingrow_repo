@@ -2,7 +2,7 @@ import React from 'react'
 
 const Stall = ({data , handleClick , bookedStalls , alreadyBooked , date}) => {
   return (
-        <div className={data.length < 18 ?'Stalls_info':'Stalls_info_xl'}>
+        <div className={data.length > 18 ?'Stalls_info':'Stalls_info_xl'}>
         {alreadyBooked && 
             data.map((e,i)=>{
                 const isBookedarr = alreadyBooked.filter(ele=> ele.stallNo === e.stallNo && ele.bookedAt === date)
