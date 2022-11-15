@@ -29,11 +29,12 @@ const Checkout = () => {
     const data = Counter[value]
     return acc + (obj.purchase_rate * data)} , 0);
 
-    const confirmBooking = async() => {
 
+    const confirmBooking = async() => {
+      const amount = result * 100;
       try {
         if(result){const orderUrl = "http://localhost:4000/order";
-        const {data} = await axios.post(orderUrl,{amount:result*100},{headers:authHeader()})
+        const {data} = await axios.post(orderUrl,{amount:amount},{headers:authHeader()})
         initPayment(data.data)}
       } catch (error) {
         console.log(error)
