@@ -1,8 +1,7 @@
 import axios from 'axios';
 import authHeader from './auth.headers';
 
-// const API_URL = 'https://wingrowagritech.herokuapp.com/';
-const API_URL = 'http://localhost:4000/';
+const API_URL = 'https://wingrowagritech.herokuapp.com/';
 
  const postInward = (commodity , purchase_quantity , purchase_rate , market , time) => {
     return axios.post(API_URL + "inward", {
