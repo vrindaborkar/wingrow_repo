@@ -187,6 +187,7 @@ const Admin = () => {
                 totalFarmers={totalFarmers}
                 farmers={farmers}
                 Farmers={Farmers}
+                Customer={Customer}
             />}
             />
 

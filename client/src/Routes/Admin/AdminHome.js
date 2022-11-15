@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const AdminHome = ({
   handleChangeMarket,fromDate,setfromDate,toDate,settoDate,value,setValue,handleSearch,market,farmersMarket,
   open,setOpen,handleClose,handleOpen,handleSearchmarkets,handleSearchDate,filteredInData,filteredOutData,
-  purchaseQty,purchaseAmount,salesQty,salesAmount,noOfBookedStalls,totalFarmers,farmers,Farmers
+  purchaseQty,purchaseAmount,salesQty,salesAmount,noOfBookedStalls,totalFarmers,farmers,Farmers,Customer
 }) => {
 
   const FarmersObj = [];
@@ -70,6 +70,13 @@ const AdminHome = ({
           })}
           </div>}
         </div>
+
+        {Customer && <div className='customers_entries_count'>
+          <span>
+            <h2>Total no. of customers</h2>
+            <div className='customers_count'>{Customer.length}</div>
+          </span>
+        </div>}
 
         <div className='links_container'>
           <h2 className='overalldata_header'>Navigation Links</h2>

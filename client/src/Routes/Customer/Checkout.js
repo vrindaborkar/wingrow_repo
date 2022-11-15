@@ -29,14 +29,15 @@ const Checkout = () => {
     const data = Counter[value]
     return acc + (obj.purchase_rate * data)} , 0);
 
-    const confirmBooking = async(e) => {
+    const confirmBooking = async() => {
 
       try {
-        const orderUrl = "http://localhost:4000/order";
+        if(result){const orderUrl = "http://localhost:4000/order";
         const {data} = await axios.post(orderUrl,{amount:result*100},{headers:authHeader()})
-        initPayment(data.data)
+        initPayment(data.data)}
       } catch (error) {
         console.log(error)
+        alert("unknown error occured")
       }
     };
 
