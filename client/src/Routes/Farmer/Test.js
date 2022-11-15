@@ -240,7 +240,7 @@ const navigate = useNavigate()
                  <h2>Please select the market</h2>
               </div>
             }
-            {numberOfSeats !==0 ? <div className='modal_btn'>
+            {numberOfSeats !==0 && bookedStalls.length!==0 ? <div className='modal_btn'>
                 <ConfirmModal confirmBooking={confirmBooking}/>
             </div>:
             <div className='bookStall_btn'>
