@@ -1,5 +1,5 @@
 import React , {useContext} from 'react'
-import { itemsData } from './Itemsdata'
+import {itemsData} from './Itemsdata'
 import productContext from '../../cartContext/ProductContext';
 
 const CheckoutItems = () => {

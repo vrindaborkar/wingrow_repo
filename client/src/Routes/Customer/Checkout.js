@@ -66,7 +66,7 @@ const Checkout = () => {
                   theme: "light",
                   });
                     setTimeout(() => {
-                      navigate('../customers/')
+                      navigate('../')
                     }, 1000);
               }
             }catch(err){

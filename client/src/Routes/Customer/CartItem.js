@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import ProductContext from '../../cartContext/ProductContext'
-import { itemsData } from './Itemsdata'
+import {itemsData} from './Itemsdata';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

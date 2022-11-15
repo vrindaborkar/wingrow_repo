@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import ProductContext from '../../cartContext/ProductContext'
 import Spinner from '../../components/Spinner'
 import './Productspage.css'
-import { itemsData } from './Itemsdata'
+import {itemsData} from './Itemsdata';
 import ToggleAddBtn from './ToggleAddBtn'
 
 const ProductsPage = () => {
@@ -17,7 +17,8 @@ const ProductsPage = () => {
       <div className='products_container'>
         { stallsData && stallsData.length!==0 &&
           stallsData.map((e,i)=>{
-            const {img} = itemsData.find(ele => ele.label === e.commodity)
+            const data = itemsData?.find(ele => ele.label === e.commodity);
+            const img = data?.img;
             // 'https://tse2.mm.bing.net/th?id=OIP.iwB5ZHEBW7HiLsUfb4BYzwHaHa&pid=Api&P=0'
             return(
               <div key={i} className='products'>

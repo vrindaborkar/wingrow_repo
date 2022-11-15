@@ -1,6 +1,6 @@
 import React from 'react'
 import CardsComponent from './CardsComponent'
-import { snacks } from './Itemsdata'
+import {snacks} from './snaksitems'
 
 
 const CustomerSnacks = () => {
