@@ -1,4 +1,4 @@
-export const itemsData = [
+const itemsData = [
     // Leaves
     { img : "https://tse1.mm.bing.net/th?id=OIP.oZvtCj53J53fwMppGeJOzQHaLI&pid=Api&P=0" ,  label: "Amaranthus" },
     { img : "https://tse3.mm.bing.net/th?id=OIP.4VM2IGRnWpoXLeNqQcP7IgHaE6&pid=Api&P=0" ,  label: "Beet Root"},
@@ -145,3 +145,213 @@ export const itemsData = [
     { img : "https://tse4.mm.bing.net/th?id=OIP.5ogNSpT3ZT54KZyryQXUqQHaHa&pid=Api&P=0" ,  label: "Sweet Lime" },
     { img : "https://tse4.mm.bing.net/th?id=OIP.unSRTZo185ll-8GHg8Q7_AHaFj&pid=Api&P=0" ,  label: "Tender coconut" },
   ];
+
+
+  const snacks = [
+    {
+    "snacksName": "Nachani Chips",
+    "snacksPrice": 59,
+    "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+    "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+    },
+    {
+      "snacksName": "Nachani Chips",
+      "snacksPrice": 59,
+      "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+      "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+      },
+      {
+        "snacksName": "Nachani Chips",
+        "snacksPrice": 59,
+        "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+        "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+        },
+        {
+          "snacksName": "Nachani Chips",
+          "snacksPrice": 59,
+          "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+          "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+          },
+          {
+            "snacksName": "Nachani Chips",
+            "snacksPrice": 59,
+            "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+            "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+            },
+            {
+              "snacksName": "Nachani Chips",
+              "snacksPrice": 59,
+              "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+              "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+              },
+              {
+                "snacksName": "Nachani Chips",
+                "snacksPrice": 59,
+                "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                },
+                {
+                  "snacksName": "Nachani Chips",
+                  "snacksPrice": 59,
+                  "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                  "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                  },
+                  {
+                    "snacksName": "Nachani Chips",
+                    "snacksPrice": 59,
+                    "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                    "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                    },
+                    {
+                      "snacksName": "Nachani Chips",
+                      "snacksPrice": 59,
+                      "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                      "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                      },
+                      {
+                        "snacksName": "Nachani Chips",
+                        "snacksPrice": 59,
+                        "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                        "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                        },
+                        {
+                          "snacksName": "Nachani Chips",
+                          "snacksPrice": 59,
+                          "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                          "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                          },
+                          {
+                            "snacksName": "Nachani Chips",
+                            "snacksPrice": 59,
+                            "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                            "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                            },
+                            {
+                              "snacksName": "Nachani Chips",
+                              "snacksPrice": 59,
+                              "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                              "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                              },
+                              {
+                                "snacksName": "Nachani Chips",
+                                "snacksPrice": 59,
+                                "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                },
+                                {
+                                  "snacksName": "Nachani Chips",
+                                  "snacksPrice": 59,
+                                  "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                  "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                  },
+                                  {
+                                    "snacksName": "Nachani Chips",
+                                    "snacksPrice": 59,
+                                    "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                    "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                    },
+                                    {
+                                      "snacksName": "Nachani Chips",
+                                      "snacksPrice": 59,
+                                      "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                      "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                      },
+                                      {
+                                        "snacksName": "Nachani Chips",
+                                        "snacksPrice": 59,
+                                        "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                        "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                        },
+                                        {
+                                          "snacksName": "Nachani Chips",
+                                          "snacksPrice": 59,
+                                          "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                          "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                          },
+                                          {
+                                            "snacksName": "Nachani Chips",
+                                            "snacksPrice": 59,
+                                            "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                            "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                            },
+                                            {
+                                              "snacksName": "Nachani Chips",
+                                              "snacksPrice": 59,
+                                              "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                              "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                              },
+                                              {
+                                                "snacksName": "Nachani Chips",
+                                                "snacksPrice": 59,
+                                                "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                },
+                                                {
+                                                  "snacksName": "Nachani Chips",
+                                                  "snacksPrice": 59,
+                                                  "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                  "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                  },
+                                                  {
+                                                    "snacksName": "Nachani Chips",
+                                                    "snacksPrice": 59,
+                                                    "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                    "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                    },
+                                                    {
+                                                      "snacksName": "Nachani Chips",
+                                                      "snacksPrice": 59,
+                                                      "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                      "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                      },
+                                                      {
+                                                        "snacksName": "Nachani Chips",
+                                                        "snacksPrice": 59,
+                                                        "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                        "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                        },
+                                                        {
+                                                          "snacksName": "Nachani Chips",
+                                                          "snacksPrice": 59,
+                                                          "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                          "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                          },
+                                                          {
+                                                            "snacksName": "Nachani Chips",
+                                                            "snacksPrice": 59,
+                                                            "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                            "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                            },
+                                                            {
+                                                              "snacksName": "Nachani Chips",
+                                                              "snacksPrice": 59,
+                                                              "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                              "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                              },
+                                                              {
+                                                                "snacksName": "Nachani Chips",
+                                                                "snacksPrice": 59,
+                                                                "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                                "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                                },
+                                                                {
+                                                                  "snacksName": "Nachani Chips",
+                                                                  "snacksPrice": 59,
+                                                                  "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                                  "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                                  },
+                                                                  {
+                                                                    "snacksName": "Nachani Chips",
+                                                                    "snacksPrice": 59,
+                                                                    "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                                    "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                                    },
+                                                                    {
+                                                                      "snacksName": "Nachani Chips",
+                                                                      "snacksPrice": 59,
+                                                                      "snacksIngredients" : "Nachani , Urad dal , Moong dal , Salt , Chilli Powder , Soya oil",
+                                                                      "snakcsImage":"https://tse2.mm.bing.net/th?id=OIP.vspW6eVR7QOIDH9mC-KOQAHaE8&pid=Api&P=0"
+                                                                      }
+  ]
+
+  export {itemsData , snacks}

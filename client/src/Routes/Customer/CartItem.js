@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import ProductContext from '../../cartContext/ProductContext'
 import { itemsData } from './Itemsdata'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CartItem = () => {
 const {cartsData , Counter , setcartsData , setItemcount , setCounter , Itemcount} = useContext(ProductContext)
@@ -16,7 +18,16 @@ const {cartsData , Counter , setcartsData , setItemcount , setCounter , Itemcoun
               [id]: 0
             }
           })
-    alert("item removed successfully")
+          toast.success('Item removed successfully!', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
   }
 
   const handleInCounter = (ev) => {
@@ -56,6 +67,18 @@ const {cartsData , Counter , setcartsData , setItemcount , setCounter , Itemcoun
 
   return(
     <>
+    <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
     {cartsData && cartsData.length !== 0 && cartsData.map((e)=>{
         const Counterid = Counter[e._id]
         const {img} = itemsData.find(ele => ele.label === e.commodity)

@@ -284,6 +284,74 @@
     opacity: 0.6;
 }
 
+.select_modal_component{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.select_modal_header{
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.scooter_image{
+    width: 250px;
+    height: 200px;
+}
+
+.select_modal_numbers{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.select_numbers{
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.select_modal_numbers_selected{
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(251, 156, 172);
+}
+
+.select_numbers:hover{
+    background-color: rgb(251, 156, 172);
+    cursor: pointer;
+}
+
+.select_modal_button{
+    background-color: rgb(251, 115, 137);
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+.select_modal_button:hover{
+    cursor: pointer;
+}
 
 @media (max-width: 1080px) {
     .farmers_navigate{

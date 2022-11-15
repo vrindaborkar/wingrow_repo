@@ -29,13 +29,13 @@ export default function CardsComponent({title , image , description , price}) {
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {description}
+            <b>Ingredients :</b> {description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <div className='cards_price_section'>
         <Typography variant="body2" color="text.secondary">
-                Price : {price} /125gm
+                Price : {price}Rs /125gm
         </Typography>
         <Button size="small" color="primary">
           Buy

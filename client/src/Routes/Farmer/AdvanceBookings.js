@@ -14,6 +14,9 @@ import AuthService from '../../services/auth.service';
 import ConfirmModal from '../../components/ConfirmModal';
 import FarmerService from '../../services/farmer.service';
 import dayjs from 'dayjs';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SelectSeatModal from '../../components/SelectSeatModal'
 // import Spinner from '../../components/Spinner';
 const userCurr = AuthService.getCurrentUser();
 
@@ -36,6 +39,7 @@ const AdvanceBookings = ({setbookingDetails}) => {
     const [bookedStalls , setBookedStalls] = useState([])
     const [value, setvalue] = useState(dayjs(Date.now()).format("YYYY-MM-DD"))
     const [alreadyBooked, setAlreadyBooked] = useState()
+    const [open, setOpen] = useState()
 
       useEffect(() => {
         FarmerService.getMyStalls()
@@ -47,6 +51,7 @@ const AdvanceBookings = ({setbookingDetails}) => {
         .then((response)=>{
             setAlreadyBooked(response.data)
         })
+        handleOpen(true)
       }, [])
     
       useEffect(() => {
@@ -64,13 +69,25 @@ const AdvanceBookings = ({setbookingDetails}) => {
         setUpdatedData(res)
       }, [location , data , value])
 
+      const handleOpen = () => setOpen(true);
+      const handleClose = () => setOpen(false);
+
 
       const confirmBooking = async(e) => {
 
         const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
     
         if(bookedStalls.length === 0){
-            alert("failed to book seats")
+          toast.warn('Failed to book stalls!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
             return;
         }
         try {
@@ -129,12 +146,31 @@ const AdvanceBookings = ({setbookingDetails}) => {
                             totalAmount:price
                         })
                     }
-                        alert("Stalls booked succesfully")
-                        navigate('../ticket')
+                      toast.success('stalls booked successfully!', {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
+                          setTimeout(() => {
+                            navigate('../ticket')
+                          }, 1000);
                       })
                       .catch(error => {
-                          console.log(error)
-                          alert("Stall booking failed")
+                        toast.warn('Failed to book stalls!', {
+                          position: "top-right",
+                          autoClose: 5000,
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                          progress: undefined,
+                          theme: "light",
+                          });
                           setBookedStalls([])
                           setNumberOfSeats(0)
                       });
@@ -174,6 +210,18 @@ const AdvanceBookings = ({setbookingDetails}) => {
 
   return (
     <div className='advance_main_container'>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
          <Link to="../" className='advancebookinglinkback'>Go Back to stalls!</Link>
             <div className='advance_component'>
                 <div className='advance_date'>
@@ -207,8 +255,10 @@ const AdvanceBookings = ({setbookingDetails}) => {
         {
                UpdatedData && location!==""? 
                <div className='main_container_stalls'>
-               <p className='seatsinput'>How Many Stalls Would You Like to Book?</p>
-            <input className='seatsinput' value={numberOfSeats} onChange={(ev) => setNumberOfSeats(ev.target.value)}/>
+                           <div style={{display:"flex" , alignItems:"center" , justifyContent:"space-around" , width:"200px"}}>
+                              <SelectSeatModal handleClose={handleClose} handleOpen={handleOpen} open={open} setNumberOfSeats={setNumberOfSeats}/>
+                              <span style={{display:"flex" , alignItems:"center" , justifyContent:"center", fontSize:"15px" ,marginTop:"10px"}}><b>: {numberOfSeats}</b></span>
+                            </div>
               <div className='stall_wrapper'>
                 <div className='StallsContainer'>
                 <Stall data={UpdatedData.slice(0,16)} handleClick={handleClick} bookedStalls={bookedStalls} alreadyBooked={alreadyBooked} date={dayjs(value).format("YYYY-MM-DD")}/>

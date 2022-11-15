@@ -108,7 +108,7 @@ export default function Register() {
         () => {
             navigate('/login')
             setLoading(false)
-            alert("login successful!")
+            alert("Registration successful!")
           },
         (error) => {
           alert("Registration failed")

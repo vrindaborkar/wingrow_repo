@@ -1,5 +1,6 @@
 import React from 'react'
 import CardsComponent from './CardsComponent'
+import { snacks } from './Itemsdata'
 
 
 const CustomerSnacks = () => {
@@ -9,46 +10,18 @@ const CustomerSnacks = () => {
             Wingrow Snacks
         </h2>
         <div className='snacks_main_component'>
-            <CardsComponent
-            title={"apple"}
-            price={20}
-            description={"apple hai mera naam mahan h mera kaam"}
-            image={"https://www.collinsdictionary.com/images/full/apple_158989157.jpg"}/>
-            <CardsComponent
-            title={"apple"}
-            price={20}
-            description={"apple hai mera naam mahan h mera kaam"}
-            image={"https://www.collinsdictionary.com/images/full/apple_158989157.jpg"}/>
-            <CardsComponent
-            title={"apple"}
-            price={20}
-            description={"apple hai mera naam mahan h mera kaam"}
-            image={"https://www.collinsdictionary.com/images/full/apple_158989157.jpg"}/>
-            <CardsComponent
-            title={"apple"}
-            price={20}
-            description={"apple hai mera naam mahan h mera kaam"}
-            image={"https://www.collinsdictionary.com/images/full/apple_158989157.jpg"}/>
-            <CardsComponent
-            title={"apple"}
-            price={20}
-            description={"apple hai mera naam mahan h mera kaam"}
-            image={"https://www.collinsdictionary.com/images/full/apple_158989157.jpg"}/>
-            <CardsComponent
-            title={"apple"}
-            price={20}
-            description={"apple hai mera naam mahan h mera kaam"}
-            image={"https://www.collinsdictionary.com/images/full/apple_158989157.jpg"}/>
-            <CardsComponent
-            title={"apple"}
-            price={20}
-            description={"apple hai mera naam mahan h mera kaam"}
-            image={"https://www.collinsdictionary.com/images/full/apple_158989157.jpg"}/>
-            <CardsComponent
-            title={"apple"}
-            price={20}
-            description={"apple hai mera naam mahan h mera kaam"}
-            image={"https://www.collinsdictionary.com/images/full/apple_158989157.jpg"}/>
+            {
+              snacks.map((e,i)=>{
+                return(
+                  <CardsComponent
+                      key={i}
+                      title={e.snacksName}
+                      price={e.snacksPrice}
+                      description={e.snacksIngredients}
+                      image={e.snakcsImage}/>
+                )
+              })
+            }
         </div>
     </div>
   )

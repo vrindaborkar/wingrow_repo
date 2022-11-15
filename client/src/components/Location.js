@@ -50,16 +50,16 @@ function Location() {
       {
           locations.map((e,i)=>{
             return(
-                <div key={i} class="location_container">
-                        <div class="location_component_main">
+                <div key={i} className="location_container">
+                        <div className="location_component_main">
                             
-                            <img alt="team" class="location_image_main" src="./images/slidestall2.webp"/>
+                            <img alt="team" className="location_image_main" src="./images/slidestall2.webp"/>
                             
-                            <div class="places_main_wrapper">
+                            <div className="places_main_wrapper">
                                 <a href={e.address}>
-                                    <h2 class="location_markets">{e.name}</h2>
+                                    <h2 className="location_markets">{e.name}</h2>
                                 </a>
-                                <p class="location_date">{e.day} at {e.time}</p>
+                                <p className="location_date">{e.day} at {e.time}</p>
                             </div>
                         </div>
                     </div>

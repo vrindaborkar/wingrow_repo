@@ -9,6 +9,10 @@ import ConfirmModal from '../../components/ConfirmModal';
 import FarmerService from '../../services/farmer.service';
 import dayjs from 'dayjs';
 import Spinner from '../../components/Spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SelectSeatModal from '../../components/SelectSeatModal'
+
 const userCurr = AuthService.getCurrentUser();
 
 function Test({setbookingDetails}) {
@@ -20,6 +24,7 @@ const navigate = useNavigate()
   const [Loading, setLoading] = useState()
   const {Id} = useParams()
   const [alreadyBooked, setAlreadyBooked] = useState()
+  const [open, setOpen] = useState()
 
 
   useEffect(() => {
@@ -34,7 +39,11 @@ const navigate = useNavigate()
     .then((response)=>{
         setAlreadyBooked(response.data)
     })
+    handleOpen(true)
   }, [])
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -56,7 +65,16 @@ const navigate = useNavigate()
     const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
 
     if(bookedStalls.length === 0){
-        alert("failed to book seats")
+      toast.warn('Failed to book stalls!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
         return;
     }
     try {
@@ -115,12 +133,31 @@ const navigate = useNavigate()
                         totalAmount:price
                     })
                 }
-                    alert("Stalls booked succesfully")
-                    navigate('../ticket')
+                toast.success('stalls booked successfully!', {
+                  position: "top-center",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  });
+                    setTimeout(() => {
+                      navigate('../ticket')
+                    }, 1000);
                   })
                   .catch(error => {
-                      console.log(error)
-                      alert("Stall booking failed")
+                    toast.warn('Failed to book stalls!', {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                      });
                       setBookedStalls([])
                       setNumberOfSeats(0)
                   });
@@ -158,16 +195,29 @@ const navigate = useNavigate()
   }
 
   const lengthofUpdatedData = UpdatedData?.length;
-  console.log(lengthofUpdatedData)
 
   return (
     <>
     {!Loading ? <div className="Test">
+    <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
     <Link to="../advancebookings" className='advancebookinglink'>Advance booking !</Link>
       <h2>{Id}</h2>
       <div className='main_container_stalls'>
-        <p className='seatsinput'>How Many Stalls Would You Like to Book?</p>
-            <input className='seatsinput' value={numberOfSeats} onChange={(ev) => setNumberOfSeats(ev.target.value)}/>
+            <div style={{display:"flex" , alignItems:"center" , justifyContent:"space-around" , width:"200px"}}>
+              <SelectSeatModal handleClose={handleClose} handleOpen={handleOpen} open={open} setNumberOfSeats={setNumberOfSeats}/>
+              <span style={{display:"flex" , alignItems:"center" , justifyContent:"center", fontSize:"15px" ,marginTop:"10px"}}><b>: {numberOfSeats}</b></span>
+            </div>
             {
               UpdatedData && Id ? 
               <div className='stall_wrapper'>

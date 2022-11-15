@@ -7,6 +7,8 @@ import dayjs from 'dayjs'
 import ConfirmDelete from '../../components/ConfirmDelete';
 import axios from 'axios';
 import authHeader from '../../services/auth.headers';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyBookings = () => {
     const user = AuthService.getCurrentUser()
@@ -34,10 +36,28 @@ const MyBookings = () => {
                 const filData = MyStalls.filter(e => e._id !== resp._id)
                 axios.post("https://wingrowagritech.herokuapp.com/cancelledstalls" , data , {headers:authHeader()})
                 setMyStalls(filData);
-                alert("Cancelled successful!")
+                toast.success('Cancelled successfully!', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             }
             else{
-                alert("Failed to cancel booking")
+                toast.warn('Failed to cancel booking!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             }
        })
     }
@@ -45,6 +65,18 @@ const MyBookings = () => {
   return (
     <>
     {MyStalls?<div className='bookings_container'>
+    <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
         <div className='booking_content'>
             <div className='booking_cards'> 
                 <h1 className='booking_header'>Stall Bookings</h1>

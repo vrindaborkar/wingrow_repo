@@ -15,6 +15,8 @@ import FormControl from '@mui/material/FormControl';
 import dayjs from 'dayjs'
 import FarmerService from '../../services/farmer.service'
 import Autocomplete from '@mui/material/Autocomplete';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const locations = [
   {location:"Hadapsar"},
@@ -203,12 +205,31 @@ export default function OutwardData() {
     if (commodity && Data.sales_quantity && Data.sales_rate && Data.market && time) {
       FarmerService.postOutward(commodity , Data.sales_quantity , Data.sales_rate , Data.market , time).then(
         () => {
-          alert("Outward data has been added successfully")
-          window.location.reload();
+          toast.success('Outward data has been added successfully!', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+            setTimeout(() => {
+              window.location.reload()
+            }, 2000);
         },
         (error) => {
-          console.log(error)
-          alert("Failed to add data")
+          toast.warn('Failed to add data!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
           setData({
             market:'',
             sales_rate:0,
@@ -218,12 +239,33 @@ export default function OutwardData() {
         }
       );
     } else {
-      alert("data invalid")
+      toast.warn('Invalid data!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   }
 
   return (
     <div className='data_container'>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="sm">
         <CssBaseline />
