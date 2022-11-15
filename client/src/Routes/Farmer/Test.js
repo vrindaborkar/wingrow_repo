@@ -12,6 +12,7 @@ import Spinner from '../../components/Spinner';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SelectSeatModal from '../../components/SelectSeatModal'
+import { Button } from '@mui/material';
 
 const userCurr = AuthService.getCurrentUser();
 
@@ -239,9 +240,13 @@ const navigate = useNavigate()
                  <h2>Please select the market</h2>
               </div>
             }
-            <div className='modal_btn'>
+            {numberOfSeats !==0 ? <div className='modal_btn'>
                 <ConfirmModal confirmBooking={confirmBooking}/>
+            </div>:
+            <div className='bookStall_btn'>
+            <Button disabled>Book Stall</Button>
             </div>
+            }
       </div>
     </div>
     :<Spinner/>}
