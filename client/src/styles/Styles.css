@@ -20,8 +20,7 @@ li {
   list-style: none;
 }
 
-.Main_wrapper{
-  display: flex; 
+.Main_wrapper{ 
   flex-direction: column; 
   flex: 1 1 auto; 
   max-width: 100%; 
@@ -544,7 +543,6 @@ li {
   height: 100%;
   padding: 1rem;
   box-shadow: none;
-  margin-top: 2rem;
 }
 }
 
