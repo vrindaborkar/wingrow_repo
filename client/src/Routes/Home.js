@@ -44,7 +44,7 @@ const Home = () => {
             </div>
         </div>
         <div className="first_section_image">
-            <img className="image_header" alt="hero" src="./images/centerimage.webp"/>
+            <img className="image_header" alt="hero" src="./images/centerimage.png"/>
         </div>
       </div>
 
