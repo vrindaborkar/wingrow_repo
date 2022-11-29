@@ -37,9 +37,9 @@ export default function CardsComponent({title , image , description , price}) {
         <Typography variant="body2" color="text.secondary">
                 Price : {price}Rs /125gm
         </Typography>
-        <Button size="small" color="primary">
+        {/* <Button size="small" color="primary">
           Buy
-        </Button>
+        </Button> */}
       </div>
     </Card>
     </ThemeProvider>

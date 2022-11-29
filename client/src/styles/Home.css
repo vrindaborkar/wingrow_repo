@@ -263,7 +263,7 @@
   }
 
   .first_section_component{
-    padding-right: 6rem; 
+    /* padding-right: 6rem;  */
     flex-grow: 1;
   } 
   .first_section_image{
@@ -281,7 +281,7 @@
   }
   .first_section{
     flex-direction: column;
-    min-height: 80vh;
+    min-height: 65vh;
   }
 
   .first_section_component{
