@@ -91,3 +91,23 @@
     margin-left: 2.3%;
 
 }
+
+@media (max-width: 380px) { 
+    .select_items{
+        align-items: center;
+        margin-left: 0%;
+    
+    }
+    .places_head{
+        margin-left: 10%;
+        /* padding: 1rem; */
+        /* font-weight: 600; */
+        text-align: center;
+        /* font-size: 3rem; */
+        /* align-items: center; */
+    
+    }
+    
+    
+}
+

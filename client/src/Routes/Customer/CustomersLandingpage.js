@@ -10,6 +10,12 @@ const CustomersLandingpage = () => {
         <Link className='links_customers' to="./customersnacks">Buy Snacks</Link>
         <Link className='links_customers' to="./customerhome">Buy fruits and vegetables</Link>
       </div>
+      <div className='customers_links_wrapper'>
+        <a   href= {'tel:+91'+ 7776003700}  >
+          <button   className='links_customers' id="bt" >Contact to Owner</button> 
+        </a>
+      </div>
+
     </div>
   )
 }
