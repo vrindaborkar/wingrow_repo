@@ -10,10 +10,10 @@ const ProductsPage = () => {
   const {stallsData , Itemcount , handleClick } = useContext(ProductContext)
   return (
     <div className='products_page'>
-      <div className='products_head'>
+      {/* <div className='products_head'>
         <Link className='head_products' to={`/customers/customerhome`}>Items</Link>
         <Link className='head_products' to="../cartspage">Cart {Itemcount}</Link>
-      </div>
+      </div> */}
       <div className='products_container'>
         { stallsData && stallsData.length!==0 &&
           stallsData.map((e,i)=>{
