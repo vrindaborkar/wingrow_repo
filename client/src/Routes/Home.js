@@ -32,7 +32,7 @@ const Home = () => {
 
       <div className='first_section'>
         <div className='first_section_component'>
-          <img src="./images/imgbook.webp" alt='stall_logo' className='first_image_section'/> 
+          <img src="./images/imgbook.png" alt='stall_logo' className='first_image_section'/> 
           <h1 data-aos="fade-right" className="first_section_header">
                 <span>REVOLUTIONIZING THE STALL </span>
                 <span>BOOKING FOR DIRECT SELL</span>

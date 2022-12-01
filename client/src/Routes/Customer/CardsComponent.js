@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
     typography: {
-      fontSize: 18,
+      fontSize: 15,
     },
   });
 
@@ -28,15 +28,15 @@ export default function CardsComponent({title , image , description , price}) {
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          {/* <Typography variant="body2" color="text.secondary">
             <b>Ingredients :</b> {description}
-          </Typography>
+          </Typography> */}
         </CardContent>
       </CardActionArea>
       <div className='cards_price_section'>
-        <Typography variant="body2" color="text.secondary">
+        {/* <Typography variant="body2" color="text.secondary">
                 Price : {price}Rs /125gm
-        </Typography>
+        </Typography> */}
         {/* <Button size="small" color="primary">
           Buy
         </Button> */}

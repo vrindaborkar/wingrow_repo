@@ -12,6 +12,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
 import { WithContext as ReactTags } from 'react-tag-input';
 import Spinner from '../components/Spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const user = AuthService.getCurrentUser()
 
 
@@ -106,12 +108,35 @@ export default function Register() {
       setLoading(true)
       AuthService.register(data.phone, data.password , data.firstname , data.lastname , data.type , data.farmertype , data.address , tags).then(
         () => {
-            navigate('/login')
-            setLoading(false)
-            alert("Registration successful!")
+            toast.success('Registration successful!', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+            setTimeout(() => {
+              navigate('/login');
+              window.location.reload()
+            }, 1000);
+            // navigate('/login')
+            // setLoading(false)
+            // alert("Registration successful!")
           },
         (error) => {
-          alert("Registration failed")
+          toast.warn('Registration failed', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
           setData({
             phone:'',
             password:'',
@@ -123,6 +148,18 @@ export default function Register() {
           })
           setTags([])
           setLoading(false)
+          // alert("Registration failed")
+          // setData({
+          //   phone:'',
+          //   password:'',
+          //   firstname:'',
+          //   lastname:'',
+          //   type:'',
+          //   farmertype:"",
+          //   address:""
+          // })
+          // setTags([])
+          // setLoading(false)
         }
       )
     }
@@ -191,10 +228,10 @@ export default function Register() {
                   onChange={handleChange}
                 >
                   <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value="">
-                    <em>None</em>
+                    <em>Select</em>
                   </MenuItem>
                   <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}}  value={"farmer"}>Producer</MenuItem>
-                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"customer"}>Customer</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"customer"}>Consumer</MenuItem>
                 </Select>
               </FormControl>
               </Grid>
@@ -215,13 +252,13 @@ export default function Register() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"farmers"}>farmers</MenuItem>
-                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Organic farmers"}>Organic farmers</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"farmers"}>Farmer</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Organic farmers"}>Organic Farmer</MenuItem>
                   <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"FPO/FPC"}>FPO/FPC</MenuItem>
                   <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Retailer"}>Retailer</MenuItem>
                   <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Wholesaler"}>Wholesaler</MenuItem>
-                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Start-up"}>Start-up</MenuItem>
-                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Vocal for local producers"}>Vocal for local producers</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Start-up"}>Start Up</MenuItem>
+                  <MenuItem sx={{fontSize: '1.3rem' , fontFamily: "monospace"}} value={"Vocal for local producers"}>Vocal for Local Producers</MenuItem>
                 </Select>
               </FormControl>
               </Grid>}
@@ -275,7 +312,7 @@ export default function Register() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Register
             </Button>
             <Grid container justifyContent="center">
               <Grid item>

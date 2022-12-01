@@ -26,7 +26,8 @@ const ProductsPage = () => {
                 <span className='content_product'>Market : {e.market}</span>
                 <span className='content_product'>Commodity : {e.commodity}</span>
                 <span className='content_product'>Price : {e.purchase_rate} / kg</span>
-                <ToggleAddBtn id={e._id} handleClick={handleClick}/>
+                {/* <span className='content_product'>Price : 40 / kg</span> */}
+                {/* <ToggleAddBtn id={e._id} handleClick={handleClick}/> */}
               </div>
             )
           })
