@@ -7,13 +7,13 @@ var bodyParser = require('body-parser');
 const path = require('path');
 const fileUpload = require('express-fileupload')
 
-var corsOptions = {
-  origin: "http://localhost:3000"
-};
+// var corsOptions = {
+//   origin: "http://localhost:4000"
+// };
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.static('client/build'))
 app.use(fileUpload({
   useTempFiles:true

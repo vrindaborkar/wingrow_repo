@@ -64,7 +64,7 @@
     align-items: center;
     width: 50vw;
     height: 100px;
-    margin-bottom: 80px;
+    margin-bottom: 5px;
 }
 
 .links_customers{
@@ -101,3 +101,53 @@
         height: 20vh;
     }
 }
+
+/* feedback */
+.textarea{
+    border: 0.5px solid rgb(24, 23, 23);
+    border-radius: 0.5rem;
+    /* width: 500 px; */
+    /* height: 500 px; */
+    /* margin: 20px 0; */
+    /* padding: 10; */
+}
+.submit{
+    width: 100px;
+    height: 30px;
+    font-weight: 600;
+    background-color: rebeccapurple;
+    border-radius: 10px;
+    z-index: 10;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+
+
+}
+.feedback{
+    width: 30%;
+    height: 17rem;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    align-items: center;
+    text-align: center;
+    letter-spacing: 2px;
+
+}
+.feedback_heading{
+    margin-top: 1rem;
+}
+
+@media (max-width : 500px){
+    .feedback{
+        width: 90%;
+        height: 17rem;
+        border-radius: 1rem;
+        /* border: 1px solid rgb(168, 166, 166); */
+        align-items: center;
+        text-align: center;
+    }
+    
+}
+
+

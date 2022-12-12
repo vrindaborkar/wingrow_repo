@@ -4,18 +4,18 @@ import Spinner from '../../components/Spinner';
 import './CustomerHome.css';
 import Dropdownplaces from './DropdownPlaces';
 import ProductsPage from './ProductsPage';
-import { Select } from '@mui/material';
 
 const CustomersHome = () => {  
   const {places} = useContext(ProductContext)
   return (
     <>
-    {places && places.length !== 0 && <div className='customerhome_component'>
+    {places && places.length !== 0 && 
+    <div className='customerhome_component'>
         <img alt="Lifestyle Exhibition" className="img-responsive" src="../images/slidestall2.webp" width="80%"/>
         <div className='select_items'>
-        <label for="cars" className='places_head' >Select State </label>
+        <label className='places_head' >Select State </label>
 
-        <select name="cars" id="cars">
+        <select id="states">
           <option >Maharashtra</option>
           <option>Gujarat</option>
           <option>Kerala</option>
