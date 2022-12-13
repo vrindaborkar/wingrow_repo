@@ -6,19 +6,22 @@ import GlobalState from "../../cartContext/GlobalState";
 import Checkout from "./Checkout";
 import CustomersLandingpage from "./CustomersLandingpage";
 import CustomerSnacks from "./CustomerSnacks";
-import './Customer.css'
+import './Customer.css';
+import Feedback from "./Feedback"
 
 const Customer = () => {
   return (
-      <GlobalState>
+      // <GlobalState>
         <Routes>
             <Route path='/' element={<CustomersLandingpage/>}/>
             <Route path='/customerhome' element={<CustomersHome/>}/>
             <Route path='/customersnacks' element={<CustomerSnacks/>}/>
             <Route path='/cartspage' element={<Cartspage/>}/>
             <Route path='/checkout' element={<Checkout/>}/>
+            {/* <Route path='/feedback' element={<Feedback/>}/> */}
+
         </Routes>
-      </GlobalState>
+      // </GlobalState>
   )
 }
 

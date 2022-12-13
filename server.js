@@ -16,7 +16,7 @@ var corsOptions = {
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.static('client/build'))
 app.use(fileUpload({
   useTempFiles:true
