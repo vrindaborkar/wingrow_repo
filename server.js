@@ -7,8 +7,11 @@ var bodyParser = require('body-parser');
 const path = require('path');
 const fileUpload = require('express-fileupload')
 
+// var corsOptions = {
+//   origin: "http://localhost:3000"
+// };
 var corsOptions = {
-  origin: "http://localhost:3000"
+  origin: "*"
 };
 
 app.use(bodyParser.urlencoded({ extended: false }))

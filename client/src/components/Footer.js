@@ -70,7 +70,7 @@ return (
     <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)',textAlign:'center' , padding:"4px" }}>
     &copy; 2022 Copyright:
         <a style={{fontWeight:"bold"}} href='https://www.wingrowagritech.com/'>
-         Wingrow Agritech.  All rights reserved.
+         Wingrow Agritech. All rights reserved.
         </a>
       </div>
 	</div>

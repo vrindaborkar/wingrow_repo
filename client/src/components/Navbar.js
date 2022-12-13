@@ -5,6 +5,9 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
 import logo from './wingrow-logo.webp'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
@@ -14,7 +17,21 @@ const Navbar = () => {
   const [CurrentUser, setCurrentUser] = useState(undefined);
 
   const handleLogout = () => {
-    alert("logged out successfully")
+    // alert("logged out successfully")
+    toast.success('Logged out successfully', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+      setTimeout(() => {
+        // navigate("/customers");
+        window.location.reload()
+      }, 1000);
     setShowMediaIcons(false);
     AuthService.logout();
     setCurrentUser(undefined)

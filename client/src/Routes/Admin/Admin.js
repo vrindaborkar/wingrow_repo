@@ -147,7 +147,7 @@ const Admin = () => {
       const id = e.target.id;
       const response = window.confirm("Confirm Refunded?")
       if(response === true){
-        axios.delete("https://wingrowagritech.herokuapp.com/cancelledstalls" , { headers: authHeader()  , data:{id: id}}).then(res=>{
+        axios.delete("http://localhost:4000/cancelledstalls" , { headers: authHeader()  , data:{id: id}}).then(res=>{
           const data = res?.data;
           const filter = CancelledStalls.filter(e=>e._id !== data._id);
           setCancelledStalls(filter)

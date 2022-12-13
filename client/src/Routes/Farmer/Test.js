@@ -79,7 +79,7 @@ const navigate = useNavigate()
         return;
     }
     try {
-      const orderUrl = "https://wingrowagritech.herokuapp.com/order";
+      const orderUrl = "http://localhost:4000/order";
       const {data} = await axios.post(orderUrl,{amount:price*100},{headers:authHeader()})
       initPayment(data.data)
     } catch (error) {
@@ -100,7 +100,7 @@ const navigate = useNavigate()
       
       handler:async(response) =>{
           try {
-              const verifyUrl = "https://wingrowagritech.herokuapp.com/verify";
+              const verifyUrl = "http://localhost:4000/verify";
               const {data} = await axios.post(verifyUrl,response,{headers:authHeader()})
               const orderId = data.orderId
               
@@ -119,7 +119,7 @@ const navigate = useNavigate()
               });
     
             const price = bookedStalls.reduce((total, item) => item.stallPrice + total, 0);
-            const Url = "https://wingrowagritech.herokuapp.com/bookedstalls";
+            const Url = "hhttp://localhost:4000/bookedstalls";
                   
                   axios.post(Url , responseData , {headers:authHeader()})
                   .then(response => {

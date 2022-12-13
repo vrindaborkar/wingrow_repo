@@ -28,13 +28,13 @@ const MyBookings = () => {
        const [data] = cancelledStall;
        data.cancelledAt = dayjs(Date.now()).format("YYYY-MM-DD");
 
-       axios.delete("https://wingrowagritech.herokuapp.com/bookedstalls" , { headers: authHeader()  , data:{id: DeleteId}})
+       axios.delete("http://localhost:4000/bookedstalls" , { headers: authHeader()  , data:{id: DeleteId}})
         .then(res => {
             if(res)
             {
                 const resp = res.data;
                 const filData = MyStalls.filter(e => e._id !== resp._id)
-                axios.post("https://wingrowagritech.herokuapp.com/cancelledstalls" , data , {headers:authHeader()})
+                axios.post("http://localhost:4000/cancelledstalls" , data , {headers:authHeader()})
                 setMyStalls(filData);
                 toast.success('Cancelled successfully!', {
                     position: "top-center",
